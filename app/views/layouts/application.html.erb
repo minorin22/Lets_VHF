@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LetsVhf</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <a href="/">LET'S VHF !</a>
+      </div>
+      <ul class="header-menus">
+        <li><a href="about">LET'S VHF ! とは</a></li>
+        <li>新規登録</li>
+        <li>ログイン</li>
+      </ul>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>
