@@ -1,10 +1,11 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$green: #27b875;
-$light-green: #e3fde7;
-$dark-green: #1e5a2e;
-$red: #fd664b;
+// $green: #27b875;
+// $light-green: #e3fde7;
+// $dark-green: #1e5a2e;
+// $red: #fd664b;
+@import "functions";
 
 .title {
   margin-top: 230px;
@@ -32,7 +33,7 @@ p {
 }
 .btns {
   width: 60%;
-  margin: 10% auto;
+  margin: 17.7% auto;
 
 }
 .btn {
@@ -44,6 +45,7 @@ p {
   text-align: center;
   line-height: 50px;
   color: #ffffff;
+  display: inline-block;
   float: left;
   margin-right: 10%;
   margin-bottom: 5%
