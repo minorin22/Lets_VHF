@@ -8,11 +8,16 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
+ * It is gener
+ $ally better to create a new file per style scope.
  *
  *= require_tree .
  *= require_self
  */
+ $green: #27b875;
+ $light-green: #e3fde7;
+ $dark-green: #1e5a2e;
+ $red: #fd664b;
  a {
    color:#ffffff;
    text-decoration: none;
@@ -24,11 +29,11 @@
  }
 body {
   font-family: 'Hiragino Sans',sans-serif;
-  background-color: #e3fde7;
+  background-color: $light-green;
   margin: 0;
 
   header {
-    background-color: #27b875;
+    background-color: $green;
     height: 50px;
     width: 100%;
     color: #ffffff;
