@@ -18,7 +18,7 @@
  // $light-green: #e3fde7;
  // $dark-green: #1e5a2e;
  // $red: #fd664b;
- @import "functions";
+ @import "colors";
  a {
    color:#ffffff;
    text-decoration: none;
@@ -32,7 +32,6 @@ body {
   font-family: 'Hiragino Sans',sans-serif;
   background-color: $light-green;
   margin: 0;
-
   header {
     background-color: $green;
     height: 50px;
