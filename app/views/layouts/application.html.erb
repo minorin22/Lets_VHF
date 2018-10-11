@@ -12,12 +12,22 @@
   <body>
     <header>
       <div class="header-logo">
-        <%= link_to "LET'S VHF !", "/" %>
+        <% if session[:user_id] %>
+          <%= link_to "LET'S VHF !", "/users/#{@current_user.id}" %>
+        <% else %>
+          <%= link_to "LET'S VHF !", "/" %>
+        <% end %>
       </div>
       <ul class="header-menus">
-        <li><%= link_to "LET'S VHF ! とは", "/about" %></li>
-        <li><%= link_to "新規登録", "/signup" %></li>
-        <li>ログイン</li>
+        <% if session[:user_id] %>
+          <li><%= link_to "シナリオモード", "/about" %></li>
+          <li><%= link_to "シミュレーターモード", "/about" %></li>
+          <li><%= link_to "ログアウト", "/logout" ,method: :post %></li>
+        <% else %>
+          <li><%= link_to "LET'S VHF ! とは", "/about" %></li>
+          <li><%= link_to "新規登録", "/signup" %></li>
+          <li><%= link_to "ログイン", "/login" %></li>
+        <% end %>
       </ul>
     </header>
 
