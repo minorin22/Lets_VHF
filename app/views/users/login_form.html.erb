@@ -1,10 +1,9 @@
-
 <div class="grayout">
   <%= link_to "", "/",class:"to_top" %>
-  <div class="mordal">
+  <div class="mordal login_mordal">
     <%= link_to(image_tag("x_btn.svg"), "/", class:"x-btn") %>
     <div class="items">
-      <%= form_tag("/users") do %>
+      <%= form_tag("/login") do %>
         <div class="item">
           <p>ユーザーID <% if @error_message %><span>*</span><% end %></p>
           <input name="name" value="<%= @name %>">
@@ -14,18 +13,11 @@
           <input name="password" type="password">
         </div>
         <div class="item">
-          <p>Password (確認) <% if @error_message %><span>*</span><% end %></p>
-          <input name="password_confirmation" type="password">
-        </div>
-
-
-        <div class="item">
-          <% @user.errors.full_messages.each do |message| %>
-            <p><span><%= message %></span></p>
+          <% if @error_message %>
+          <p><span><%= @error_message %></span></p>
           <% end %>
         </div>
-
-        <input type="submit" value="新規登録" class="btn sign-up">
+        <input type="submit" value="ログイン" class="btn log-in">
       <% end %>
     </div>
 
