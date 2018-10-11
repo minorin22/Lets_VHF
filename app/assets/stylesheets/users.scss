@@ -1,3 +1,132 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+
+.grayout {
+  background-color: rgba(0, 0, 0, 0.28);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 1440px;
+  z-index: 5;
+  .to_top {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+  }
+  .mordal {
+    position: absolute;
+    top: 190px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    width: 490px;
+    height: 380px;
+    z-index: 6;
+    .x-btn {
+      position: absolute;
+      top: 12px;
+      left: 458px;
+      width: 12px;
+      height: 12px;
+    }
+    .items {
+      //margin-top: 46px;
+      position: absolute;
+      top: 55px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+
+      .item{
+        width: 379px;
+        height: 48px;
+        margin: 0 auto;
+        //border: 1px solid #CCC;
+        p {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 16px;
+          display: inline-block;
+          float:left;
+          color: $dark-green;
+          margin: 16px 0;
+          span {
+            color: $red;
+          }
+          //border: 1px solid #CCC;
+        }
+        input {
+          width: 206px;
+          height: 26px;
+          border-radius: 2px;
+          border: 2px solid #CCCCCC;
+          display: inline-block;
+          margin: 9px 0;
+          float:right;
+        }
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        color: $red;
+      }
+      .btn {
+        position: absolute;
+        top: 230px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: inline-block;
+        width: 258px;
+        height: 50px;
+        border-radius: 25px;
+        font-size:25px;
+        font-weight: 500;
+        text-align: center;
+        line-height: 50px;
+        color: #ffffff;
+        margin: 0 auto;
+        border: none;
+        cursor: pointer;
+        }
+
+      .sign-up {
+        background-color: $red;
+        //float:left;
+        }
+      .log-in {
+        background-color: $green;
+        top: 150px;
+        //float: right;
+        }
+    }
+
+  }
+  .login_mordal {
+    height: 290px;
+  }
+
+}
+
+h2 {
+  font-size: 62px;
+  font-weight: 800;
+  color: $dark-green;
+  padding-top:58px;
+  span {
+    color: $red;
+  }
+}
+
+.link {
+  color:$dark-green;
+}

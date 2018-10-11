@@ -24,16 +24,18 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.new(
+      name: params[:name],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
+    )
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to("/users/#{@user.id}")
+    else
+      @error_message = "*"
+      @name = params[:name]
+      render("users/new")
     end
   end
 
@@ -61,6 +63,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def login_form
+  end
+
+  def login
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to("/users/#{@user.id}")
+    else
+      @error_message = "ユーザーIDまたはパスワードが間違っています"
+      @name = params[:name]
+      render("users/login_form")
+    end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to("/")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -68,7 +90,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :password)
-    end
+     def user_params
+       params.require(:user).permit(:name, :password, :password_confirmation)
+     end
 end

@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h2><%= "ようこそ、#{@current_user.name}さん"%></h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user), class: "link" %> |
-<%= link_to 'Back', users_path, class: "link" %>
+  <p>
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </p>
+</div>
