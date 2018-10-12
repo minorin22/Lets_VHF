@@ -59,13 +59,13 @@ p {
   line-height: 50px;
   color: #ffffff;
   margin: 100px auto;
-  }
+  &.sign-up {
+    background-color: $red;
+    float:left;
+    }
+  &.log-in {
+    background-color: $green;
+    float: right;
+    }
 
-.sign-up {
-  background-color: $red;
-  float:left;
-  }
-.log-in {
-  background-color: $green;
-  float: right;
   }
