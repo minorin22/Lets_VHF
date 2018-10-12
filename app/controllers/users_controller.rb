@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to("/users/#{@user.id}")
+      flash[:notice] = "ユーザーを登録しました！"
     else
       @error_message = "*"
       @name = params[:name]
@@ -71,6 +72,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to("/users/#{@user.id}")
+      flash[:notice] = "ログインしました"
     else
       @error_message = "ユーザーIDまたはパスワードが間違っています"
       @name = params[:name]
@@ -81,6 +83,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to("/")
+    flash[:notice] = "ログアウトしました"
   end
 
   private

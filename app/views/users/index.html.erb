@@ -16,7 +16,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.password %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %></td>
+        <td><%= link_to 'Destroy', "users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "link" %></td>
       </tr>
     <% end %>
   </tbody>

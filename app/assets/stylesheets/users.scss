@@ -26,8 +26,11 @@
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     width: 490px;
-    height: 380px;
+    height: 390px;
     z-index: 6;
+    &.login_mordal {
+      height: 290px;
+    }
     .x-btn {
       position: absolute;
       top: 12px;
@@ -57,6 +60,9 @@
           float:left;
           color: $dark-green;
           margin: 16px 0;
+          &.errors {
+            line-height: 21px;
+          }
           span {
             color: $red;
           }
@@ -81,7 +87,7 @@
       }
       .btn {
         position: absolute;
-        top: 230px;
+        top: 240px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -97,23 +103,20 @@
         margin: 0 auto;
         border: none;
         cursor: pointer;
+        &.sign-up {
+          background-color: $red;
+          }
+        &.log-in {
+          background-color: $green;
+          top: 150px;
+          }
         }
 
-      .sign-up {
-        background-color: $red;
-        //float:left;
-        }
-      .log-in {
-        background-color: $green;
-        top: 150px;
-        //float: right;
-        }
+
     }
 
   }
-  .login_mordal {
-    height: 290px;
-  }
+
 
 }
 
@@ -121,7 +124,7 @@ h2 {
   font-size: 62px;
   font-weight: 800;
   color: $dark-green;
-  padding-top:58px;
+  padding-top:60px;
   span {
     color: $red;
   }
