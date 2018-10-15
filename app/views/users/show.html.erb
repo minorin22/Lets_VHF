@@ -1,10 +1,26 @@
 <div class="container">
   <h2><%= "ようこそ、#{@current_user.name}さん"%></h2>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
+  <div class="mode_icons">
+    <div class="mode_icon">
+      <%= image_tag "on_board.svg" , class:"img" %>
+      <h3>シナリオ<br />モード</h3>
+      <p>
+        シナリオに沿ってVHF無線電話の使い方を順を追って学びます。
+      </p>
+    </div>
+    <div class="mode_icon">
+      <% if @current_station %>
+        <%= link_to(image_tag("with_handset.svg", class:"img"), "/stations/#{@current_station.id}") %>
+      <% else %>
+        <%= link_to(image_tag("with_handset.svg", class:"img"), "/stations/new") %>
+      <% end %>
+      <h3 class="h3right">シミュレーター<br />モード</h3>
+      <p>
+        VHFシミュレーターを自由に操作できるモードです。ログイン中の他のユーザーと交信することもできます。
+      </p>
+    </div>
+  </div>
 
 
 </div>
