@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # add gemfiles
 gem 'bcrypt'
 gem 'rails-i18n'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
