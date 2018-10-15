@@ -77,6 +77,19 @@
           margin: 9px 0;
           float:right;
         }
+        select {
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          appearance: none;
+          width: 212px;
+          height: 32px;
+          border-radius: 2px;
+          border: 2px solid #CCCCCC;
+          display: inline-block;
+          margin: 9px 0;
+          float:right;
+          text-align: center;
+        }
       }
 
       p {
@@ -124,11 +137,12 @@ h2 {
   font-size: 62px;
   font-weight: 800;
   color: $dark-green;
-  padding-top:60px;
+  padding-top:64px;
   span {
     color: $red;
   }
 }
+
 
 .link {
   color:$dark-green;
