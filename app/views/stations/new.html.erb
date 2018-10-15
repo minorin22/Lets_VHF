@@ -1,0 +1,40 @@
+
+<div class="grayout">
+  <%= link_to "", "/users/#{@current_user.id}",class:"to_top" %>
+  <div class="mordal">
+    <%= link_to(image_tag("x_btn.svg"), "/users/#{@current_user.id}", class:"x-btn") %>
+    <div class="items">
+      <%= form_tag("/stations") do %>
+        <div class="item">
+          <p>呼出名称 <% if @error_message %><span>*</span><% end %></p>
+          <input name="name" value="<%= @name %>">
+        </div>
+        <div class="item">
+          <p>コールサイン <% if @error_message %><span>*</span><% end %></p>
+          <input name="call_sign" value="<%= @call_sign %>">
+        </div>
+        <div class="item">
+          <p>海域 <% if @error_message %><span>*</span><% end %></p>
+          <select name="region">
+            <option value="tokyo">東京湾</option>
+            <option value="osaka">大阪湾</option>
+          </select>
+        </div>
+
+        <div class="item">
+
+          <p class="errors">
+            <% @station.errors.full_messages.reverse_each do |message| %>
+              <span><%= message %></span><br>
+            <% end %>
+          </p>
+
+        </div>
+
+        <input type="submit" value="新規登録" class="btn sign-up">
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

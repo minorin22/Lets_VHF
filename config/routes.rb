@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get "stations" => "stations#index"
+  get "stations/new" => "stations#new"
+  get "stations/:id" => "stations#show"
+  get "stations/:id/edit" => "stations#edit"
+  post "stations" => "stations#create"
+  put "stations/:id" => "stations#update"
+  delete "stations/:id" => "stations#destroy"
+
   #resources :users
   get "/" => "home#top"
   get "about" => "home#about"

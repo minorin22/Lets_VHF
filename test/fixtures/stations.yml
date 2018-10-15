@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  name: MyString
+  call_sign: MyString
+  mmsi: 1
+  lat: 1.5
+  long: 1.5
+  region: MyString
+  channel: 1
+
+two:
+  user_id: 1
+  name: MyString
+  call_sign: MyString
+  mmsi: 1
+  lat: 1.5
+  long: 1.5
+  region: MyString
+  channel: 1
