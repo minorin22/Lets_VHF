@@ -6,6 +6,11 @@
 .station_container {
   width: 976px;
   margin: 60px auto 0 auto;
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
   .handset_box {
     width: 129px;
     margin-top: 48px;
@@ -156,7 +161,7 @@
       }
       .alm-txt {
         position: absolute;
-        height: 14px;
+        height: 12px;
         top: 392px;
         left: 574px;
       }

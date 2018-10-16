@@ -24,7 +24,7 @@
         <div class="item">
 
           <p class="errors">
-            <% @station.errors.full_messages.reverse_each do |message| %>
+            <% @station.errors.full_messages.each do |message| %>
               <span><%= message %></span><br>
             <% end %>
           </p>
