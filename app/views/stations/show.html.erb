@@ -1,2 +1,113 @@
-<h1>Stations#show</h1>
-<p>Find me in app/views/stations/show.html.erb</p>
+
+
+</div>
+<div class="station_container">
+  <div class="handset_box">
+    <div class="handset_img" id="off_hook">
+      <%= image_tag "Off-hook.svg" ,id:"off_hook_click"%>
+    </div>
+    <div class="handset_img" id="on_hook">
+      <%= image_tag "On-hook.svg" ,id:"on_hook_click" %>
+      <p class="ptt_btn">PTT</p>
+    </div>
+
+  </div>
+  <div class="station_left">
+    <div class="station_info">
+      <ul>
+        <li>Ship's Name : <%= @station.name %></li>
+        <li>Call Sign : <%= @station.call_sign %></li>
+        <li>MMSI : <%= @station.mmsi %></li>
+      </ul>
+    </div>
+    <div class="controller">
+      <%= image_tag "jrc-logo.svg", class:"jrc-logo" %>
+      <%= image_tag "speaker.svg", class:"speaker" %>
+      <%= image_tag "distress-attension.svg", class:"distress-attension" %>
+      <%= image_tag "cover-mount.svg", class:"cover-mount" %>
+      <%= image_tag "handset-cable.svg", class:"handset-cable" %>
+      <%= image_tag "panel-shadow.svg", class:"panel-shadow" %>
+      <%= image_tag "controller-name.svg", class:"controller-name" %>
+      <%= image_tag "line.svg", class:"line" %>
+      <%= image_tag "volume-scale.svg", class:"volume-scale-left" %>
+      <%= image_tag "volume-scale.svg", class:"volume-scale-right" %>
+      <%= image_tag "off-txt.svg", class:"off-txt" %>
+      <%= image_tag "sql-txt.svg", class:"sql-txt" %>
+      <%= image_tag "vol-txt.svg", class:"vol-txt" %>
+      <%= image_tag "alm-txt.svg", class:"alm-txt" %>
+      <%= image_tag "push-ent.svg", class:"push-ent" %>
+      <div class="alm-pointer"></div>
+      <div class="monitor">
+
+      </div>
+
+      <div class="oval_btn" id="dim">
+        <%= image_tag "dim.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="pwr_cont">
+        <%= image_tag "pwr_cont.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_1">
+        <%= image_tag "1.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_2">
+        <%= image_tag "2.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_3">
+        <%= image_tag "3.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_4">
+        <%= image_tag "4.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_5">
+        <%= image_tag "5.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_6">
+        <%= image_tag "6.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_7">
+        <%= image_tag "7.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_8">
+        <%= image_tag "8.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_9">
+        <%= image_tag "9.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="func">
+        <%= image_tag "func.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_0">
+        <%= image_tag "0.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="btn_25w_1w">
+        <%= image_tag "25w_1w.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="user">
+        <%= image_tag "user.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="dsc_rtn">
+        <%= image_tag "dsc_rtn.svg", class:"btn-txt" %>
+      </div>
+      <div class="oval_btn" id="ch16">
+        <%= image_tag "ch16.svg", class:"btn-txt" %>
+      </div>
+      <div class="round_btn" id="menu">
+        <%= image_tag "menu.svg", class:"btn-txt" %>
+      </div>
+      <div class="round_btn" id="cancel">
+        <%= image_tag "cancel.svg", class:"btn-txt" %>
+      </div>
+      <div class="distress_btn" id="distress">
+        <%= image_tag "distress.svg", class:"btn-txt" %>
+      </div>
+      <div id="cover_close">
+        <%= image_tag "cover_close.svg" %>
+      </div>
+      <div id="cover_open">
+        <%= image_tag "cover_open.svg" %>
+      </div>
+    </div>
+
+
+</div>
