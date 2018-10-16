@@ -26,7 +26,7 @@ class StationsController < ApplicationController
     )
     if @station.save
       redirect_to("/stations/#{@station.id}")
-      flash[:notice] = "局情報を登録しました！"
+      #flash[:notice] = "局情報を登録しました！ Ship's Name : #{@station.name}  Call Sign : #{@station.call_sign}  MMSI : #{@station.mmsi}"
     else
       @error_message = "*"
       @name = params[:name]
