@@ -1,0 +1,22 @@
+$(document).on('turbolinks:load', function(){
+
+  $("#off_hook_click").click(function(){
+    $("#off_hook").hide();
+    $("#on_hook").fadeIn();
+  });
+
+  $("#on_hook_click").click(function(){
+    $("#on_hook").hide();
+    $("#off_hook").fadeIn();
+  });
+
+  $("#cover_close").click(function(){
+    $("#cover_close").fadeOut();
+    $("#cover_open").fadeIn();
+  });
+  $("#cover_open").click(function(){
+    $("#cover_open").fadeOut();
+    $("#cover_close").fadeIn();
+  });
+
+});
