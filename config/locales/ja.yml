@@ -5,3 +5,6 @@ ja:
         name: ユーザーID
         password: Password
         password_confirmation: 確認用Password
+      station:
+        name: 呼出名称
+        call_sign: コールサイン
