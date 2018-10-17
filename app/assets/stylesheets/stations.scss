@@ -149,15 +149,15 @@
       }
       .sql-txt {
         position: absolute;
-        height: 16px;
+        height: 14px;
         top: 440px;
-        left: 206px;
+        left: 207px;
       }
       .vol-txt {
         position: absolute;
-        height: 16px;
+        height: 14px;
         top: 440px;
-        left: 452px;
+        left: 453px;
       }
       .alm-txt {
         position: absolute;
@@ -465,6 +465,41 @@
         .btn-txt {
           width: 44px;
         }
+      }
+      #ent-nob {
+        position: absolute;
+        top: 331px;
+        left: 652px;
+        width: 128px;
+        cursor: pointer;
+        &:active {
+          top: 332px;
+          left: 653px;
+          width: 126px;
+        }
+      }
+      .vol-nob {
+        position: absolute;
+        top: 374px;
+        width: 55px;
+
+      }
+      #sql_nob {
+        left: 194px;
+      }
+      #vol_nob {
+        left: 443px;
+      }
+
+      #alm-lamp {
+        position: absolute;
+        top: 391px;
+        left: 552px;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        background-color: #C9D2D2;
+        border: 2px solid #A9ABAB;
       }
   }
 
