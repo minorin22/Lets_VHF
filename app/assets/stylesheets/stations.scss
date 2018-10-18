@@ -24,7 +24,7 @@
     #on_hook {
       display: none;
       position: relative;
-      .ptt_btn {
+      #ptt_btn {
         position: absolute;
         top: 212px;
         left: 0;
@@ -81,104 +81,106 @@
       background-color: $light-gray;
       border-radius: 26px;
       box-shadow: 0 6px 0 rgba(0,0,0,0.36);
-      .jrc-logo {
-        position: absolute;
-        width: 64px;
-        top: 14px;
-        left: 59px;
-      }
-      .speaker {
-        position: absolute;
-        width: 130px;
-        top: 61px;
-        left: 34px;
-      }
-      .distress-attension {
-        position: absolute;
-        width: 196px;
-        top: 311px;
-        left: 32px;
-      }
-      .cover-mount {
-        position: absolute;
-        width: 102px;
-        top: 355px;
-        left: 82px;
-      }
-      .handset-cable {
-        position: absolute;
-        width: 69px;
-        top: 371px;
-        left: 14px;
-      }
-      .panel-shadow {
-        position: absolute;
-        width: 293px;
-        top: 60px;
-        left: 187px;
-      }
-      .controller-name {
-        position: absolute;
-        width: 257px;
-        top: 313px;
-        left: 237px;
-      }
-      .line {
-        position: absolute;
-        height: 494px;
-        top: 0px;
-        left: 501px;
-      }
-      .volume-scale-left {
-        position: absolute;
-        width: 70px;
-        top: 365px;
-        left: 187px;
-      }
-      .volume-scale-right {
-        position: absolute;
-        width: 70px;
-        top: 365px;
-        left: 436px;
-      }
-      .off-txt {
-        position: absolute;
-        width: 80px;
-        top: 423px;
-        left: 307px;
-      }
-      .sql-txt {
-        position: absolute;
-        height: 14px;
-        top: 440px;
-        left: 207px;
-      }
-      .vol-txt {
-        position: absolute;
-        height: 14px;
-        top: 440px;
-        left: 453px;
-      }
-      .alm-txt {
-        position: absolute;
-        height: 12px;
-        top: 392px;
-        left: 574px;
-      }
-      .push-ent {
-        position: absolute;
-        width: 75px;
-        top: 304px;
-        left: 717px;
-      }
-      .alm-pointer {
-        position: absolute;
-        width: 10px;
-        height: 25px;
-        border-left: 2px solid #ffffff;
-        border-bottom: 2px solid #ffffff;
-        top: 410px;
-        left: 559px;
+      .static_items {
+        .jrc-logo {
+          position: absolute;
+          width: 64px;
+          top: 14px;
+          left: 59px;
+        }
+        .speaker {
+          position: absolute;
+          width: 130px;
+          top: 61px;
+          left: 34px;
+        }
+        .distress-attension {
+          position: absolute;
+          width: 196px;
+          top: 311px;
+          left: 32px;
+        }
+        .cover-mount {
+          position: absolute;
+          width: 102px;
+          top: 355px;
+          left: 82px;
+        }
+        .handset-cable {
+          position: absolute;
+          width: 69px;
+          top: 371px;
+          left: 14px;
+        }
+        .panel-shadow {
+          position: absolute;
+          width: 293px;
+          top: 60px;
+          left: 187px;
+        }
+        .controller-name {
+          position: absolute;
+          width: 257px;
+          top: 313px;
+          left: 237px;
+        }
+        .line {
+          position: absolute;
+          height: 494px;
+          top: 0px;
+          left: 501px;
+        }
+        .volume-scale-left {
+          position: absolute;
+          width: 70px;
+          top: 365px;
+          left: 187px;
+        }
+        .volume-scale-right {
+          position: absolute;
+          width: 70px;
+          top: 365px;
+          left: 436px;
+        }
+        .off-txt {
+          position: absolute;
+          width: 80px;
+          top: 423px;
+          left: 307px;
+        }
+        .sql-txt {
+          position: absolute;
+          height: 14px;
+          top: 440px;
+          left: 207px;
+        }
+        .vol-txt {
+          position: absolute;
+          height: 14px;
+          top: 440px;
+          left: 453px;
+        }
+        .alm-txt {
+          position: absolute;
+          height: 12px;
+          top: 392px;
+          left: 574px;
+        }
+        .push-ent {
+          position: absolute;
+          width: 75px;
+          top: 304px;
+          left: 717px;
+        }
+        .alm-pointer {
+          position: absolute;
+          width: 10px;
+          height: 25px;
+          border-left: 2px solid #ffffff;
+          border-bottom: 2px solid #ffffff;
+          top: 410px;
+          left: 559px;
+        }
       }
 
       .monitor {
@@ -189,319 +191,368 @@
         border: 1px solid $dark-gray;
         top: 76px;
         left: 202px;
-      }
+        p {
+          color: $character-color;
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 400;
+          margin: 0;
+          padding: 0;
+          &.reverse_color {
+            background-color: $character-color;
+            color: $monitor;
+            display: inline-block;
+          }
+        }
+        .home_screen {
+          .header{
+            height: 58px;
+            border-bottom: 1px solid $character-color;
+            #tx{
+              display: none;
+            }
+            .header_info {
+              margin: 0 2px;
+              float: left;
+              &.left {
+                p {
+                  line-height: 18px;
+                }
+              }
+              &.right {
+                text-align: right;
+                float: right;
+              }
+            }
+            .header_info2 {
+              float: left;
+              margin: 0 2px;
+              &.center {
+                margin-right: 10px;
+              }
+            }
+          }
+          .main{
+            height: 71px;
 
-      .oval_btn {
-        position: absolute;
-        width: 60px;
-        height: 30px;
-        border-radius: 30px / 15px;
-        background-color: $dark-gray;
-        box-shadow: 0 3px 0 rgba(0,0,0,0.5);
-        cursor: pointer;
-        display: table-cell;
-        text-align: center;
-        .btn-txt {
-          vertical-align: middle;
-          margin-top: 3px;
-        }
-      }
-      .round_btn {
-        position: absolute;
-        width: 48px;
-        height: 48px;
-        border-radius: 48px;
-        background-color: $dark-gray;
-        box-shadow: 0 3px 0 rgba(0,0,0,0.5);
-        cursor: pointer;
-        display: table-cell;
-        text-align: center;
-        .btn-txt {
-          vertical-align: middle;
-          margin-top: 20px;
-        }
-      }
-      .distress_btn {
-        position: absolute;
-        top: 383px;
-        left: 96px;
-        width: 72px;
-        height: 36px;
-        border-radius:  36px / 18px;
-        background-color: $red;
-        box-shadow: 0 3px 0 rgba(95,14,0,0.5);
-        cursor: pointer;
-        display: table-cell;
-        text-align: center;
-        &:active {
-          top: 386px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          vertical-align: middle;
-          margin-top: 8px;
-          width: 63px;
-        }
-      }
-      #cover_close {
-        position: absolute;
-        width: 82px;
-        top: 376px;
-        left: 92px;
-      }
-      #cover_open {
-        position: absolute;
-        width: 82px;
-        top: 309px;
-        left: 92px;
-        display: none;
-      }
 
-      #dim {
-        top: 383px;
-        left: 277px;
-        &:active {
-          top: 386px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 27px;
+          }
+          .footer{
+            height: 58px;
+            border-top: 1px solid $character-color;
+          }
         }
       }
-      #pwr_cont {
-        top: 383px;
-        left: 357px;
-        &:active {
-          top: 386px;
-          box-shadow: none;
+      .dynamic_items {
+        .oval_btn {
+          position: absolute;
+          width: 60px;
+          height: 30px;
+          border-radius: 30px / 15px;
+          background-color: $dark-gray;
+          box-shadow: 0 3px 0 rgba(0,0,0,0.5);
+          cursor: pointer;
+          display: table-cell;
+          text-align: center;
+          .btn-txt {
+            vertical-align: middle;
+            margin-top: 3px;
+          }
         }
-        .btn-txt {
-          width: 34px;
+        .round_btn {
+          position: absolute;
+          width: 48px;
+          height: 48px;
+          border-radius: 48px;
+          background-color: $dark-gray;
+          box-shadow: 0 3px 0 rgba(0,0,0,0.5);
+          cursor: pointer;
+          display: table-cell;
+          text-align: center;
+          .btn-txt {
+            vertical-align: middle;
+            margin-top: 20px;
+          }
+        }
+        .distress_btn {
+          position: absolute;
+          top: 383px;
+          left: 96px;
+          width: 72px;
+          height: 36px;
+          border-radius:  36px / 18px;
+          background-color: $red;
+          box-shadow: 0 3px 0 rgba(95,14,0,0.5);
+          cursor: pointer;
+          display: table-cell;
+          text-align: center;
+          &:active {
+            top: 386px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            vertical-align: middle;
+            margin-top: 8px;
+            width: 63px;
+          }
+        }
+        #cover_close {
+          position: absolute;
+          width: 82px;
+          top: 376px;
+          left: 92px;
+        }
+        #cover_open {
+          position: absolute;
+          width: 82px;
+          top: 307px;
+          left: 92px;
+          display: none;
+        }
+        #dim {
+          top: 383px;
+          left: 277px;
+          &:active {
+            top: 386px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 27px;
+          }
+        }
+        #pwr_cont {
+          top: 383px;
+          left: 357px;
+          &:active {
+            top: 386px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 34px;
+          }
+        }
+        #btn_1 {
+          top: 37px;
+          left: 552px;
+          &:active {
+            top: 40px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 31px;
+          }
+        }
+        #btn_2 {
+          top: 37px;
+          left: 628px;
+          &:active {
+            top: 40px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 43px;
+          }
+        }
+        #btn_3 {
+          top: 37px;
+          left: 704px;
+          &:active {
+            top: 40px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 42px;
+          }
+        }
+        #btn_4 {
+          top: 87px;
+          left: 552px;
+          &:active {
+            top: 90px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 31px;
+          }
+        }
+        #btn_5 {
+          top: 87px;
+          left: 628px;
+          &:active {
+            top: 90px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 39px;
+          }
+        }
+        #btn_6 {
+          top: 87px;
+          left: 704px;
+          &:active {
+            top: 90px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 30px;
+          }
+        }
+        #btn_7 {
+          top: 137px;
+          left: 552px;
+          &:active {
+            top: 140px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 39px;
+          }
+        }
+        #btn_8 {
+          top: 137px;
+          left: 628px;
+          &:active {
+            top: 140px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 40px;
+          }
+        }
+        #btn_9 {
+          top: 137px;
+          left: 704px;
+          &:active {
+            top: 140px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 30px;
+          }
+        }
+        #func {
+          top: 187px;
+          left: 552px;
+          &:active {
+            top: 190px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 39px;
+          }
+        }
+        #btn_0 {
+          top: 187px;
+          left: 628px;
+          &:active {
+            top: 190px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 35px;
+          }
+        }
+        #btn_25w_1w {
+          top: 187px;
+          left: 704px;
+          &:active {
+            top: 190px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 32px;
+          }
+        }
+        #user {
+          top: 237px;
+          left: 552px;
+          &:active {
+            top: 240px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 38px;
+          }
+        }
+        #dsc_rtn {
+          top: 237px;
+          left: 628px;
+          &:active {
+            top: 240px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 24px;
+          }
+        }
+        #ch16 {
+          top: 237px;
+          left: 704px;
+          &:active {
+            top: 240px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 39px;
+          }
+        }
+        #menu {
+          top: 330px;
+          left: 574px;
+          &:active {
+            top: 333px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 38px;
+          }
+        }
+        #cancel {
+          top: 412px;
+          left: 574px;
+          &:active {
+            top: 415px;
+            box-shadow: none;
+          }
+          .btn-txt {
+            width: 44px;
+          }
+        }
+        #ent-nob {
+          position: absolute;
+          top: 331px;
+          left: 652px;
+          width: 128px;
+          cursor: pointer;
+          &:active {
+            top: 332px;
+            left: 653px;
+            width: 126px;
+          }
+        }
+        .vol-nob {
+          position: absolute;
+          top: 374px;
+          width: 55px;
+        }
+        #sql_nob {
+          left: 194px;
+        }
+        #vol_nob {
+          left: 443px;
+        }
+        #alm-lamp {
+          position: absolute;
+          top: 391px;
+          left: 552px;
+          width: 12px;
+          height: 12px;
+          border-radius: 12px;
+          background-color: #C9D2D2;
+          border: 2px solid #A9ABAB;
         }
       }
-      #btn_1 {
-        top: 37px;
-        left: 552px;
-        &:active {
-          top: 40px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 31px;
-        }
-      }
-      #btn_2 {
-        top: 37px;
-        left: 628px;
-        &:active {
-          top: 40px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 43px;
-        }
-      }
-      #btn_3 {
-        top: 37px;
-        left: 704px;
-        &:active {
-          top: 40px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 42px;
-        }
-      }
-      #btn_4 {
-        top: 87px;
-        left: 552px;
-        &:active {
-          top: 90px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 31px;
-        }
-      }
-      #btn_5 {
-        top: 87px;
-        left: 628px;
-        &:active {
-          top: 90px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 39px;
-        }
-      }
-      #btn_6 {
-        top: 87px;
-        left: 704px;
-        &:active {
-          top: 90px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 30px;
-        }
-      }
-      #btn_7 {
-        top: 137px;
-        left: 552px;
-        &:active {
-          top: 140px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 39px;
-        }
-      }
-      #btn_8 {
-        top: 137px;
-        left: 628px;
-        &:active {
-          top: 140px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 40px;
-        }
-      }
-      #btn_9 {
-        top: 137px;
-        left: 704px;
-        &:active {
-          top: 140px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 30px;
-        }
-      }
-      #func {
-        top: 187px;
-        left: 552px;
-        &:active {
-          top: 190px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 39px;
-        }
-      }
-      #btn_0 {
-        top: 187px;
-        left: 628px;
-        &:active {
-          top: 190px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 35px;
-        }
-      }
-      #btn_25w_1w {
-        top: 187px;
-        left: 704px;
-        &:active {
-          top: 190px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 32px;
-        }
-      }
-      #user {
-        top: 237px;
-        left: 552px;
-        &:active {
-          top: 240px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 38px;
-        }
-      }
-      #dsc_rtn {
-        top: 237px;
-        left: 628px;
-        &:active {
-          top: 240px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 24px;
-        }
-      }
-      #ch16 {
-        top: 237px;
-        left: 704px;
-        &:active {
-          top: 240px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 39px;
-        }
-      }
-      #menu {
-        top: 330px;
-        left: 574px;
-        &:active {
-          top: 333px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 38px;
-        }
-      }
-      #cancel {
-        top: 412px;
-        left: 574px;
-        &:active {
-          top: 415px;
-          box-shadow: none;
-        }
-        .btn-txt {
-          width: 44px;
-        }
-      }
-      #ent-nob {
-        position: absolute;
-        top: 331px;
-        left: 652px;
-        width: 128px;
-        cursor: pointer;
-        &:active {
-          top: 332px;
-          left: 653px;
-          width: 126px;
-        }
-      }
-      .vol-nob {
-        position: absolute;
-        top: 374px;
-        width: 55px;
-
-      }
-      #sql_nob {
-        left: 194px;
-      }
-      #vol_nob {
-        left: 443px;
-      }
-
-      #alm-lamp {
-        position: absolute;
-        top: 391px;
-        left: 552px;
-        width: 12px;
-        height: 12px;
-        border-radius: 12px;
-        background-color: #C9D2D2;
-        border: 2px solid #A9ABAB;
-      }
+    }
   }
 
   }
-}
