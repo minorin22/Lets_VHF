@@ -1,3 +1,5 @@
+
+
 $(document).on('turbolinks:load', function(){
 
   $("#off_hook_click").click(function(){
@@ -19,10 +21,36 @@ $(document).on('turbolinks:load', function(){
     $("#cover_close").fadeIn();
   });
 
+  $("#ptt_btn").mousedown(function(){
+    $("#tx").show().css("display","inline-block");
+  });
+  $("#ptt_btn").mouseup(function(){
+    $("#tx").hide();
+  });
+
+  jQuery.extend({
+		clock : function clock(target){
+				var now  = new Date();
+				var hour = now.getUTCHours();
+				var min = now.getUTCMinutes();
+				if(hour < 10) {
+					hour = "0" + hour;
+				}
+				if(min < 10) {
+					min = "0" + min;
+				}
+				var time_str = hour + ":" + min + " (UTC)";
+				target.text(time_str);
+				setTimeout(function(){
+					clock(target)
+				},1000);
+			}
+	});
+	jQuery.clock(jQuery("#clock"));
+
 
   $(".flash").click(function(){
     $(".flash").hide();
   });
-
 
 });

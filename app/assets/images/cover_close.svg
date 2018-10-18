@@ -2,8 +2,8 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #e7f8f8;
-        opacity: 0.345;
+        fill: #effafa;
+        opacity: 0.3;
       }
 
       .cls-2, .cls-3 {
