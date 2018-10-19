@@ -4,12 +4,43 @@ class StationsController < ApplicationController
 
   def show
     @station = Station.find_by(id: params[:id])
-  end
 
+    @lat_degree = @station.lat.to_i.abs
+    lat_min1 = @station.lat - @lat_degree.to_f
+    lat_min2 = lat_min1.abs * 60
+    @lat_min = lat_min2.round
+    if @lat_degree < 10
+      @lat_degree = "0" + @lat_degree.to_s
+    end
+    if @lat_min < 10
+      @lat_min = "0" + @lat_min.to_s
+    end
+    @long_degree = @station.long.to_i.abs
+    long_min1 = @station.long - @long_degree.to_f
+    long_min2 = long_min1.abs * 60
+    @long_min = long_min2.round
+    if @long_degree < 10
+      @long_degree = "0" + @long_degree.to_s
+    end
+    if @long_min < 10
+      @long_min = "0" + @long_min.to_s
+    end
+
+  end
+  def script
+    @station = Station.find_by(id: params[:id])
+  end
   def new
     @station = Station.new
   end
 
+  def back_16
+    @station = Station.find_by(id: params[:id])
+    if @station.channel != 16
+      @station.channel = 16
+    end
+    @station.save
+  end
   def edit
   end
 

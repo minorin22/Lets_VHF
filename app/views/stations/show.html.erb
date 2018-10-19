@@ -7,7 +7,7 @@
       <%= image_tag "Off-hook.svg" ,id:"off_hook_click"%>
     </div>
     <div class="handset_img" id="on_hook">
-      <%= image_tag "On-hook.svg" ,id:"on_hook_click" %>
+      <%= link_to(image_tag("On-hook.svg" ,id:"on_hook_click"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post )%>
       <p id="ptt_btn">PTT</p>
     </div>
 
@@ -23,7 +23,6 @@
     <div class="controller">
       <div class="static_items">
         <%= image_tag "jrc-logo.svg", class:"jrc-logo" %>
-        <%= image_tag "speaker.svg", class:"speaker" %>
         <%= image_tag "distress-attension.svg", class:"distress-attension" %>
         <%= image_tag "cover-mount.svg", class:"cover-mount" %>
         <%= image_tag "handset-cable.svg", class:"handset-cable" %>
@@ -38,6 +37,21 @@
         <%= image_tag "alm-txt.svg", class:"alm-txt" %>
         <%= image_tag "push-ent.svg", class:"push-ent" %>
         <div class="alm-pointer"></div>
+        <div class="speakers">
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+          <div class="speaker-line"></div>
+        </div>
       </div>
 
       <div class="monitor">
@@ -56,17 +70,68 @@
               </ul>
               <ul class="header_info2">
                 <li><p id="clock"></p></li>
-                <li><p>34°31' E</p></li>
-                <li><p>142°32' N</p></li>
+                <li><p><%= "#{@lat_degree}°#{@lat_min}' " %>
+                  <% if @station.lat >= 0 %>
+                    <%= "N" %>
+                  <% else %>
+                    <%= "S" %>
+                  <% end %>
+                </p></li>
+                <li><p><%= "#{@long_degree}°#{@long_min}' " %>
+                  <% if @station.long >= 0 %>
+                    <%= "E" %>
+                  <% else %>
+                    <%= "W" %>
+                  <% end %>
+                </p></li>
               </ul>
             </div>
 
           </div>
           <div class="main">
+            <ul class="main_info left">
+              <li><p class="reverse_color">CH</p></li>
+              <li><p>&nbsp;</p></li>
+              <li ><p>[ITU]</p></li>
+            </ul>
+
+            <div class="current_ch">
+              <% if @station.channel >= 10 %>
+                <%= @station.channel %>
+              <% else %>
+                <%= "0#{@station.channel}" %>
+              <% end %>
+            </div>
+            <ul class="main_info right">
+              <li><p>&nbsp;</p></li>
+              <li><p>DUP</p></li>
+              <li><p>1W</p></li>
+            </ul>
 
           </div>
           <div class="footer">
-
+            <div class="sql_info">
+              <p>SQL</p>
+              <div id="sql_scales">
+                <div class="sql_scale" id="sql_1"></div>
+                <div class="sql_scale" id="sql_2"></div>
+                <div class="sql_scale" id="sql_3"></div>
+                <div class="sql_scale" id="sql_4"></div>
+                <div class="sql_scale" id="sql_5"></div>
+                <div class="sql_scale" id="sql_6"></div>
+                <div class="sql_scale" id="sql_7"></div>
+                <div class="sql_scale" id="sql_8"></div>
+                <div class="sql_scale" id="sql_9"></div>
+                <div class="sql_scale" id="sql_10"></div>
+                <div class="sql_scale" id="sql_11"></div>
+              </div>
+              <%= image_tag "spk-on.svg" , class:"spk-on" %>
+            </div>
+            <div class="dsc_infos">
+              <%= image_tag "ch70-symbol.svg" , class:"dsc_info" %>
+              <%= image_tag "atm-ans.svg" , class:"dsc_info" %>
+              <%= image_tag "ch_sw.svg" , class:"dsc_info" %>
+            </div>
           </div>
         </div>
       </div>
@@ -120,7 +185,7 @@
           <%= image_tag "dsc_rtn.svg", class:"btn-txt" %>
         </div>
         <div class="oval_btn" id="ch16">
-          <%= image_tag "ch16.svg", class:"btn-txt" %>
+          <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post ) %>
         </div>
         <div class="round_btn" id="menu">
           <%= image_tag "menu.svg", class:"btn-txt" %>

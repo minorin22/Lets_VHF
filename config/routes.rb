@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get "stations/:id" => "stations#show"
   get "stations/:id/edit" => "stations#edit"
   post "stations" => "stations#create"
-  put "stations/:id" => "stations#update"
+  #put "stations/:id" => "stations#update"
+  post "stations/:id/back_16" => "stations#back_16"
   delete "stations/:id" => "stations#destroy"
 
   #resources :users
