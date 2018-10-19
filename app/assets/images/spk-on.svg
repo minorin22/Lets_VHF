@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.18 12.401">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #1a0101;
+      }
+    </style>
+  </defs>
+  <g id="グループ化_59" data-name="グループ化 59" transform="translate(-612.153 -341.618)">
+    <g id="グループ化_57" data-name="グループ化 57">
+      <path id="パス_62" data-name="パス 62" class="cls-1" d="M4405.653,341.961v4.717h2.982l4.8,3.06V339.124l-4.8,2.837Z" transform="translate(-3793 3.37)"/>
+      <line id="線_61" data-name="線 61" class="cls-1" y1="5" transform="translate(615.5 345.5)"/>
+    </g>
+    <g id="グループ化_56" data-name="グループ化 56">
+      <line id="線_62" data-name="線 62" class="cls-1" y1="5" transform="translate(623.5 345.5)"/>
+      <line id="線_63" data-name="線 63" class="cls-1" y1="7" transform="translate(626.167 344.5)"/>
+      <line id="線_64" data-name="線 64" class="cls-1" y1="9" transform="translate(628.834 343.5)"/>
+    </g>
+  </g>
+</svg>
