@@ -90,7 +90,7 @@
           </div>
           <div class="main">
             <ul class="main_info left">
-              <li><p class="reverse_color">CH</p></li>
+              <li><p class="reverse_color" id="ch_info">CH</p></li>
               <li><p>&nbsp;</p></li>
               <li ><p>[ITU]</p></li>
             </ul>
@@ -104,8 +104,8 @@
             </div>
             <ul class="main_info right">
               <li><p>&nbsp;</p></li>
-              <li><p>DUP</p></li>
-              <li><p>1W</p></li>
+              <li><%= image_tag "dup.svg", id:"dup_info" %>&nbsp;</li>
+              <li><%= image_tag "1w.svg", id:"pwr_info" %>&nbsp;</li>
             </ul>
 
           </div>
@@ -142,38 +142,15 @@
         <div class="oval_btn" id="pwr_cont">
           <%= image_tag "pwr_cont.svg", class:"btn-txt" %>
         </div>
-        <div class="oval_btn" id="btn_1">
-          <%= image_tag "1.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_2">
-          <%= image_tag "2.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_3">
-          <%= image_tag "3.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_4">
-          <%= image_tag "4.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_5">
-          <%= image_tag "5.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_6">
-          <%= image_tag "6.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_7">
-          <%= image_tag "7.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_8">
-          <%= image_tag "8.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_9">
-          <%= image_tag "9.svg", class:"btn-txt" %>
-        </div>
+
+        <% numbers = 0..9 %>
+        <% numbers.each do |number| %>
+          <%= link_to(image_tag("#{number}.svg", class:"btn-txt"), stations_show_path(@station, num:"#{number}"), remote: true, method: :post, class:"oval_btn", id:"btn_#{number}") %>
+        <% end %>
+
+
         <div class="oval_btn" id="func">
           <%= image_tag "func.svg", class:"btn-txt" %>
-        </div>
-        <div class="oval_btn" id="btn_0">
-          <%= image_tag "0.svg", class:"btn-txt" %>
         </div>
         <div class="oval_btn" id="btn_25w_1w">
           <%= image_tag "25w_1w.svg", class:"btn-txt" %>
@@ -184,9 +161,7 @@
         <div class="oval_btn" id="dsc_rtn">
           <%= image_tag "dsc_rtn.svg", class:"btn-txt" %>
         </div>
-        <div class="oval_btn" id="ch16">
-          <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post ) %>
-        </div>
+        <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post, class:"oval_btn", id:"ch16" ) %>
         <div class="round_btn" id="menu">
           <%= image_tag "menu.svg", class:"btn-txt" %>
         </div>

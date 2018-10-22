@@ -1,10 +1,19 @@
 class StationsController < ApplicationController
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns]
   def index
   end
 
   def show
-    @station = Station.find_by(id: params[:id])
-
+    if @station.channel != 16
+      @station.channel = 16
+    end
+    if @station.state != 1
+      @station.state = 1
+    end
+    if @station.tmp_ch
+      @station.tmp_ch = nil
+    end
+    @station.save
     @lat_degree = @station.lat.to_i.abs
     lat_min1 = @station.lat - @lat_degree.to_f
     lat_min2 = lat_min1.abs * 60
@@ -27,20 +36,38 @@ class StationsController < ApplicationController
     end
 
   end
-  def script
-    @station = Station.find_by(id: params[:id])
-  end
+
   def new
     @station = Station.new
   end
 
   def back_16
-    @station = Station.find_by(id: params[:id])
-    if @station.channel != 16
-      @station.channel = 16
+    @station.channel = 16
+    @station.state = 1
+    if @station.tmp_ch
+      @station.tmp_ch = nil
     end
     @station.save
   end
+
+
+  def btns
+    num = params[:num].to_i
+    case @station.state
+    when 1
+      @station.tmp_ch = num
+      @station.state = 2
+      @station.save
+    when 2
+      @station.channel = @station.tmp_ch * 10 + num
+      @station.state = 1
+      @station.save
+    else
+      render "stations/show"
+      return
+    end
+  end
+
   def edit
   end
 
@@ -53,7 +80,8 @@ class StationsController < ApplicationController
       lat: 34.333,
       long: 154.53,
       region: params[:region],
-      channel: 16
+      channel: 16,
+      state: 1
     )
     if @station.save
       redirect_to("/stations/#{@station.id}")
@@ -72,4 +100,7 @@ class StationsController < ApplicationController
   def destroy
   end
 
+  def set_station
+    @station = Station.find_by(id: params[:id])
+  end
 end
