@@ -1,1 +1,5 @@
 $(".current_ch").text("<%= @station.channel %>");
+if($("#ch_info").not("reverse_color")){
+  $("#ch_info").addClass("reverse_color");
+  $("#dup_info").hide();
+};

@@ -200,6 +200,17 @@
         border: 1px solid $dark-gray;
         top: 76px;
         left: 202px;
+        #ch_info {
+          line-height: 18px;
+        }
+        #dup_info {
+          width: 24px;
+          display: none;
+        }
+        #pwr_info {
+          width: 24px;
+          display: none;
+        }
         p {
           color: $character-color;
           font-size: 16px;
