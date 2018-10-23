@@ -1,0 +1,11 @@
+<% case @station.state %>
+<% when 1 %>
+  $(".home_screen").show();
+  $(".sub_screen").hide();
+  <% if @station.channel > 10 %>
+    $(".current_ch").text("<%= @station.channel %>");
+  <% else %>
+    $(".current_ch").text("<%= "0#{@station.channel}" %>");
+  <% end %>
+<% else %>
+<% end %>

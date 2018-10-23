@@ -7,7 +7,7 @@
       <%= image_tag "Off-hook.svg" ,id:"off_hook_click"%>
     </div>
     <div class="handset_img" id="on_hook">
-      <%= link_to(image_tag("On-hook.svg" ,id:"on_hook_click"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post )%>
+      <%= link_to(image_tag("On-hook.svg" ,id:"on_hook_click"),"/stations/#{@station.id}/back_16", remote:true, method: :post )%>
       <p id="ptt_btn">PTT</p>
     </div>
 
@@ -31,7 +31,6 @@
         <%= image_tag "line.svg", class:"line" %>
         <%= image_tag "volume-scale.svg", class:"volume-scale-left" %>
         <%= image_tag "volume-scale.svg", class:"volume-scale-right" %>
-        <%= image_tag "off-txt.svg", class:"off-txt" %>
         <%= image_tag "sql-txt.svg", class:"sql-txt" %>
         <%= image_tag "vol-txt.svg", class:"vol-txt" %>
         <%= image_tag "alm-txt.svg", class:"alm-txt" %>
@@ -134,40 +133,51 @@
             </div>
           </div>
         </div>
+        <div class="sub_screen">
+          <div class="sub_screen_wrapper">
+            <p class="p1">OK to power off</p>
+            <p class="p2">the VHF system?</p>
+            <ul>
+              <li class="li1"><%= link_to "[OK]","/stations/#{@station.id}/pwr_off", remote: true, method: :post,class:"link" %></li>
+              <li class="li2"><%= link_to "[Cancel]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link" %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="start_up_screen">
+          <div class="start_up_screen_wrapper">
+            <%= image_tag "jrc_logo_bk.svg", class:"jrc_logo_bk" %>
+            <p class="self_id">JHS-770S<br />VHF Radiotelephone<br />[Self-ID: <%= @station.mmsi %>]</p>
+            <p class="cont_ts">Controller<br />Transceiver</p>
+            <p class="version">Version: 1.00<br />Version: 1.00</p>
+          </div>
+        </div>
       </div>
       <div class="dynamic_items">
         <div class="oval_btn" id="dim">
           <%= image_tag "dim.svg", class:"btn-txt" %>
         </div>
-        <div class="oval_btn" id="pwr_cont">
-          <%= image_tag "pwr_cont.svg", class:"btn-txt" %>
-        </div>
+        <%= link_to(image_tag("pwr_cont.svg", class:"btn-txt"),"/stations/#{@station.id}/pwr_cont", remote: true, method: :post, class:"oval_btn", id:"pwr_cont") %>
 
         <% numbers = 0..9 %>
         <% numbers.each do |number| %>
           <%= link_to(image_tag("#{number}.svg", class:"btn-txt"), stations_show_path(@station, num:"#{number}"), remote: true, method: :post, class:"oval_btn", id:"btn_#{number}") %>
         <% end %>
 
-
         <div class="oval_btn" id="func">
           <%= image_tag "func.svg", class:"btn-txt" %>
         </div>
-        <div class="oval_btn" id="btn_25w_1w">
-          <%= image_tag "25w_1w.svg", class:"btn-txt" %>
-        </div>
+        <%= link_to(image_tag("25w_1w.svg", class:"btn-txt"),"/stations/#{@station.id}/change_power", remote:true, method: :post, class:"oval_btn", id:"btn_25w_1w") %>
         <div class="oval_btn" id="user">
           <%= image_tag "user.svg", class:"btn-txt" %>
         </div>
         <div class="oval_btn" id="dsc_rtn">
           <%= image_tag "dsc_rtn.svg", class:"btn-txt" %>
         </div>
-        <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@current_station.id}/back_16", remote:true, method: :post, class:"oval_btn", id:"ch16" ) %>
+        <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@station.id}/back_16", remote:true, method: :post, class:"oval_btn", id:"ch16" ) %>
         <div class="round_btn" id="menu">
           <%= image_tag "menu.svg", class:"btn-txt" %>
         </div>
-        <div class="round_btn" id="cancel">
-          <%= image_tag "cancel.svg", class:"btn-txt" %>
-        </div>
+        <%= link_to(image_tag("cancel.svg", class:"btn-txt"),"/stations/#{@station.id}/cancel", remote: true, method: :post, class:"round_btn", id:"cancel") %>
         <div class="distress_btn" id="distress">
           <%= image_tag "distress.svg", class:"btn-txt" %>
         </div>
@@ -187,6 +197,7 @@
           <%= image_tag "vol-nob.svg" %>
         </div>
         <div id="alm-lamp"></div>
+        <%= link_to(image_tag("off-txt.svg", class:"off-txt"), "/stations/#{@station.id}/off_btn", remote: true, method: :post) %>
       </div>
 
     </div>

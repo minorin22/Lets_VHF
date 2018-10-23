@@ -145,5 +145,14 @@ h2 {
 
 
 .link {
-  color:$dark-green;
+  color:$character-color;
+  &:hover {
+    background-color: $character-color;
+    color: $monitor;
+  }
+  &:focus {
+    background-color: $character-color;
+    color: $monitor;
+    outline: none;
+  }
 }

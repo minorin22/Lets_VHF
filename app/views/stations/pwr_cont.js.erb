@@ -1,0 +1,18 @@
+<% case @station.state %>
+<% when 1 %>
+  setTimeout(function(){
+    $(".start_up_screen").show();
+  },800);
+  setTimeout(function(){
+    $(".start_up_screen").hide();
+    $(".home_screen").show();
+    $(".current_ch").text("<%= @station.channel %>");
+    $("#dup_info").hide();
+    $("#pwr_info").hide();
+    if($("#ch_info").not("reverse_color")){
+      $("#ch_info").addClass("reverse_color");
+    };
+  },2900);
+
+<% else %>
+<% end %>

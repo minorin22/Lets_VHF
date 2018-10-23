@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont]
   def index
   end
 
@@ -12,6 +12,9 @@ class StationsController < ApplicationController
     end
     if @station.tmp_ch
       @station.tmp_ch = nil
+    end
+    if @station.power = 1
+      @station.power = 25
     end
     @station.save
     @lat_degree = @station.lat.to_i.abs
@@ -41,15 +44,77 @@ class StationsController < ApplicationController
     @station = Station.new
   end
 
-  def back_16
-    @station.channel = 16
-    @station.state = 1
-    if @station.tmp_ch
+  def pwr_cont
+    case @station.state
+    when 0
+      @station.state = 1
+      @station.channel = 16
       @station.tmp_ch = nil
+      @station.power = 25
+      @station.save
+    else
+      render "stations/show"
+      return
+    end
+  end
+
+  def pwr_off
+    @station.state = 0
+    @station.save
+  end
+
+  def change_power
+    case @station.state
+    when 1, 3, 4
+      if @station.power != 1
+        @station.power = 1
+        @station.save
+      else
+        @station.power = 25
+        @station.save
+      end
+    else
+      render "stations/show"
+      return
+    end
+  end
+
+  def back_16
+    case @station.state
+    when 1, 2, 3, 4
+      @station.channel = 16
+      @station.state = 1
+      if @station.tmp_ch
+        @station.tmp_ch = nil
+      end
+    else
+      render "stations/show"
+      return
     end
     @station.save
   end
 
+  def cancel
+    case @station.state
+    when 2, 3, 4
+      @station.state = 1
+      @station.save
+    else
+      render "stations/show"
+      return
+    end
+  end
+
+  def off_btn
+    case @station.state
+    when 1, 4
+      @station.state = 3
+      @station.save
+    else
+      render "stations/show"
+      return
+    end
+  end
 
   def btns
     num = params[:num].to_i
@@ -81,7 +146,8 @@ class StationsController < ApplicationController
       long: 154.53,
       region: params[:region],
       channel: 16,
-      state: 1
+      state: 1,
+      power: 25
     )
     if @station.save
       redirect_to("/stations/#{@station.id}")

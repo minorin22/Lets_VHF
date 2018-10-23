@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   get "stations/:id/edit" => "stations#edit"
   post "stations" => "stations#create"
   #put "stations/:id" => "stations#update"
+  post "stations/:id/pwr_cont" => "stations#pwr_cont"
+  post "stations/:id/pwr_off" => "stations#pwr_off"
   post "stations/:id/btns" => "stations#btns" ,as: :stations_show
-  #post "stations/:id/btn_0" => "stations#btn_0"
-  #post "stations/:id/btn_6" => "stations#btn_6"
+  post "stations/:id/change_power" => "stations#change_power"
   post "stations/:id/back_16" => "stations#back_16"
+  post "stations/:id/cancel" => "stations#cancel"
+  post "stations/:id/off_btn" => "stations#off_btn"
   delete "stations/:id" => "stations#destroy"
 
   #resources :users
