@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "stations/:id/btns" => "stations#btns" ,as: :stations_show
   post "stations/:id/change_power" => "stations#change_power"
   post "stations/:id/back_16" => "stations#back_16"
+  post "stations/:id/menu" => "stations#menu"
   post "stations/:id/cancel" => "stations#cancel"
   post "stations/:id/off_btn" => "stations#off_btn"
   delete "stations/:id" => "stations#destroy"

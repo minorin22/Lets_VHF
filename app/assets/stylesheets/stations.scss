@@ -194,14 +194,14 @@
         border: 1px solid $dark-gray;
         top: 76px;
         left: 202px;
-        #ch_info {
+        .ch_info {
           line-height: 18px;
         }
-        #dup_info {
+        .dup_info {
           width: 24px;
           display: none;
         }
-        #pwr_info {
+        .pwr_info {
           width: 24px;
           display: none;
         }
@@ -223,7 +223,7 @@
           .header{
             height: 58px;
             border-bottom: 1px solid $character-color;
-            #tx{
+            .tx{
               display: none;
             }
             .header_info {
@@ -327,8 +327,8 @@
               width: 250px;
               margin: 0 auto;
               .dsc_info {
-                height: 18px;
-                padding: 5px 0;
+                height: 16px;
+                padding: 6px 0;
               }
             }
           }
@@ -392,6 +392,85 @@
             }
           }
 
+        }
+        .menu_screen {
+          display: none;
+          .header{
+            height: 58px;
+            border-bottom: 1px solid $character-color;
+            .tx{
+              display: none;
+            }
+            .header_info {
+              margin: 0 2px;
+              float: left;
+              height: 58px;
+              &.left {
+                p {
+                  line-height: 18px;
+                }
+              }
+              &.right {
+                text-align: right;
+                float: right;
+              }
+            }
+            .header_info2 {
+              float: left;
+              margin: 0 2px;
+              font-size: 18px;
+              line-height: 20px;
+              .ch70_info {
+                height: 16px;
+              }
+              &.center {
+                margin-right: 10px;
+              }
+            }
+            .menu_chs {
+              position: absolute;
+              top: 33px;
+              left: 60px;
+              z-index: 5;
+              line-height: 16px;
+              .current_ch {
+                font-size: 30px;
+                font-weight: 600;
+                vertical-align: baseline;
+              }
+            }
+          }
+          .menu {
+            height: 130px;
+            p {
+              text-decoration: underline;
+              line-height: 16px;
+              margin-left: 10px;
+              margin-bottom: 1px;
+            }
+            .menues {
+              width: 232px;
+              margin-left: 20px;
+              margin-right: 10px;
+              margin-bottom: 1px;
+              line-height: 16px;
+              height: 112px;
+              overflow: auto;
+            }
+
+          }
+          .dsc_routine_call {
+            display: none;
+            .menues {
+              line-height: 17px;
+            }
+          }
+          .dsc_emergency_call {
+            display: none;
+            .menues {
+              line-height: 17px;
+            }
+          }
         }
       }
       .dynamic_items {

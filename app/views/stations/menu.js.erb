@@ -1,14 +1,41 @@
 <% case @station.state %>
-<% when 3 %>
-  $(".sub_screen").css("display","block").show();
-  $(".link:visible").last().focus();
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").show();
+  $(".dsc_routine_call").hide();
+  $(".dsc_emergency_call").hide();
+
+  $("#menu1").click(function(){
+    $(".main_menu").hide();
+    $(".dsc_routine_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu1").click();
+    }
+  });
+
+  $("#menu2").click(function(){
+    $(".main_menu").hide();
+    $(".dsc_emergency_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2").click();
+    }
+  });
+
+  $(".link:visible").eq(0).focus();
 
   $(window).on('keydown', function(e) {
-    if(e.keyCode === 37) { // ↑
+    if(e.keyCode === 38) { // ↑
         focus_prev();
         return false;
     }
-    if(e.keyCode === 39) { // ↓
+    if(e.keyCode === 40) { // ↓
         focus_next();
         return false;
     }
@@ -37,6 +64,5 @@
       $('.link').eq(0).focus();
     }
   }
-
 <% else %>
 <% end %>
