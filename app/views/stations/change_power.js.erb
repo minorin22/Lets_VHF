@@ -1,9 +1,9 @@
 <% case @station.state %>
-<% when 1 %>
+<% when 1, 3 %>
   <% if @station.power != 1 %>
-    $("#pwr_info").hide();
+    $(".pwr_info").hide();
   <% else %>
-    $("#pwr_info").show();
+    $(".pwr_info").show();
   <% end %>
 <% else %>
 <% end %>

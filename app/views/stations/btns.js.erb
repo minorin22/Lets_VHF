@@ -3,52 +3,52 @@
   <% case @station.channel %>
   <% when 0 %>
     $(".current_ch").text("<%= "0#{@station.channel}" %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% when 1..3 %>
     $(".current_ch").text("<%= "0#{@station.channel}" %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").show();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").show();
   <% when 3..9 %>
     $(".current_ch").text("<%= "0#{@station.channel}" %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% when 10..15 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% when 16 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").addClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").addClass("reverse_color");
+    $(".dup_info").hide();
   <% when 17..26 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").show();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").show();
   <% when 27..28 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% when 60..66 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").show();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").show();
   <% when 67..77 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% when 78..86 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").show();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").show();
   <% when 87..88 %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% else %>
     $(".current_ch").text("<%= @station.channel %>");
-    $("#ch_info").removeClass("reverse_color");
-    $("#dup_info").hide();
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
   <% end %>
 <% when 2 %>
   $(".current_ch").text("<%= @station.tmp_ch %>");
