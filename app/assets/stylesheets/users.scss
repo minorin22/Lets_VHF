@@ -146,6 +146,7 @@ h2 {
 
 .link {
   color:$character-color;
+  cursor: pointer;
   &:hover {
     background-color: $character-color;
     color: $monitor;

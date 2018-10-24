@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 16.999">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 16">
   <defs>
     <style>
       .cls-1 {
@@ -23,13 +23,13 @@
     </style>
   </defs>
   <g id="グループ化_74" data-name="グループ化 74" transform="translate(-434 -361)">
-    <path id="除外_3" data-name="除外 3" class="cls-1" d="M-4939,17h-35V0h35V17Zm-26.5-16a7.509,7.509,0,0,0-7.5,7.5,7.509,7.509,0,0,0,7.5,7.5h18a7.508,7.508,0,0,0,7.5-7.5,7.508,7.508,0,0,0-7.5-7.5Z" transform="translate(5408 361)"/>
+    <path id="除外_3" data-name="除外 3" class="cls-1" d="M34,16H0V0H34V16ZM8.03.941a7.059,7.059,0,0,0,0,14.118H25.97a7.059,7.059,0,1,0,0-14.118Z" transform="translate(434 361)"/>
     <g id="長方形_81" data-name="長方形 81" class="cls-2" transform="translate(439 364)">
-      <rect class="cls-4" width="14.648" height="11.53"/>
-      <rect class="cls-5" x="0.5" y="0.5" width="13.648" height="10.53"/>
+      <rect class="cls-4" width="13.881" height="10.531"/>
+      <rect class="cls-5" x="0.5" y="0.5" width="12.881" height="9.531"/>
     </g>
-    <path id="パス_58" data-name="パス 58" class="cls-2" d="M5414.6,364.752l3.985,5.654h5.589l3.854-5.654" transform="translate(-4975)"/>
-    <path id="パス_59" data-name="パス 59" class="cls-3" d="M5428.829,364.752h6.546a3.57,3.57,0,0,1,3.724,3.564c0,1.942-.747,4.058-3.724,4.058h-5.093" transform="translate(-4974 0.957)"/>
-    <path id="パス_60" data-name="パス 60" class="cls-2" d="M5431.147,373.794l-.921.626.915.534.006,0Z" transform="translate(-4975 -0.957)"/>
+    <path id="パス_58" data-name="パス 58" class="cls-2" d="M5414.6,364.752l3.758,5.654h5.27l3.634-5.654" transform="translate(-4975.259 -0.331)"/>
+    <path id="パス_59" data-name="パス 59" class="cls-3" d="M5430.282,364.752h5.093a3.57,3.57,0,0,1,3.724,3.564c0,1.942-.747,4.058-3.724,4.058h-5.093" transform="translate(-4974.999 0.455)"/>
+    <path id="パス_60" data-name="パス 60" class="cls-2" d="M5431.147,373.794l-.921.626.915.534.006,0Z" transform="translate(-4975.623 -1.704)"/>
   </g>
 </svg>

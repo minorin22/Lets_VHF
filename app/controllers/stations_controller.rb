@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu]
   def index
   end
 
@@ -65,7 +65,7 @@ class StationsController < ApplicationController
 
   def change_power
     case @station.state
-    when 1, 3, 4
+    when 1, 3
       if @station.power != 1
         @station.power = 1
         @station.save
@@ -81,7 +81,7 @@ class StationsController < ApplicationController
 
   def back_16
     case @station.state
-    when 1, 2, 3, 4
+    when 1, 2, 3
       @station.channel = 16
       @station.state = 1
       if @station.tmp_ch
@@ -92,6 +92,17 @@ class StationsController < ApplicationController
       return
     end
     @station.save
+  end
+
+  def menu
+    case @station.state
+    when 1, 3, 4
+      @station.state = 4
+      @station.save
+    else
+      render "stations/show"
+      return
+    end
   end
 
   def cancel
@@ -168,5 +179,6 @@ class StationsController < ApplicationController
 
   def set_station
     @station = Station.find_by(id: params[:id])
+    gon.station_id = @station.id
   end
 end
