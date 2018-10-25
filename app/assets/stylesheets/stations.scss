@@ -459,16 +459,24 @@
             }
 
           }
-          .dsc_routine_call {
+          .menu_class {
             display: none;
             .menues {
               line-height: 17px;
             }
           }
-          .dsc_emergency_call {
+
+          .channel_operation {
             display: none;
             .menues {
-              line-height: 17px;
+              line-height: 16px;
+            }
+          }
+
+          .setup {
+            display: none;
+            .menues {
+              line-height: 16px;
             }
           }
         }
