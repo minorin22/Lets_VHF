@@ -96,7 +96,7 @@ class StationsController < ApplicationController
 
   def menu
     case @station.state
-    when 1, 3, 4
+    when 1
       @station.state = 4
       @station.save
     else
@@ -118,7 +118,7 @@ class StationsController < ApplicationController
 
   def off_btn
     case @station.state
-    when 1, 4
+    when 1
       @station.state = 3
       @station.save
     else
