@@ -1,10 +1,10 @@
 <% case @station.state %>
 <% when 4 %>
   $(".home_screen").hide();
+  $(".menu_class").hide();
   $(".menu_screen").show();
   $(".main_menu").show();
-  $(".dsc_routine_call").hide();
-  $(".dsc_emergency_call").hide();
+  $(".link:visible").eq(0).focus();
 
   $("#menu1").click(function(){
     $(".main_menu").hide();
@@ -28,41 +28,240 @@
     }
   });
 
-  $(".link:visible").eq(0).focus();
-
-  $(window).on('keydown', function(e) {
-    if(e.keyCode === 38) { // ↑
-        focus_prev();
-        return false;
-    }
-    if(e.keyCode === 40) { // ↓
-        focus_next();
-        return false;
+  $("#menu4").click(function(){
+    $(".main_menu").hide();
+    $(".dsc_logs").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu4").keypress(function(e){
+    if(e.which == 13){
+      $("#menu4").click();
     }
   });
-  function focus_prev() {
-      var currentFocusIndex = $('.link').index($(':focus'));
 
-      if(currentFocusIndex > -1) {
-          for (var i = 0; i < $('.link').length; i++) {
-              if(i === currentFocusIndex && i > 0) {
-                  $('.link').eq(i - 1).focus();
-                }
-              }
-            }
-          }
-  function focus_next() {
-    var currentFocusIndex = $('.link').index($(':focus'));
-
-    if(currentFocusIndex > -1) {
-      for (var i = 0; i < $('.link').length; i++) {
-        if(i === currentFocusIndex && i < $('.link').length - 1) {
-          $('.link').eq(i + 1).focus();
-        }
-      }
-    } else {
-      $('.link').eq(0).focus();
+  $("#menu5").click(function(){
+    $(".main_menu").hide();
+    $(".ais_information").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu5").keypress(function(e){
+    if(e.which == 13){
+      $("#menu5").click();
     }
-  }
+  });
+
+  $("#menu6").click(function(){
+    $(".main_menu").hide();
+    $(".voice_function").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu6").keypress(function(e){
+    if(e.which == 13){
+      $("#menu6").click();
+    }
+  });
+
+  $("#menu7").click(function(){
+    $(".main_menu").hide();
+    $(".channel_operation").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu7").keypress(function(e){
+    if(e.which == 13){
+      $("#menu7").click();
+    }
+  });
+
+  $("#menu8").click(function(){
+    $(".main_menu").hide();
+    $(".maintenance").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu8").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8").click();
+    }
+  });
+
+  $("#menu9").click(function(){
+    $(".main_menu").hide();
+    $(".setup").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu9").keypress(function(e){
+    if(e.which == 13){
+      $("#menu9").click();
+    }
+  });
+
+  $("#menu2_1").click(function(){
+    $(".dsc_emergency_call").hide();
+    $(".safety_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu2_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2_1").click();
+    }
+  });
+
+  $("#menu2_2").click(function(){
+    $(".dsc_emergency_call").hide();
+    $(".urgency_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu2_2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2_2").click();
+    }
+  });
+
+  $("#menu2_4").click(function(){
+    $(".dsc_emergency_call").hide();
+    $(".proxy_distress_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu2_4").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2_4").click();
+    }
+  });
+
+  $("#menu7_3").click(function(){
+    $(".channel_operation").hide();
+    $(".memory_channel").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu7_3").keypress(function(e){
+    if(e.which == 13){
+      $("#menu7_3").click();
+    }
+  });
+
+  $("#menu8_1").click(function(){
+    $(".maintenance").hide();
+    $(".self_diagnosis").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu8_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_1").click();
+    }
+  });
+
+  $("#menu9_3").click(function(){
+    $(".setup").hide();
+    $(".my_controller").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu9_3").keypress(function(e){
+    if(e.which == 13){
+      $("#menu9_3").click();
+    }
+  });
+
+  $("#menu9_4").click(function(){
+    $(".setup").hide();
+    $(".contact_list").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu9_4").keypress(function(e){
+    if(e.which == 13){
+      $("#menu9_4").click();
+    }
+  });
+
+  $("#menu9_7").click(function(){
+    $(".setup").hide();
+    $(".printer_property").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu9_7").keypress(function(e){
+    if(e.which == 13){
+      $("#menu9_7").click();
+    }
+  });
+
+  $(".link").on("keydown", function(e){
+
+    var index       =   null;
+    var selector    =   ".link";
+
+    //  ↑キー
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    //  ↓キー
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+
+  $(".back").click(function(){
+    $(".home_screen").hide();
+    $(".menu_class").hide();
+    $(".menu_screen").show();
+    $(".main_menu").show();
+    $(".link:visible").eq(0).focus();
+  });
+
+  $("#btn_0").click(function(){
+    $(".home_screen").hide();
+    $(".menu_class").hide();
+    $(".menu_screen").show();
+    $(".main_menu").show();
+    $(".link:visible").eq(0).focus();
+  });
+
+  $("#menu").click(function(){
+    $(".home_screen").hide();
+    $(".menu_class").hide();
+    $(".menu_screen").show();
+    $(".main_menu").show();
+    $(".link:visible").eq(0).focus();
+  });
+
+  $(".back").keypress(function(e){
+    if(e.which == 13){
+      $(".back").click();
+    }
+  });
+
+  $("#btn_1").click(function(){
+    $(".link:visible").eq(0).click();
+  });
+  $("#btn_2").click(function(){
+    $(".link:visible").eq(1).click();
+  });
+  $("#btn_3").click(function(){
+    $(".link:visible").eq(2).click();
+  });
+  $("#btn_4").click(function(){
+    $(".link:visible").eq(3).click();
+  });
+  $("#btn_5").click(function(){
+    $(".link:visible").eq(4).click();
+  });
+  $("#btn_6").click(function(){
+    $(".link:visible").eq(5).click();
+  });
+  $("#btn_7").click(function(){
+    $(".link:visible").eq(6).click();
+  });
+  $("#btn_8").click(function(){
+    $(".link:visible").eq(7).click();
+  });
+  $("#btn_9").click(function(){
+    $(".link:visible").eq(8).click();
+  });
+
 <% else %>
 <% end %>

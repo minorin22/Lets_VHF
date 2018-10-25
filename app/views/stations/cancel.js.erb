@@ -1,8 +1,9 @@
 <% case @station.state %>
 <% when 1 %>
-  $(".home_screen").show();
+  $(".menu_class").hide();
   $(".sub_screen").hide();
   $(".menu_screen").hide();
+  $(".home_screen").show();
   <% if @station.channel > 10 %>
     $(".current_ch").text("<%= @station.channel %>");
   <% else %>

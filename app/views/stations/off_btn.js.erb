@@ -3,40 +3,28 @@
   $(".sub_screen").css("display","block").show();
   $(".link:visible").last().focus();
 
-  $(window).on('keydown', function(e) {
-    if(e.keyCode === 37) { // ↑
-        focus_prev();
-        return false;
-    }
-    if(e.keyCode === 39) { // ↓
-        focus_next();
-        return false;
-    }
-  });
-  function focus_prev() {
-      var currentFocusIndex = $('.link').index($(':focus'));
+  $(".link").on("keydown", function(e){
 
-      if(currentFocusIndex > -1) {
-          for (var i = 0; i < $('.link').length; i++) {
-              if(i === currentFocusIndex && i > 0) {
-                  $('.link').eq(i - 1).focus();
-                }
-              }
-            }
-          }
-  function focus_next() {
-    var currentFocusIndex = $('.link').index($(':focus'));
+    var index       =   null;
+    var selector    =   ".link";
 
-    if(currentFocusIndex > -1) {
-      for (var i = 0; i < $('.link').length; i++) {
-        if(i === currentFocusIndex && i < $('.link').length - 1) {
-          $('.link').eq(i + 1).focus();
+    //  ↑キー
+    if ( e.keyCode == 37 || e.keyCode == 38 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
         }
-      }
-    } else {
-      $('.link').eq(0).focus();
+        return;
     }
-  }
+    //  ↓キー
+    if ( e.keyCode == 39 || e.keyCode == 40 ){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+});
 
 <% else %>
 <% end %>
