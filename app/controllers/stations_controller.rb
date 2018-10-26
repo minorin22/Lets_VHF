@@ -96,7 +96,7 @@ class StationsController < ApplicationController
 
   def menu
     case @station.state
-    when 1
+    when 1, 4
       @station.state = 4
       @station.save
     else
