@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_id: 1
+  to_id: 1
+  category: MyString
+  format: MyString
+  type: 
+  work_ch: 1
+  reason: MyString
+  eos: MyString
+  nature: MyString
+  lat: 1.5
+  long: 1.5
+  utc: 1.5
+  dist_id: 1
+
+two:
+  from_id: 1
+  to_id: 1
+  category: MyString
+  format: MyString
+  type: 
+  work_ch: 1
+  reason: MyString
+  eos: MyString
+  nature: MyString
+  lat: 1.5
+  long: 1.5
+  utc: 1.5
+  dist_id: 1

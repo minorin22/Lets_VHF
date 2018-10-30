@@ -181,11 +181,21 @@
       $("#menu9_7").click();
     }
   });
+  $("#menu1_2").click(function(){
+    $(".dsc_routine_call").hide();
+    $(".ship_station_call").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu1_2").click();
+    }
+  });
 
-  $(".link").on("keydown", function(e){
+  $(".link, .input").on("keydown", function(e){
 
     var index       =   null;
-    var selector    =   ".link";
+    var selector    =   ".link, .input";
 
     //  ↑キー
     if ( e.keyCode == 38 || e.keyCode == 37 ){
@@ -235,33 +245,35 @@
     }
   });
 
-  //$("#btn_1").click(function(){
-  //  $(".link:visible").eq(0).click();
-  //});
-  //$("#btn_2").click(function(){
-  //  $(".link:visible").eq(1).click();
-  //});
-  //$("#btn_3").click(function(){
-  //  $(".link:visible").eq(2).click();
-  //});
-  //$("#btn_4").click(function(){
-  //  $(".link:visible").eq(3).click();
-  //});
-  //$("#btn_5").click(function(){
-  //  $(".link:visible").eq(4).click();
-  //});
-  //$("#btn_6").click(function(){
-  //  $(".link:visible").eq(5).click();
-  //});
-  //$("#btn_7").click(function(){
-  //  $(".link:visible").eq(6).click();
-  //});
-  //$("#btn_8").click(function(){
-  //  $(".link:visible").eq(7).click();
-  //});
-  //$("#btn_9").click(function(){
-  //  $(".link:visible").eq(8).click();
-  //});
+  $("#ok_1_2").click(function(){
+    $("#ok_1_2").hide();
+    $("#call_1_2").show();
+    $(":input").prop("readonly", true);
+    $(".link:visible").eq(2).focus();
+  });
+
+  $("#cancel_1_2").click(function(){
+    $("#ok_1_2").show();
+    $("#call_1_2").hide();
+    $(":input").prop("readonly", false);
+    $(".link:visible").eq(2).focus();
+  });
+
+  $("#ok_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#ok_1_2").click();
+    }
+  });
+  $("#call_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#call_1_2").click();
+    }
+  });
+  $("#cancel_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#cancel_1_2").click();
+    }
+  });
 
 
 <% else %>

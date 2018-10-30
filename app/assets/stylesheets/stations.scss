@@ -456,6 +456,84 @@
               height: 112px;
               overflow: auto;
             }
+            .selects {
+              width: 232px;
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-bottom: 1px;
+              line-height: 17px;
+              height: 112px;
+              overflow: auto;
+              .link {
+                display: inline-block;
+                width: 78px;
+                float: left;
+              }
+              .colon {
+                display: inline-block;
+                width: 4px;
+                float: left;
+                text-decoration: none;
+              }
+              .inputs {
+                float: left;
+                font-size: 16px;
+                line-height: 17px;
+                vertical-align: middle;
+                text-decoration: none;
+              }
+              .input {
+                float: left;
+                width: 96px;
+                vertical-align: middle;
+                position: relative;
+                top: -3px;
+                height: 17px;
+                line-height: 16px;
+                background-color: $monitor;
+                border: none;
+                &.input_s {
+                  width: 22px;
+                }
+                &:focus {
+                  outline: none;
+                }
+              }
+              .inputs2 {
+                float: left;
+                font-size: 16px;
+                line-height: 17px;
+                vertical-align: middle;
+                text-decoration: none;
+              }
+              .ok_cancel {
+                margin-top: 90px;
+                font-size: 16px;
+                line-height: 17px;
+                height: 17px;
+                border: 0;
+                padding: 0;
+                .link {
+                  display: inline;
+                }
+                .link_ok {
+                  width: auto;
+                  float: left;
+                }
+                .link_call {
+                  display: none;
+                  width: auto;
+                  float: left;
+                  font-size: 16px;
+                  line-height: 17px;
+                }
+                .link_cancel {
+                  width: auto;
+                  float: right;
+                }
+              }
+            }
+
 
           }
           .menu_class {

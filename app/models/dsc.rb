@@ -1,0 +1,2 @@
+class Dsc < ApplicationRecord
+end

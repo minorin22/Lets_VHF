@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post "stations/:id/off_btn" => "stations#off_btn"
   delete "stations/:id" => "stations#destroy"
 
+  post "dscs/ship_station_call" => "dscs#ship_station_call"
+
   #resources :users
   get "/" => "home#top"
   get "about" => "home#about"
