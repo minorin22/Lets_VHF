@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "stations/:id/menu" => "stations#menu"
   post "stations/:id/cancel" => "stations#cancel"
   post "stations/:id/off_btn" => "stations#off_btn"
+  post "stations/:id/func" => "stations#func"
+  post "stations/:id/dsc_rtn" => "stations#dsc_rtn"
   delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
