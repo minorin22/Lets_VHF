@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn]
   def index
   end
 
@@ -107,7 +107,7 @@ class StationsController < ApplicationController
 
   def cancel
     case @station.state
-    when 2, 3, 4
+    when 2, 3, 4, 5
       @station.state = 1
       @station.save
     else
@@ -127,6 +127,29 @@ class StationsController < ApplicationController
     end
   end
 
+  def func
+    case @station.state
+    when 1
+      @station.state = 5
+      @station.save
+    when 5
+      @station.state = 1
+      @station.save
+    else
+      render "stations/show"
+    end
+  end
+
+  def dsc_rtn
+    case @station.state
+    when 1
+      @station.state = 4
+      @station.save
+    else
+      render "stations/show"
+    end
+  end
+
   def btns
     num = params[:num].to_i
     case @station.state
@@ -138,6 +161,7 @@ class StationsController < ApplicationController
       @station.channel = @station.tmp_ch * 10 + num
       @station.state = 1
       @station.save
+    when 5
     else
       render "stations/show"
       return

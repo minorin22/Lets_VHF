@@ -146,7 +146,7 @@
         <div class="sub_screen" id="waiting">
           <div class="sub_screen_wrapper">
             <p class="p3">Waiting for<br />Acknowledgement.</p>
-            <p class="p4"><%= link_to "[Cancel]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link",id:"chancel_link" %></p>
+            <p class="p4"><%= link_to "[Cancel]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link",id:"cancel_link" %></p>
             </ul>
           </div>
         </div>
@@ -385,16 +385,13 @@
           <%= link_to(image_tag("#{number}.svg", class:"btn-txt"), stations_show_path(@station, num:"#{number}"), remote: true, method: :post, class:"oval_btn", id:"btn_#{number}") %>
         <% end %>
 
-        <div class="oval_btn" id="func">
-          <%= image_tag "func.svg", class:"btn-txt" %>
-        </div>
+
+        <%= link_to(image_tag("func.svg", class:"btn-txt"),"/stations/#{@station.id}/func", remote:true, method: :post, class:"oval_btn", id:"func") %>
         <%= link_to(image_tag("25w_1w.svg", class:"btn-txt"),"/stations/#{@station.id}/change_power", remote:true, method: :post, class:"oval_btn", id:"btn_25w_1w") %>
         <div class="oval_btn" id="user">
           <%= image_tag "user.svg", class:"btn-txt" %>
         </div>
-        <div class="oval_btn" id="dsc_rtn">
-          <%= image_tag "dsc_rtn.svg", class:"btn-txt" %>
-        </div>
+        <%= link_to(image_tag("dsc_rtn.svg", class:"btn-txt"),"/stations/#{@station.id}/dsc_rtn", remote:true, method: :post, class:"oval_btn", id:"dsc_rtn" ) %>
         <%= link_to(image_tag("ch16.svg", class:"btn-txt"),"/stations/#{@station.id}/back_16", remote:true, method: :post, class:"oval_btn", id:"ch16" ) %>
         <%= link_to(image_tag("menu.svg", class:"btn-txt"),"/stations/#{@station.id}/menu", remote: true, method: :post, class:"round_btn", id:"menu") %>
         <%= link_to(image_tag("cancel.svg", class:"btn-txt"),"/stations/#{@station.id}/cancel", remote: true, method: :post, class:"round_btn", id:"cancel") %>
