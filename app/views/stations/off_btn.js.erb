@@ -1,6 +1,6 @@
 <% case @station.state %>
 <% when 3 %>
-  $(".sub_screen").css("display","block").show();
+  $("#off_power").css("display","block").show();
   $(".link:visible").last().focus();
 
   $(".link").on("keydown", function(e){
