@@ -1,0 +1,66 @@
+<% case @station.state %>
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".ship_station_call").show();
+  $("#ok_1_2").show();
+  $("#call_1_2").hide();
+  $(":input").prop("readonly", false);
+  $(".input").val('');
+  $(".link:visible").eq(0).focus();
+
+  $("#ok_1_2").click(function(){
+    $("#ok_1_2").hide();
+    $("#call_1_2").show();
+    $(":input").prop("readonly", true);
+    $(".link:visible").eq(2).focus();
+  });
+
+  $("#cancel_1_2").click(function(){
+    $("#ok_1_2").show();
+    $("#call_1_2").hide();
+    $(":input").prop("readonly", false);
+    $(".link:visible").eq(2).focus();
+  });
+
+  $(".link, .input").on("keydown", function(e){
+
+    var index       =   null;
+    var selector    =   ".link, .input";
+
+    //  ↑キー
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    //  ↓キー
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+
+  $("#ok_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#ok_1_2").click();
+    }
+  });
+  $("#call_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#call_1_2").click();
+    }
+  });
+  $("#cancel_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#cancel_1_2").click();
+    }
+  });
+<% else %>
+<% end %>
