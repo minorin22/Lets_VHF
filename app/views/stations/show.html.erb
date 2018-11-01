@@ -133,13 +133,20 @@
             </div>
           </div>
         </div>
-        <div class="sub_screen">
+        <div class="sub_screen" id="off_power">
           <div class="sub_screen_wrapper">
             <p class="p1">OK to power off</p>
             <p class="p2">the VHF system?</p>
             <ul>
               <li class="li1"><%= link_to "[OK]","/stations/#{@station.id}/pwr_off", remote: true, method: :post,class:"link" %></li>
               <li class="li2"><%= link_to "[Cancel]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link" %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sub_screen" id="waiting">
+          <div class="sub_screen_wrapper">
+            <p class="p3">Waiting for<br />Acknowledgement.</p>
+            <p class="p4"><%= link_to "[Cancel]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link",id:"chancel_link" %></p>
             </ul>
           </div>
         </div>
