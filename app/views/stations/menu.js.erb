@@ -196,6 +196,30 @@
     }
   });
 
+  $("#menu4_2").click(function(){
+    $(".dsc_logs").hide();
+    $(".recieved_others_list").show();
+    $(".calls").html('<%= j render 'recieved_others' %>')
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu4_2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu4_2").click();
+    }
+  });
+
+  $("#menu4_3").click(function(){
+    $(".dsc_logs").hide();
+    $(".transmitted_calls_list").show();
+    $(".calls").html('<%= j render 'transmitted_calls' %>')
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu4_3").keypress(function(e){
+    if(e.which == 13){
+      $("#menu4_3").click();
+    }
+  });
+
   $(".link, .input").on("keydown", function(e){
 
     var index       =   null;
@@ -261,6 +285,14 @@
     $("#call_1_2").hide();
     $(":input").prop("readonly", false);
     $(".link:visible").eq(2).focus();
+  });
+
+  $("form").submit(function(){
+    var self = this;
+    $(":submit", self).prop("disabled", true);
+    setTimeout(function(){
+      $(":submit", self).prop("disabled", false);
+    }, 10000);
   });
 
   $("#ok_1_2").keypress(function(e){
