@@ -1,1 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 293.8 224"><defs><style>.cls-1{fill:url(#名称未設定グラデーション_4);}.cls-2{fill:url(#名称未設定グラデーション_4-2);}.cls-3{fill:url(#名称未設定グラデーション_4-3);}.cls-4{fill:url(#名称未設定グラデーション_4-4);}</style><linearGradient id="名称未設定グラデーション_4" x1="-369" y1="-173.8" x2="-369" y2="-175.25" gradientTransform="translate(108706.42 3810.47) scale(294.2 20.64)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c7c7c7"/><stop offset="1" stop-color="#646464" stop-opacity="0.63"/></linearGradient><linearGradient id="名称未設定グラデーション_4-2" x1="-369" y1="-173.43" x2="-369" y2="-174.81" gradientTransform="translate(-108413.29 -3555.25) rotate(180) scale(294.2 20.5)" xlink:href="#名称未設定グラデーション_4"/><linearGradient id="名称未設定グラデーション_4-3" x1="-369.01" y1="-173.54" x2="-369.01" y2="-175.05" gradientTransform="matrix(0, 231.07, -16.47, 0, -2858.47, 85379.03)" xlink:href="#名称未設定グラデーション_4"/><linearGradient id="名称未設定グラデーション_4-4" x1="-368.99" y1="-173.5" x2="-368.99" y2="-175.1" gradientTransform="matrix(0, -229.96, 16.47, 0, 3151.94, -84740.75)" xlink:href="#名称未設定グラデーション_4"/></defs><title>Controller</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><g id="Controller"><g id="グループ化_7" data-name="グループ化 7"><path id="パス_2" data-name="パス 2" class="cls-1" d="M15.5,205.5,0,224H293.8l-16.3-18.5Z"/><path id="パス_3" data-name="パス 3" class="cls-2" d="M277.5,17.5,293.8,0H0L15.5,17.5Z"/><path id="パス_4" data-name="パス 4" class="cls-3" d="M15.5,17.5,0,0V224l15.5-18.5Z"/><path id="パス_5" data-name="パス 5" class="cls-4" d="M277.5,205.5,293.8,224V0L277.5,17.5Z"/></g></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 301.2 237.8" style="enable-background:new 0 0 301.2 237.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#パス_2_1_);}
+	.st1{fill:url(#パス_3_1_);}
+	.st2{fill:url(#パス_4_1_);}
+	.st3{fill:url(#パス_5_1_);}
+</style>
+<title>Controller</title>
+<g>
+	<g id="レイヤー_1-2">
+		<g id="Controller">
+			<g id="グループ化_7">
+				
+					<linearGradient id="パス_2_1_" gradientUnits="userSpaceOnUse" x1="-1450.2985" y1="631.421" x2="-1450.2985" y2="632.9605" gradientTransform="matrix(294.2 0 0 -20.64 426828.4375 13269.5498)">
+					<stop  offset="0" style="stop-color:#C7C7C7"/>
+					<stop  offset="1" style="stop-color:#646464;stop-opacity:0.63"/>
+				</linearGradient>
+				<path id="パス_2" class="st0" d="M15.8,218.2L0,237.8h301.2l-16.6-19.6H15.8z"/>
+				
+					<linearGradient id="パス_3_1_" gradientUnits="userSpaceOnUse" x1="-1457.7019" y1="709.4058" x2="-1457.7019" y2="710.871" gradientTransform="matrix(-294.2 0 0 20.5 -428705.3125 -14542.75)">
+					<stop  offset="0" style="stop-color:#C7C7C7"/>
+					<stop  offset="1" style="stop-color:#646464;stop-opacity:0.63"/>
+				</linearGradient>
+				<path id="パス_3" class="st1" d="M284.6,18.6L301.2,0H0l15.8,18.6H284.6z"/>
+				
+					<linearGradient id="パス_4_1_" gradientUnits="userSpaceOnUse" x1="-1450.5219" y1="736.417" x2="-1450.5219" y2="737.9651" gradientTransform="matrix(0 231.07 16.47 0 -12129.0596 335291)">
+					<stop  offset="0" style="stop-color:#C7C7C7"/>
+					<stop  offset="1" style="stop-color:#646464;stop-opacity:0.63"/>
+				</linearGradient>
+				<path id="パス_4" class="st2" d="M15.8,18.6L0,0v237.8l15.8-19.6V18.6z"/>
+				
+					<linearGradient id="パス_5_1_" gradientUnits="userSpaceOnUse" x1="-1457.4937" y1="604.1711" x2="-1457.4937" y2="605.8116" gradientTransform="matrix(0 -229.96 -16.47 0 10252.5293 -335046.375)">
+					<stop  offset="0" style="stop-color:#C7C7C7"/>
+					<stop  offset="1" style="stop-color:#646464;stop-opacity:0.63"/>
+				</linearGradient>
+				<path id="パス_5" class="st3" d="M284.6,218.2l16.6,19.6V0l-16.6,18.6V218.2z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

@@ -13,4 +13,10 @@ class DscsController < ApplicationController
     @dsc.save
   end
 
+  def show
+    @dsc = Dsc.find_by(id: params[:id])
+    @from = Station.find_by(id: @dsc.from_id)
+    @to = Station.find_by(id: @dsc.to_id)
+  end
+
 end
