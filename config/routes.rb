@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
+  get "dscs/:id/" => "dscs#show"
 
   #resources :users
   get "/" => "home#top"

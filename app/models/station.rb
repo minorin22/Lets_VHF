@@ -7,10 +7,10 @@ class Station < ApplicationRecord
   end
 
   def recieved_distress_calls
-    return Dsc.where(category: "distress").where(to_id: self.id)
+    return Dsc.where(category: "distress").where(to_id: [self.id, nil])
   end
 
-  def recieved_other_calls
-    return Dsc.where.not(category: "distress").where(to_id: self.id)
+  def recieved_others
+    return Dsc.where.not(category: "distress").where(to_id: [self.id, nil])
   end
 end

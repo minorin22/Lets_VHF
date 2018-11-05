@@ -122,9 +122,9 @@
         }
         .panel-shadow {
           position: absolute;
-          width: 293px;
-          top: 60px;
-          left: 187px;
+          width: 303px;
+          top: 58px;
+          left: 182px;
         }
         .controller-name {
           position: absolute;
@@ -187,12 +187,12 @@
 
       .monitor {
         position: absolute;
-        width: 262px;
-        height: 189px;
+        width: 270px;
+        height: 200px;
         background-color: $monitor;
         border: 1px solid $dark-gray;
         top: 76px;
-        left: 202px;
+        left: 198px;
         .ch_info {
           line-height: 18px;
         }
@@ -248,10 +248,10 @@
             }
           }
           .main{
-            height: 72px;
+            height: 82px;
             .main_info {
               float: left;
-              margin: 9px 14px;
+              margin: 14px;
               width: 40px;
               line-height: 18px;
               height: 54px;
@@ -273,21 +273,21 @@
               float: left;
               font-weight: 600;
               font-size: 68px;
-              line-height: 72px;
+              line-height: 80px;
               text-align: center;
               width: 126px;
             }
 
           }
           .footer{
-            height: 57px;
+            height: 58px;
             border-top: 1px solid $character-color;
             .sql_info {
-              height: 28px;
+              height: 29px;
               border-bottom: 1px solid $character-color;
               p {
                 display: inline-block;
-                line-height: 28px;
+                line-height: 29px;
                 margin-left: 54px;
                 margin-right: 6px;
                 width: 34px;
@@ -296,7 +296,7 @@
               #sql_scales {
                 float: left;
                 margin: 6px 4px;
-                height: 16px;
+                height: 17px;
                 width: 93px;
                 .sql_scale {
                   float: left;
@@ -317,7 +317,7 @@
               .spk-on {
                 float: left;
                 display: block;
-                height: 14px;
+                height: 15px;
                 margin: 7px 16px;
               }
             }
@@ -448,10 +448,10 @@
             }
           }
           .menu {
-            height: 130px;
+            height: 141px;
             p {
               text-decoration: underline;
-              line-height: 16px;
+              line-height: 17px;
               margin-left: 10px;
               margin-bottom: 1px;
             }
@@ -460,8 +460,8 @@
               margin-left: 20px;
               margin-right: 10px;
               margin-bottom: 1px;
-              line-height: 16px;
-              height: 112px;
+              line-height: 17px;
+              height: 119px;
               overflow: auto;
             }
             .selects {
@@ -470,7 +470,7 @@
               margin-right: 20px;
               margin-bottom: 1px;
               line-height: 17px;
-              height: 112px;
+              height: 124px;
               overflow: auto;
               .link {
                 display: inline-block;
@@ -515,7 +515,7 @@
                 text-decoration: none;
               }
               .ok_cancel {
-                margin-top: 90px;
+                margin-top: 102px;
                 font-size: 16px;
                 line-height: 17px;
                 height: 17px;
@@ -551,17 +551,68 @@
             }
           }
 
-          .channel_operation {
-            display: none;
-            .menues {
-              line-height: 16px;
+          .calls_list {
+            p {
+              height: 17px;
+              line-height: 17px;
+              text-decoration: none;
+              margin-left: 0;
+              padding-left: 10px;
+              margin-bottom: 0;
+              border-bottom: 1px solid $character-color;
             }
-          }
+            span {
+              display: inline-block;
+              height: 17px;
+              line-height: 17px;
+              &.date_time {
+                width: 139px;
+                text-align: left;
+              }
+              &.cat {
+                width: 48px;
+                text-align: left;
+                padding-left: 3px;
+                border-left: 1px solid $character-color;
+              }
+              &.fmt {
+                text-align: left;
+                padding-left: 3px;
+                border-left: 1px solid $character-color;
+              }
+            }
+            .calls {
+              padding-left: 10px;
+              padding-right: 10px;
+              margin-bottom: 1px;
+              line-height: 17px;
+              height: 84px;
+              overflow: auto;
+              border-bottom: 1px solid $character-color;
+            }
+            .call_info {
+              line-height: 17px;
+              padding-left: 18px;
+              padding-right: 18px;
+              border-bottom: 1px solid $character-color;
+              span {
+                display: inline-block;
+                &.info_type {
+                  width: 96px;
+                }
+              }
+            }
+            .massage_menues {
+              line-height: 17px;
+              padding-left: 4px;
 
-          .setup {
-            display: none;
-            .menues {
-              line-height: 16px;
+              li {
+                padding-right: 4px;
+                float: left;
+                &.menu_r {
+                  width: 30%;
+                }
+              }
             }
           }
         }

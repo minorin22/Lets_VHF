@@ -1,0 +1,43 @@
+<% if @current_station.id == @dsc.from_id %>
+  <p>Transmitted <%= @dsc.category %> massage</p>
+  <ul class="call_info">
+    <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
+    <li><span class="info_type">To</span><span class="info_content">: <%= @to.mmsi %></span></li>
+    <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
+    <li><span class="info_type">Work CH</span><span class="info_content">:
+      <% if @dsc.work_ch >= 10 %>
+        <%= @dsc.work_ch %>
+      <% else %>
+        <%= "0#{@dsc.work_ch}" %>
+      <% end %>
+    </span></li>
+    <li>&nbsp;</li>
+  </ul>
+  <ul class="massage_menues">
+    <li><a class="link" tabindex="0">[Close]</a></li>
+    <li><a class="link" tabindex="0">[Resend]</a></li>
+    <li><a class="link" tabindex="0">[Edit&Send]</a></li>
+  </ul>
+<% else %>
+  <p>Recieved <%= @dsc.category %> massage</p>
+  <ul class="call_info">
+    <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
+    <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+    <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
+    <li><span class="info_type">Work CH</span><span class="info_content">:
+      <% if @dsc.work_ch >= 10 %>
+        <%= @dsc.work_ch %>
+      <% else %>
+        <%= "0#{@dsc.work_ch}" %>
+      <% end %>
+    </span></li>
+    <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+  </ul>
+  <ul class="massage_menues">
+    <li class="menu_r"><a class="link" tabindex="0">[Close]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[ACK]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[MMSI]</a></li>
+  </ul>
+<% end %>

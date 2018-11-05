@@ -95,6 +95,9 @@ class StationsController < ApplicationController
   end
 
   def menu
+    @category = {routine: "RTN", safaty: "SAF", urgency: "URG", distress: "DIST"}
+    @format = {"individual call" => "INDIV", "individual ACK" => "ACK", "individual NACK" => "NACK", "All ships call" => "ALL" , "Distress" => "DIST"}
+    @type = {"Distress" => "Distress", "Distress ACK" => "ACK", "Distress relay" => "Relay", "Dist-relay ACK" => "Relay-ACK", "Proxy distress" => "Proxy", "Proxy dist-ACK" => "Proxy-ACK"}
     case @station.state
     when 1, 4
       @station.state = 4
