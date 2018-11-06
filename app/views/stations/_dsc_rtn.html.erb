@@ -1,0 +1,14 @@
+<p>1.2) Ship station call</p>
+<%= form_tag("/dscs/ship_station_call", remote: true, method: :post) do %>
+<div class="selects">
+  <ul>
+    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_1_2_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
+    <li><a class="link" tabindex="0">Work CH</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_1_2_2" class="input input_s" name="work_ch"><p class="inputs2">]</p></li>
+  </ul>
+  <div class="ok_cancel">
+    <a class="link link_ok" id="ok_1_2" tabindex="0">[OK]</a>
+    <input type="submit" value="[Call]" class="link link_call" id="call_1_2" tabindex="0">
+    <a class="link link_cancel" id="cancel_1_2" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>

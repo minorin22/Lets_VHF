@@ -35,8 +35,10 @@
   </ul>
   <ul class="massage_menues">
     <li class="menu_r"><a class="link" tabindex="0">[Close]</a></li>
-    <li class="menu_r"><a class="link" tabindex="0">[ACK]</a></li>
+    <% if @dsc.eos == "ACK RQ" %>
+    <li class="menu_r"><%= link_to "[ACK]", "/dscs/#{@dsc.id}/ack",remote: true, method: :post, class:"link" %></li>
     <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
+    <% end %>
     <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
     <li class="menu_r"><a class="link" tabindex="0">[MMSI]</a></li>
   </ul>
