@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
   get "dscs/:id/" => "dscs#show"
+  post "dscs/:id/ack" => "dscs#ack"
 
   #resources :users
   get "/" => "home#top"
