@@ -182,13 +182,7 @@
     }
   });
   $("#menu1_2").click(function(){
-    $(".dsc_routine_call").hide();
-    $(".ship_station_call").show();
-    $("#ok_1_2").show();
-    $("#call_1_2").hide();
-    $(":input").prop("readonly", false);
-    $(".input").val('');
-    $(".link:visible").eq(0).focus();
+    $.post(`/stations/${gon.station_id}/dsc_rtn`);
   });
   $("#menu1_2").keypress(function(e){
     if(e.which == 13){
@@ -273,43 +267,7 @@
     }
   });
 
-  $("#ok_1_2").click(function(){
-    $("#ok_1_2").hide();
-    $("#call_1_2").show();
-    $(":input").prop("readonly", true);
-    $(".link:visible").eq(2).focus();
-  });
 
-  $("#cancel_1_2").click(function(){
-    $("#ok_1_2").show();
-    $("#call_1_2").hide();
-    $(":input").prop("readonly", false);
-    $(".link:visible").eq(2).focus();
-  });
-
-  $("form").submit(function(){
-    var self = this;
-    $(":submit", self).prop("disabled", true);
-    setTimeout(function(){
-      $(":submit", self).prop("disabled", false);
-    }, 10000);
-  });
-
-  $("#ok_1_2").keypress(function(e){
-    if(e.which == 13){
-      $("#ok_1_2").click();
-    }
-  });
-  $("#call_1_2").keypress(function(e){
-    if(e.which == 13){
-      $("#call_1_2").click();
-    }
-  });
-  $("#cancel_1_2").keypress(function(e){
-    if(e.which == 13){
-      $("#cancel_1_2").click();
-    }
-  });
 
 
 <% else %>

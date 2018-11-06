@@ -1,0 +1,8 @@
+$(".menu_screen").hide();
+$(".home_screen").show();
+
+<% if @current_station.channel > 10 %>
+  $(".current_ch").text("<%= @current_station.channel %>");
+<% else %>
+  $(".current_ch").text("<%= "0#{@current_station.channel}" %>");
+<% end %>

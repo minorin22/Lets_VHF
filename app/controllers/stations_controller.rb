@@ -148,6 +148,7 @@ class StationsController < ApplicationController
     when 1
       @station.state = 4
       @station.save
+    when 4
     else
       render "stations/show"
     end
