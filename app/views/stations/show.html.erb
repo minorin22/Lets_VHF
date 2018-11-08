@@ -421,3 +421,31 @@
 
 
 </div>
+
+<script>
+  $(document).on('turbolinks:load', function(){
+    $.ajax({
+      url: "/dscs/new_call",
+      type: 'POST',
+      dataType: 'json'
+    })
+    .always(function(data){
+      native_call_id = data.id;
+      console.log(`neko${native_call_id}`);
+    });
+
+    $.PeriodicalUpdater('/dscs/new_call',{
+      minTimeout: 3000,
+      method: 'POST',
+      multiplier: 1,
+      type: 'json'
+    },
+    function(data){
+      if (data != undefined && data.id > native_call_id) {
+        console.log(data.id);
+        //$.get(`/dscs/${data.id}`);
+      }
+
+    });
+  });
+</script>

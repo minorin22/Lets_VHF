@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
+  post "dscs/new_call" => "dscs#new_call"
   get "dscs/:id/" => "dscs#show"
   post "dscs/:id/ack" => "dscs#ack"
 

@@ -16,6 +16,17 @@ class DscsController < ApplicationController
   def show
   end
 
+  def new_call
+    @recieved_calls_length = Dsc.where(to_id: [@current_station.id, nil]).length
+    @new_call = Dsc.where(to_id: [@current_station.id, nil]).last
+    #gon.recieved_calls_length = @recieved_calls_length
+    #gon.new_call_id = @new_call.id
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def ack
     @ack = Dsc.new(
       from_id: @current_station.id,
