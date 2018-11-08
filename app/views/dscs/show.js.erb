@@ -1,7 +1,8 @@
 $(".recieved_others_list").hide();
 $(".transmitted_calls_list").hide();
-$(".message").html('<%= j render 'show' %>');
+$(".home_screen").hide();
 $(".message").show();
+$(".message").html('<%= j render 'show' %>');
 $(".link:visible").eq(0).focus();
 
 $(".link, .input").on("keydown", function(e){
