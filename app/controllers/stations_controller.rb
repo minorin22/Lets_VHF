@@ -1,5 +1,6 @@
 class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn]
+
   def index
   end
 
@@ -209,4 +210,5 @@ class StationsController < ApplicationController
     @station = Station.find_by(id: params[:id])
     gon.station_id = @station.id
   end
+
 end
