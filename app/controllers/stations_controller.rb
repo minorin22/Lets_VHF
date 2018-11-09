@@ -111,7 +111,7 @@ class StationsController < ApplicationController
 
   def cancel
     case @station.state
-    when 2, 3, 4, 5
+    when 1, 2, 3, 4, 5
       @station.state = 1
       @station.save
     else
