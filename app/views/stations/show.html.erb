@@ -443,7 +443,7 @@
     function(data){
       if (data != undefined && data.id > native_call_id) {
         console.log(data.id);
-        //$.get(`/dscs/${data.id}`);
+        $.get(`/dscs/${data.id}/recieved_call`);
       }
 
     });

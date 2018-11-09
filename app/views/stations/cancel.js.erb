@@ -10,7 +10,7 @@
     $(".menu_screen").hide();
     $(".main_menu").hide();
   });
-  <% if @station.channel > 10 %>
+  <% if @station.channel >= 10 %>
     $(".current_ch").text("<%= @station.channel %>");
   <% else %>
     $(".current_ch").text("<%= "0#{@station.channel}" %>");
