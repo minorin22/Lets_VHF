@@ -1,0 +1,10 @@
+<% case @current_station.state %>
+<% when 6 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".menu").hide();
+  $(".message").show();
+  $(".message").html('<%= j render 'recieved_call' %>');
+
+<% else %>
+<% end %>

@@ -1,0 +1,87 @@
+<p>Recieved <%= @dsc.category %> massage</p>
+<ul class="call_info">
+  <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
+  <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+  <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
+  <li><span class="info_type">Work CH</span><span class="info_content">:
+    <% if @dsc.work_ch >= 10 %>
+      <%= @dsc.work_ch %>
+    <% else %>
+      <%= "0#{@dsc.work_ch}" %>
+    <% end %>
+  </span></li>
+  <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+</ul>
+
+<% if @dsc.eos == "ACK RQ" %>
+  <div class="silence_alarm" id="silence_alarm_rq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/Lift handset]", "/dscs/#{@dsc.id}/ack",remote: true, method:   :post,class:"link" %></li>
+    <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
+    <li class="menu_rl"><a class="link" tabindex="0">[Unable/NACK]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
+  <script>
+    function ack_bq(){
+      return false;
+    }
+    function ack_rq(){
+      $(".massage_menues").hide();
+      $("#alm-lamp").css("background-color","#FF7C6A");
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $(".silence_alarm").hide();
+        $(".massage_menues").show();
+        $("#alm-lamp").css("background-color","#C9D2D2");
+        $(".link:visible").eq(0).focus();
+      });
+      $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+          index   =   $(selector).index(this);
+          if (index > 0){
+              $(selector).eq(index-1).focus();
+            }
+            return;
+          }
+          if ( e.keyCode == 40  || e.keyCode == 39){
+            index   =   $(selector).index(this);
+            if (index < $(selector).length - 1 ){
+              $(selector).eq(index+1).focus();
+            }
+            return;
+          }
+        });
+    }
+    ack_bq();
+    ack_rq();
+
+
+  </script>
+<% end %>
+<% if @dsc.eos == "ACK BQ" %>
+  <div class="silence_alarm" id="silence_alarm_bq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <script>
+    function ack_rq(){
+      return false;
+    }
+    function ack_bq(){
+      $("#alm-lamp").css("background-color","#FF7C6A");
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $("#alm-lamp").css("background-color","#C9D2D2");
+        var dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/listen`);
+      });
+    }
+    ack_bq();
+    ack_rq();
+
+
+  </script>
+<% end %>

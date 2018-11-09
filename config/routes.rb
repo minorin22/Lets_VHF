@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   post "dscs/ship_station_call" => "dscs#ship_station_call"
   post "dscs/new_call" => "dscs#new_call"
   get "dscs/:id/" => "dscs#show"
+  get "dscs/:id/recieved_call" => "dscs#recieved_call"
   post "dscs/:id/ack" => "dscs#ack"
+  post "dscs/:id/listen" => "dscs#listen"
 
   #resources :users
   get "/" => "home#top"
