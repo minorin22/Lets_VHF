@@ -1,5 +1,5 @@
 class DscsController < ApplicationController
-  before_action :set_dsc, only: [:show, :ack]
+  before_action :set_dsc, only: [:show, :ack, :recieved_call, :listen]
   def ship_station_call
     @dsc = Dsc.new(
       from_id: @current_station.id,
@@ -14,6 +14,21 @@ class DscsController < ApplicationController
   end
 
   def show
+  end
+
+  def recieved_call
+    case @current_station.state
+    when 1
+      @current_station.state = 6
+      @current_station.save
+    else
+    end
+  end
+
+  def listen
+    @current_station.state = 1
+    @current_station.channel = @dsc.work_ch
+    @current_station.save
   end
 
   def new_call
@@ -47,6 +62,7 @@ class DscsController < ApplicationController
     @dsc = Dsc.find_by(id: params[:id])
     @from = Station.find_by(id: @dsc.from_id)
     @to = Station.find_by(id: @dsc.to_id)
+    gon.dsc_id = @dsc.id
   end
 
 end

@@ -602,6 +602,15 @@
                 }
               }
             }
+            .silence_alarm {
+              p {
+                line-height: 17px;
+                text-align: center;
+                margin: 4px 0;
+                padding: 0;
+                border-bottom: none;
+              }
+            }
             .massage_menues {
               line-height: 17px;
               padding-left: 4px;
@@ -611,6 +620,9 @@
                 float: left;
                 &.menu_r {
                   width: 30%;
+                }
+                &.menu_rl {
+                  width: 60%;
                 }
               }
             }
