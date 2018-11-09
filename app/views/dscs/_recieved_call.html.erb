@@ -24,17 +24,13 @@
     <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
   </ul>
   <script>
-    function ack_bq(){
-      return false;
-    }
-    function ack_rq(){
       $(".massage_menues").hide();
-      $("#alm-lamp").css("background-color","#FF7C6A");
+      $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
       $("#cancel").off();
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background-color","#C9D2D2");
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -55,11 +51,6 @@
             return;
           }
         });
-    }
-    ack_bq();
-    ack_rq();
-
-
   </script>
 <% end %>
 <% if @dsc.eos == "ACK BQ" %>
@@ -67,21 +58,12 @@
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <script>
-    function ack_rq(){
-      return false;
-    }
-    function ack_bq(){
-      $("#alm-lamp").css("background-color","#FF7C6A");
+      $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
       $("#cancel").off();
       $("#cancel").click(function(){
-        $("#alm-lamp").css("background-color","#C9D2D2");
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
         var dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
       });
-    }
-    ack_bq();
-    ack_rq();
-
-
   </script>
 <% end %>

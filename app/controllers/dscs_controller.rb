@@ -11,6 +11,8 @@ class DscsController < ApplicationController
       eos: "ACK RQ"
     )
     @dsc.save
+    @current_station.state = 1
+    @current_station.save
   end
 
   def show
