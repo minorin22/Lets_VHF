@@ -13,7 +13,7 @@
   <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
 </ul>
 
-<% if @dsc.eos == "ACK RQ" %>
+<% if @dsc.eos == "ACK RQ" && @dsc.category != "distress" && @dsc.message_type == "All modes RT" %>
   <div class="silence_alarm" id="silence_alarm_rq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
@@ -25,7 +25,6 @@
   </ul>
   <script>
       $(".massage_menues").hide();
-      $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
       $("#cancel").off();
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
@@ -53,17 +52,53 @@
         });
   </script>
 <% end %>
-<% if @dsc.eos == "ACK BQ" %>
+<% if @dsc.eos == "ACK BQ" && @dsc.category != "distress" && @dsc.message_type == "All modes RT" %>
   <div class="silence_alarm" id="silence_alarm_bq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <script>
-      $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
       $("#cancel").off();
       $("#cancel").click(function(){
         $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
         var dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
       });
+  </script>
+<% end %>
+<% if @dsc.format == "All ships call" %>
+  <div class="silence_alarm" id="silence_alarm_rq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/Listen]", "/dscs/#{@dsc.id}/listen",remote: true, method:   :post,class:"link" %></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
+  <script>
+      $(".massage_menues").hide();
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $(".silence_alarm").hide();
+        $(".massage_menues").show();
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $(".link:visible").eq(0).focus();
+      });
+      $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+          index   =   $(selector).index(this);
+          if (index > 0){
+              $(selector).eq(index-1).focus();
+            }
+            return;
+          }
+          if ( e.keyCode == 40  || e.keyCode == 39){
+            index   =   $(selector).index(this);
+            if (index < $(selector).length - 1 ){
+              $(selector).eq(index+1).focus();
+            }
+            return;
+          }
+        });
   </script>
 <% end %>
