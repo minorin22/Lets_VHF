@@ -150,6 +150,14 @@
             </ul>
           </div>
         </div>
+        <div class="sub_screen" id="ch_connection_completed">
+          <div class="sub_screen_wrapper">
+            <p class="p4">Channel connection<br />completed.</p>
+            <p class="p5">Lift handset please.</p>
+            <p class="p6"><%= link_to "[ OK ]", "/stations/#{@station.id}/cancel", remote: true, method: :post,class:"link",id:"ok_link" %></p>
+            </ul>
+          </div>
+        </div>
         <div class="start_up_screen">
           <div class="start_up_screen_wrapper">
             <%= image_tag "jrc_logo_bk.svg", class:"jrc_logo_bk" %>
@@ -356,6 +364,10 @@
             </ul>
           </div>
           <div class="menu menu_class ship_station_call">
+          </div>
+          <div class="menu menu_class safety_call_all_ships">
+          </div>
+          <div class="menu menu_class safety_call_specific_station">
           </div>
           <div class="menu menu_class calls_list recieved_others_list">
             <p>4.2) Recieved others list</p>
