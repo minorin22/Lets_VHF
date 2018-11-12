@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station]
 
   def index
   end
@@ -96,7 +96,7 @@ class StationsController < ApplicationController
   end
 
   def menu
-    @category = {routine: "RTN", safaty: "SAF", urgency: "URG", distress: "DIST"}
+    @category = {routine: "RTN", safety: "SAF", urgency: "URG", distress: "DIST"}
     @format = {"individual call" => "INDIV", "individual ACK" => "ACK", "individual NACK" => "NACK", "All ships call" => "ALL" , "Distress" => "DIST"}
     @type = {"Distress" => "Distress", "Distress ACK" => "ACK", "Distress relay" => "Relay", "Dist-relay ACK" => "Relay-ACK", "Proxy distress" => "Proxy", "Proxy dist-ACK" => "Proxy-ACK"}
     case @station.state
@@ -155,6 +155,14 @@ class StationsController < ApplicationController
     end
   end
 
+  def safety_call_all_ships
+    dsc_rtn
+  end
+
+  def safety_call_specific_station
+    dsc_rtn
+  end
+
   def btns
     num = params[:num].to_i
     case @station.state
@@ -182,8 +190,8 @@ class StationsController < ApplicationController
       name: params[:name],
       call_sign: params[:call_sign],
       mmsi: 431000000 + @current_user.id.to_i,
-      lat: 34.333,
-      long: 154.53,
+      lat: rand(35.444...35.619),
+      long: rand(139.792...140.222),
       region: params[:region],
       channel: 16,
       state: 1,

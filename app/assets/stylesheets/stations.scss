@@ -337,7 +337,7 @@
           position: absolute;
           top: 58px;
           left: 30px;
-          z-index: 10;
+          z-index: 4;
           width: 200px;
           height: 84px;
           border: 1px solid $character-color;
@@ -361,6 +361,16 @@
             }
             .p4 {
               text-align: center;
+              line-height: 17px;
+            }
+            .p5 {
+              text-align: center;
+              line-height: 17px;
+              margin-top: 14px;
+            }
+            .p6 {
+              text-align: center;
+              line-height: 17px;
             }
             .li1 {
               color: $monitor;
@@ -456,7 +466,7 @@
               margin-bottom: 1px;
             }
             .menues {
-              width: 232px;
+              width: 240px;
               margin-left: 20px;
               margin-right: 10px;
               margin-bottom: 1px;
@@ -465,7 +475,7 @@
               overflow: auto;
             }
             .selects {
-              width: 232px;
+              width: 230px;
               margin-left: 20px;
               margin-right: 20px;
               margin-bottom: 1px;
@@ -474,12 +484,12 @@
               overflow: auto;
               .link {
                 display: inline-block;
-                width: 78px;
+                width: 76px;
                 float: left;
               }
               .colon {
                 display: inline-block;
-                width: 4px;
+                width: 2px;
                 float: left;
                 text-decoration: none;
               }
@@ -492,7 +502,7 @@
               }
               .input {
                 float: left;
-                width: 96px;
+                width: 98px;
                 vertical-align: middle;
                 position: relative;
                 top: -3px;
@@ -500,6 +510,9 @@
                 line-height: 16px;
                 background-color: $monitor;
                 border: none;
+                &.input_l {
+                  width: 108px;
+                }
                 &.input_s {
                   width: 22px;
                 }

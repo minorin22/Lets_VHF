@@ -15,9 +15,13 @@ Rails.application.routes.draw do
   post "stations/:id/off_btn" => "stations#off_btn"
   post "stations/:id/func" => "stations#func"
   post "stations/:id/dsc_rtn" => "stations#dsc_rtn"
+  post "stations/:id/safety_call_all_ships" => "stations#safety_call_all_ships"
+  post "stations/:id/safety_call_specific_station" => "stations#safety_call_specific_station"
   delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
+  post "dscs/safety_call_all_ships" => "dscs#safety_call_all_ships"
+  post "dscs/safety_call_specific_station" => "dscs#safety_call_specific_station"
   post "dscs/new_call" => "dscs#new_call"
   get "dscs/:id/" => "dscs#show"
   get "dscs/:id/recieved_call" => "dscs#recieved_call"

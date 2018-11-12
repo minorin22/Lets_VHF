@@ -15,6 +15,35 @@ class DscsController < ApplicationController
     @current_station.save
   end
 
+  def safety_call_all_ships
+    @dsc = Dsc.new(
+      from_id: @current_station.id,
+      category: "safety",
+      format: "All ships call",
+      message_type: "All modes RT",
+      work_ch: params[:work_ch].to_i,
+      eos: "EOS"
+    )
+    @dsc.save
+    @current_station.state = 1
+    @current_station.save
+  end
+
+  def safety_call_specific_station
+    @dsc = Dsc.new(
+      from_id: @current_station.id,
+      to_id: Station.find_by(mmsi: params[:mmsi].to_i).id,
+      category: "safety",
+      format: "Individual call",
+      message_type: params[:message_type],
+      work_ch: params[:work_ch].to_i,
+      eos: "ACK RQ"
+    )
+    @dsc.save
+    @current_station.state = 1
+    @current_station.save
+  end
+
   def show
   end
 
@@ -34,8 +63,8 @@ class DscsController < ApplicationController
   end
 
   def new_call
-    @recieved_calls_length = Dsc.where(to_id: [@current_station.id, nil]).length
-    @new_call = Dsc.where(to_id: [@current_station.id, nil]).last
+    @recieved_calls_length = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).length
+    @new_call = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).last
     #gon.recieved_calls_length = @recieved_calls_length
     #gon.new_call_id = @new_call.id
     respond_to do |format|
@@ -48,7 +77,7 @@ class DscsController < ApplicationController
     @ack = Dsc.new(
       from_id: @current_station.id,
       to_id: @from.id,
-      category: "routine",
+      category: @dsc.category,
       format: "individual ACK",
       message_type: "All modes RT",
       work_ch: @dsc.work_ch,
