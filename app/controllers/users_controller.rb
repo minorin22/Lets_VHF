@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user, only: [:edit, :update, :show, :destroy]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :forbid_login_user, only: [:new, :create, :login, :login_form]
   # GET /users
   # GET /users.json
   def index
@@ -86,6 +88,12 @@ class UsersController < ApplicationController
     flash[:notice] = "ログアウトしました"
   end
 
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/users/#{@current_user.id}")
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

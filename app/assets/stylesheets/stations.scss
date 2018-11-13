@@ -608,6 +608,8 @@
               padding-left: 18px;
               padding-right: 18px;
               border-bottom: 1px solid $character-color;
+              height: 84px;
+              overflow: auto;
               span {
                 display: inline-block;
                 &.info_type {
@@ -636,6 +638,10 @@
                 }
                 &.menu_rl {
                   width: 60%;
+                }
+                &.menu_rc {
+                  float: none;
+                  text-align: center;
                 }
               }
             }

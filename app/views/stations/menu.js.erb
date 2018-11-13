@@ -208,6 +208,24 @@
     }
   });
 
+  $("#menu2_2_1").click(function(){
+    $.post(`/stations/${gon.station_id}/urgency_call_all_ships`);
+  });
+  $("#menu2_2_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2_2_1").click();
+    }
+  });
+
+  $("#menu2_2_2").click(function(){
+    $.post(`/stations/${gon.station_id}/urgency_call_specific_station`);
+  });
+  $("#menu2_2_2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu2_2_2").click();
+    }
+  });
+
 
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();
