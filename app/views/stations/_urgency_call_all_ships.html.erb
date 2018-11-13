@@ -1,0 +1,14 @@
+<p>2.2.1) All ships</p>
+<%= form_tag("/dscs/urgency_call_all_ships", remote: true, method: :post) do %>
+<div class="selects">
+  <ul>
+    <li><a tabindex="0" class="link">Format</a><p class="colon">:</p><p class="inputs">All ships call</p></li>
+    <li><a tabindex="0" class="link">Type</a><p class="colon">:</p><p class="inputs">All modes RT</p></li>
+    <li><a tabindex="0" class="link">Work CH</a><p class="colon">:</p><p class="inputs">16</p></li>
+  </ul>
+  <div class="ok_cancel">
+    <input type="submit" value="[Call]" class="link link_call" id="call_2_2_1" tabindex="0">
+    <a class="link link_cancel" id="cancel_2_2_1" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>

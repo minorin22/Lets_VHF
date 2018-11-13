@@ -4,19 +4,33 @@
     <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
     <li><span class="info_type">To</span><span class="info_content">: <%= @to.mmsi %></span></li>
     <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
-    <li><span class="info_type">Work CH</span><span class="info_content">:
-      <% if @dsc.work_ch >= 10 %>
-        <%= @dsc.work_ch %>
-      <% else %>
-        <%= "0#{@dsc.work_ch}" %>
-      <% end %>
-    </span></li>
-    <li>&nbsp;</li>
-  </ul>
-  <ul class="massage_menues">
-    <li><a class="link" tabindex="0">[Close]</a></li>
-    <li><a class="link" tabindex="0">[Resend]</a></li>
-    <li><a class="link" tabindex="0">[Edit&Send]</a></li>
+    <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
+      <li><span class="info_type">Work CH</span><span class="info_content">:
+        <% if @dsc.work_ch >= 10 %>
+          <%= @dsc.work_ch %>
+        <% else %>
+          <%= "0#{@dsc.work_ch}" %>
+        <% end %>
+        </span></li>
+    <% end %>
+    <% if @dsc.message_type == "Ship position" %>
+      <li><span class="info_type">Position</span><span class="info_content">: <%= "#{@lat_degree}°#{@lat_min}' " %>
+        <% if @dsc.lat >= 0 %>
+          <%= "N" %>
+        <% else %>
+          <%= "S" %>
+        <% end %>
+      </span></li>
+      <li><span class="info_type">&nbsp;</span><span class="info_content">: <%= "#{@long_degree}°#{@long_min}' " %>
+        <% if @dsc.long >= 0 %>
+          <%= "E" %>
+        <% else %>
+          <%= "W" %>
+        <% end %>
+      </span></li>
+      <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
+    <% end %>
+    <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
   </ul>
 <% else %>
   <p>Recieved <%= @dsc.category %> massage</p>
@@ -24,13 +38,32 @@
     <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
     <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
     <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
-    <li><span class="info_type">Work CH</span><span class="info_content">:
-      <% if @dsc.work_ch >= 10 %>
-        <%= @dsc.work_ch %>
-      <% else %>
-        <%= "0#{@dsc.work_ch}" %>
-      <% end %>
-    </span></li>
+    <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
+      <li><span class="info_type">Work CH</span><span class="info_content">:
+        <% if @dsc.work_ch >= 10 %>
+          <%= @dsc.work_ch %>
+        <% else %>
+          <%= "0#{@dsc.work_ch}" %>
+        <% end %>
+        </span></li>
+    <% end %>
+    <% if @dsc.message_type == "Ship position" %>
+      <li><span class="info_type">Position</span><span class="info_content">: <%= "#{@lat_degree}°#{@lat_min}' " %>
+        <% if @dsc.lat >= 0 %>
+          <%= "N" %>
+        <% else %>
+          <%= "S" %>
+        <% end %>
+      </span></li>
+      <li><span class="info_type">&nbsp;</span><span class="info_content">: <%= "#{@long_degree}°#{@long_min}' " %>
+        <% if @dsc.long >= 0 %>
+          <%= "E" %>
+        <% else %>
+          <%= "W" %>
+        <% end %>
+      </span></li>
+      <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
+    <% end %>
     <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
   </ul>
   <ul class="massage_menues">
