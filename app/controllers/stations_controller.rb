@@ -1,6 +1,9 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station]
-
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station]
+  before_action :authenticate_user
+  before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
+  before_action :forbid_login_station, only: [:new, :create]
   def index
   end
 
@@ -97,7 +100,7 @@ class StationsController < ApplicationController
 
   def menu
     @category = {routine: "RTN", safety: "SAF", urgency: "URG", distress: "DIST"}
-    @format = {"individual call" => "INDIV", "individual ACK" => "ACK", "individual NACK" => "NACK", "All ships call" => "ALL" , "Distress" => "DIST"}
+    @format = {"Individual call" => "INDIV", "Individual ACK" => "ACK", "Individual NACK" => "NACK", "All ships call" => "ALL" , "Distress" => "DIST"}
     @type = {"Distress" => "Distress", "Distress ACK" => "ACK", "Distress relay" => "Relay", "Dist-relay ACK" => "Relay-ACK", "Proxy distress" => "Proxy", "Proxy dist-ACK" => "Proxy-ACK"}
     case @station.state
     when 1, 4
@@ -163,6 +166,14 @@ class StationsController < ApplicationController
     dsc_rtn
   end
 
+  def urgency_call_all_ships
+    dsc_rtn
+  end
+
+  def urgency_call_specific_station
+    dsc_rtn
+  end
+
   def btns
     num = params[:num].to_i
     case @station.state
@@ -217,6 +228,13 @@ class StationsController < ApplicationController
   def set_station
     @station = Station.find_by(id: params[:id])
     gon.station_id = @station.id
+  end
+
+  def ensure_correct_station
+    if @current_station.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/stations/#{@current_station.id}")
+    end
   end
 
 end

@@ -1,0 +1,80 @@
+<% case @station.state %>
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".urgency_call").hide();
+  $(".urgency_call_specific_station").html('<%= j render 'urgency_call_specific_station' %>');
+  $(".urgency_call_specific_station").show();
+  $("#ok_2_2_2").show();
+  $("#call_2_2_2").hide();
+  $(":input").prop("readonly", false);
+  $("#input_2_2_2_1").val('');
+  $(".link:visible").eq(0).focus();
+
+
+
+  $("#ok_2_2_2").click(function(){
+    $("#ok_2_2_2").hide();
+    $("#call_2_2_2").show();
+    $(":input").prop("readonly", true);
+    $("#call_2_2_2").focus();
+  });
+
+  $("#cancel_2_2_2").click(function(){
+    $("#ok_2_2_2").show();
+    $("#call_2_2_2").hide();
+    $(":input").prop("readonly", false);
+    $("#ok_2_2_2").focus();
+
+  });
+
+  $("form").submit(function(){
+    var self = this;
+    $(":submit", self).prop("disabled", true);
+    setTimeout(function(){
+      $(":submit", self).prop("disabled", false);
+    }, 10000);
+  });
+
+  $(".link, .input").on("keydown", function(e){
+
+    var index       =   null;
+    var selector    =   ".link, .input";
+
+    //  ↑キー
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    //  ↓キー
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+
+  $("#ok_2_2_2").keypress(function(e){
+    if(e.which == 13){
+      $("#ok_2_2_2").click();
+    }
+  });
+  $("#call_2_2_2").keypress(function(e){
+    if(e.which == 13){
+      $("#call_2_2_2").click();
+    }
+  });
+  $("#cancel_2_2_2").keypress(function(e){
+    if(e.which == 13){
+      $("#cancel_2_2_2").click();
+    }
+  });
+<% else %>
+<% end %>

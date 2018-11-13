@@ -14,19 +14,43 @@
   $("#input_2_1_2_1").val('');
   $(".link:visible").eq(0).focus();
 
+  var message_types = ["All modes RT", "Position RQ", "Test"];
+  var message_type = $("#input_2_1_2_2").val();
+  if (message_type == message_types[0]){
+    var i = 0;
+  } else if (message_type == message_types[1]){
+    i = 1;
+  } else if (message_type == message_types[2]){
+    i = 2;
+  }
+  $("#type_2_1_2").click(function(){
+    if (i == 0 || i == 1){
+      i += 1;
+      $("#input_2_1_2_3").val("");
+      $("#work_ch_2_1_2").hide();
+    } else if (i == 2){
+      i = 0;
+      $("#input_2_1_2_3").val("16");
+      $("#work_ch_2_1_2").show();
+    }
+    $("#input_2_1_2_2").val(message_types[i]);
+  });
+
+
   $("#ok_2_1_2").click(function(){
     $("#ok_2_1_2").hide();
     $(".hide_li").show();
     $("#call_2_1_2").show();
     $(":input").prop("readonly", true);
-    $(".link:visible").eq(3).focus();
+    $("#call_2_1_2").focus();
   });
 
   $("#cancel_2_1_2").click(function(){
     $("#ok_2_1_2").show();
     $("#call_2_1_2").hide();
     $(":input").prop("readonly", false);
-    $(".link:visible").eq(3).focus();
+    $("#ok_2_1_2").focus();
+
   });
 
   $("form").submit(function(){
@@ -73,6 +97,11 @@
   $("#cancel_2_1_2").keypress(function(e){
     if(e.which == 13){
       $("#cancel_2_1_2").click();
+    }
+  });
+  $("#type_2_1_2").keypress(function(e){
+    if(e.which == 13){
+      $("#type_2_1_2").click();
     }
   });
 <% else %>
