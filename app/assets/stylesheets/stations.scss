@@ -196,6 +196,9 @@
         .ch_info {
           line-height: 18px;
         }
+        .distress_info {
+          transform: scale(0.6, 1);
+        }
         .dup_info {
           width: 24px;
           display: none;
@@ -251,17 +254,21 @@
             height: 82px;
             .main_info {
               float: left;
-              margin: 14px;
-              width: 40px;
-              line-height: 18px;
-              height: 54px;
+              margin: 12px 6px;
+              width: 66px;
+              line-height: 16px;
+              height: 56px;
               padding: 0;
+              li {
+                line-height: 16px;
+                margin: 2px 0;
+              }
               &.left{
                 text-align: right;
                 float: left;
               }
               &.right{
-                text-align: left;
+                text-align: center;
                 float: right;
                 li {
                   font-size: 18px;
@@ -272,10 +279,11 @@
             .current_ch {
               float: left;
               font-weight: 600;
-              font-size: 68px;
-              line-height: 80px;
+              font-size: 70px;
+              line-height: 70px;
               text-align: center;
-              width: 126px;
+              margin-top: 8px;
+              width: 114px;
             }
 
           }
@@ -325,6 +333,10 @@
               height: 28px;
               width: 250px;
               margin: 0 auto;
+              p {
+                font-size: 14px;
+                text-align: center;
+              }
               .dsc_info {
                 height: 16px;
                 padding: 6px 0;
@@ -371,6 +383,10 @@
             .p6 {
               text-align: center;
               line-height: 17px;
+            }
+            .count_num {
+              font-size: 22px;
+              font-weight: 600;
             }
             .li1 {
               color: $monitor;
@@ -475,16 +491,16 @@
               overflow: auto;
             }
             .selects {
-              width: 230px;
+              width: 233px;
               margin-left: 20px;
-              margin-right: 20px;
+              margin-right: 17px;
               margin-bottom: 1px;
               line-height: 17px;
               height: 124px;
               overflow: auto;
               .link {
                 display: inline-block;
-                width: 76px;
+                width: 74px;
                 float: left;
               }
               .colon {
@@ -499,6 +515,10 @@
                 line-height: 17px;
                 vertical-align: middle;
                 text-decoration: none;
+                &.inputs_l {
+                  width: 100px;
+                  text-align: left;
+                }
               }
               .input {
                 float: left;
@@ -511,7 +531,7 @@
                 background-color: $monitor;
                 border: none;
                 &.input_l {
-                  width: 108px;
+                  width: 112px;
                 }
                 &.input_s {
                   width: 22px;
@@ -551,6 +571,18 @@
                 .link_cancel {
                   width: auto;
                   float: right;
+                }
+                p {
+                  font-size: 13px;
+                  //transform: scale(0.8, 1);
+                  text-decoration: none;
+                  width: auto;
+                  float: left;
+                  margin: 0;
+                  padding: 0;
+                }
+                #cancel_2_3 {
+                  font-size: 13px;
                 }
               }
             }

@@ -1,9 +1,10 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call]
   before_action :authenticate_user
   before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
   before_action :forbid_login_station, only: [:new, :create]
+  before_action :set_lat_long, only: [:show, :distress_call]
   def index
   end
 
@@ -21,27 +22,6 @@ class StationsController < ApplicationController
       @station.power = 25
     end
     @station.save
-    @lat_degree = @station.lat.to_i.abs
-    lat_min1 = @station.lat - @lat_degree.to_f
-    lat_min2 = lat_min1.abs * 60
-    @lat_min = lat_min2.round
-    if @lat_degree < 10
-      @lat_degree = "0" + @lat_degree.to_s
-    end
-    if @lat_min < 10
-      @lat_min = "0" + @lat_min.to_s
-    end
-    @long_degree = @station.long.to_i.abs
-    long_min1 = @station.long - @long_degree.to_f
-    long_min2 = long_min1.abs * 60
-    @long_min = long_min2.round
-    if @long_degree < 10
-      @long_degree = "0" + @long_degree.to_s
-    end
-    if @long_min < 10
-      @long_min = "0" + @long_min.to_s
-    end
-
   end
 
   def new
@@ -174,6 +154,10 @@ class StationsController < ApplicationController
     dsc_rtn
   end
 
+  def distress_call
+    dsc_rtn
+  end
+
   def btns
     num = params[:num].to_i
     case @station.state
@@ -228,6 +212,29 @@ class StationsController < ApplicationController
   def set_station
     @station = Station.find_by(id: params[:id])
     gon.station_id = @station.id
+  end
+
+  def set_lat_long
+    @lat_degree = @station.lat.to_i.abs
+    lat_min1 = @station.lat - @lat_degree.to_f
+    lat_min2 = lat_min1.abs * 60
+    @lat_min = lat_min2.round
+    if @lat_degree < 10
+      @lat_degree = "0" + @lat_degree.to_s
+    end
+    if @lat_min < 10
+      @lat_min = "0" + @lat_min.to_s
+    end
+    @long_degree = @station.long.to_i.abs
+    long_min1 = @station.long - @long_degree.to_f
+    long_min2 = long_min1.abs * 60
+    @long_min = long_min2.round
+    if @long_degree < 10
+      @long_degree = "0" + @long_degree.to_s
+    end
+    if @long_min < 10
+      @long_min = "0" + @long_min.to_s
+    end
   end
 
   def ensure_correct_station

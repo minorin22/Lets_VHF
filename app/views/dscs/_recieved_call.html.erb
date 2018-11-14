@@ -1,36 +1,62 @@
-<p>Recieved <%= @dsc.category %> massage</p>
-<ul class="call_info">
-  <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
-  <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
-  <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
-  <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
-    <li><span class="info_type">Work CH</span><span class="info_content">:
-      <% if @dsc.work_ch >= 10 %>
-        <%= @dsc.work_ch %>
-      <% else %>
-        <%= "0#{@dsc.work_ch}" %>
-      <% end %>
-      </span></li>
-  <% end %>
-  <% if @dsc.message_type == "Ship position" %>
-    <li><span class="info_type">Position</span><span class="info_content">: <%= "#{@lat_degree}°#{@lat_min}' " %>
+<% if @dsc.category == "distress" %>
+  <p>Recieved <%= @dsc.category %> massage</p>
+  <ul class="call_info">
+    <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type   %></span></li>
+    <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+    <li><span class="info_type">Nature</span><span class="info_content">: <%= @dsc.nature %></span></li>
+    <li><span class="info_type">Position</span><span class="info_content">: <%=   "#{@lat_degree}°#{@lat_min}' " %>
       <% if @dsc.lat >= 0 %>
         <%= "N" %>
       <% else %>
         <%= "S" %>
       <% end %>
-    </span></li>
-    <li><span class="info_type">&nbsp;</span><span class="info_content">: <%= "#{@long_degree}°#{@long_min}' " %>
+      </span></li>
+    <li><span class="info_type">&nbsp;</span><span class="info_content">: <%=   "#{@long_degree}°#{@long_min}' " %>
       <% if @dsc.long >= 0 %>
         <%= "E" %>
       <% else %>
         <%= "W" %>
       <% end %>
-    </span></li>
-    <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
-  <% end %>
-  <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
-</ul>
+      </span></li>
+    <li><span class="info_type">UTC</span><span class="info_content">: <%=  @dsc.created_at.strftime("%H:%M") %></span></li>
+    <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+  </ul>
+<% end %>
+<% if @dsc.category != "distress" %>
+  <p>Recieved <%= @dsc.category %> massage</p>
+  <ul class="call_info">
+    <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
+    <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+    <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type   %></span></li>
+    <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type !=   "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" &&   @dsc.message_type != "Unable to comply" %>
+      <li><span class="info_type">Work CH</span><span class="info_content">:
+        <% if @dsc.work_ch >= 10 %>
+          <%= @dsc.work_ch %>
+        <% else %>
+          <%= "0#{@dsc.work_ch}" %>
+        <% end %>
+        </span></li>
+    <% end %>
+    <% if @dsc.message_type == "Ship position" %>
+      <li><span class="info_type">Position</span><span class="info_content">: <%=   "#{@lat_degree}°#{@lat_min}' " %>
+        <% if @dsc.lat >= 0 %>
+          <%= "N" %>
+        <% else %>
+          <%= "S" %>
+        <% end %>
+        </span></li>
+      <li><span class="info_type">&nbsp;</span><span class="info_content">: <%=   "#{@long_degree}°#{@long_min}' " %>
+        <% if @dsc.long >= 0 %>
+          <%= "E" %>
+        <% else %>
+          <%= "W" %>
+        <% end %>
+        </span></li>
+      <li><span class="info_type">UTC</span><span class="info_content">: <%=  @dsc.created_at.strftime("%H:%M") %></span></li>
+    <% end %>
+    <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+  </ul>
+<% end %>
 
 <% if @dsc.eos == "ACK RQ" && @dsc.category != "distress" && @dsc.message_type == "All modes RT" %>
   <div class="silence_alarm" id="silence_alarm_rq">
@@ -163,12 +189,50 @@
   </script>
 <% end %>
 
-<% if @dsc.format == "All ships call" %>
+<% if @dsc.format == "All ships call" && @dsc.category != "distress" %>
   <div class="silence_alarm" id="silence_alarm_rq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <ul class="massage_menues">
     <li class="menu_rl"><%= link_to "[OK/Listen]", "/dscs/#{@dsc.id}/listen",remote: true, method:   :post,class:"link" %></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
+  <script>
+      $(".massage_menues").hide();
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $(".silence_alarm").hide();
+        $(".massage_menues").show();
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $(".link:visible").eq(0).focus();
+      });
+      $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+          index   =   $(selector).index(this);
+          if (index > 0){
+              $(selector).eq(index-1).focus();
+            }
+            return;
+          }
+          if ( e.keyCode == 40  || e.keyCode == 39){
+            index   =   $(selector).index(this);
+            if (index < $(selector).length - 1 ){
+              $(selector).eq(index+1).focus();
+            }
+            return;
+          }
+        });
+  </script>
+<% end %>
+
+<% if @dsc.category == "distress" && (@dsc.message_type == "Distress" || @dsc.message_type == "Distress relay" || @dsc.message_type == "Proxy distress") %>
+  <div class="silence_alarm" id="silence_alarm_rq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/CH16 watch]", "/dscs/#{@dsc.id}/listen",remote: true, method:   :post,class:"link" %></li>
     <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
   </ul>
   <script>

@@ -74,6 +74,38 @@ class DscsController < ApplicationController
     @current_station.save
   end
 
+  def distress_call
+    if params[:nature]
+      @nature = params[:nature]
+    else
+      @nature = "Undesignated"
+    end
+    if params[:lat]
+      @lat = params[:lat]
+    else
+      @lat = @current_station.lat
+    end
+    if params[:long]
+      @long = params[:long]
+    else
+      @long = @current_station.long
+    end
+    @dsc = Dsc.new(
+      from_id: @current_station.id,
+      category: "distress",
+      format: "Distress",
+      message_type: "Distress",
+      nature: @nature,
+      lat: @lat,
+      long: @long,
+      work_ch: 16,
+      eos: "EOS"
+    )
+    @dsc.save
+    @current_station.state = 7
+    @current_station.save
+  end
+
   def show
   end
 
