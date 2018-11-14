@@ -1,6 +1,6 @@
 <% @station.recieved_others.reverse_each do |call| %>
 <li>
-  <%= link_to "/dscs/#{call.id}", remote: true, class:"link" do %>
+  <%= link_to "/dscs/#{call.id}", remote: true, class:"link", method: :post do %>
   <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="cat"><%= @category[:"#{call.category}"] %></span><span class="fmt"><%= @format["#{call.format}"] %></span>
   <% end %>
 </li>
