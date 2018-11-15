@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post "stations/:id/back_16" => "stations#back_16"
   post "stations/:id/menu" => "stations#menu"
   post "stations/:id/cancel" => "stations#cancel"
+  post "stations/:id/break" => "stations#break"
   post "stations/:id/off_btn" => "stations#off_btn"
   post "stations/:id/func" => "stations#func"
   post "stations/:id/dsc_rtn" => "stations#dsc_rtn"

@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break]
   before_action :authenticate_user
   before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
@@ -97,7 +97,18 @@ class StationsController < ApplicationController
     when 1, 2, 3, 4, 5
       @station.state = 1
       @station.save
+    when 7
     else
+      render "stations/show"
+      return
+    end
+  end
+
+  def break
+    case @station.state
+    when 7
+      @station.state = 1
+      @station.save
       render "stations/show"
       return
     end
