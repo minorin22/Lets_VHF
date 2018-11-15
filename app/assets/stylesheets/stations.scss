@@ -339,7 +339,7 @@
               }
               .dsc_info {
                 height: 16px;
-                padding: 6px 0;
+                padding: 6px 4px;
               }
             }
           }
@@ -383,6 +383,11 @@
             .p6 {
               text-align: center;
               line-height: 17px;
+            }
+            .p7 {
+              text-align: center;
+              line-height: 17px;
+              margin: 4px auto;
             }
             .count_num {
               font-size: 22px;
