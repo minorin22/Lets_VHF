@@ -41,6 +41,7 @@
 <script>
 var touched = false;
 var touch_time = 0;
+$("#distress").off();
 $("#distress").bind({
   'touchstart mousedown': function(e) {
     touched = true;
@@ -63,14 +64,12 @@ $("#distress").bind({
       if (touch_time == 4200) {
         $("#distress_count_down").hide();
         $("#sending_distress").show();
-        //$("#distress_form").submit(function(event){
-          //event.preventDefault();
-          $.ajax({
-            url: '/dscs/distress_call',
-            type: 'POST',
-            data: {'nature': $("#input_2_3_1").val()}
-          });
-        //});
+        $.ajax({
+          url: '/dscs/distress_call',
+          type: 'POST',
+          data: {'nature': $("#input_2_3_1").val()},
+          cache: false
+        });
       }
     }, 100)
     e.preventDefault();

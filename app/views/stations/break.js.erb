@@ -1,0 +1,17 @@
+<% case @station.state %>
+<% when 1 %>
+  $(".menu_class").hide();
+  $(".sub_screen").hide();
+  $(".menu_screen").hide();
+  $(".home_screen").show();
+  
+  $(".distress_info").text('　');
+  $(".distress_info").removeClass("reverse_color");
+  $(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
+  <% if @station.channel >= 10 %>
+    $(".current_ch").text("<%= @station.channel %>");
+  <% else %>
+    $(".current_ch").text("<%= "0#{@station.channel}" %>");
+  <% end %>
+<% else %>
+<% end %>

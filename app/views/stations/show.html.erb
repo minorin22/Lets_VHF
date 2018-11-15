@@ -127,9 +127,7 @@
               <%= image_tag "spk-on.svg" , class:"spk-on" %>
             </div>
             <div class="dsc_infos">
-              <%= image_tag "ch70-symbol.svg" , class:"dsc_info ch70_info" %>
-              <%= image_tag "atm-ans.svg" , class:"dsc_info" %>
-              <%= image_tag "ch_sw.svg" , class:"dsc_info" %>
+              <img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">
             </div>
           </div>
         </div>
@@ -167,6 +165,15 @@
         <div class="sub_screen" id="sending_distress">
           <div class="sub_screen_wrapper">
             <p class="p3">Sending<br />DISTRESS call ...</p>
+          </div>
+        </div>
+        <div class="sub_screen" id="distress_mode_break">
+          <div class="sub_screen_wrapper">
+            <p class="p7">Now continuing<br />DISTRESS call mode.<br />Break this mode?</p>
+            <ul>
+              <li class="li1"><a class="link" tabindex="0" id="distress_continue">[Continue]</a></li>
+              <li class="li2"><a class="link" tabindex="0" id="distress_break">[Break]</a></li>
+            </ul>
           </div>
         </div>
         <div class="start_up_screen">
@@ -485,6 +492,7 @@
   $(document).on('turbolinks:load', function(){
     var touched = false;
     var touch_time = 0;
+    $("#distress").off();
     $("#distress").bind({
       'touchstart mousedown': function(e) {
         touched = true;
@@ -507,7 +515,12 @@
           if (touch_time == 4200) {
             $("#distress_count_down").hide();
             $("#sending_distress").show();
-            $.post('/dscs/distress_call');
+            $.ajax({
+              url: '/dscs/distress_call',
+              type: 'POST',
+              data: {'nature': 'Undesignated'},
+              cache: false
+            });
           }
         }, 100)
         e.preventDefault();

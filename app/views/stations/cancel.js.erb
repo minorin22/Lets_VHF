@@ -15,5 +15,43 @@
   <% else %>
     $(".current_ch").text("<%= "0#{@station.channel}" %>");
   <% end %>
+<% when 7 %>
+  $("#distress_mode_break").show();
+  $(".link:visible").eq(0).focus();
+  $("#distress_continue").click(function(){
+    $(".sub_screen").hide();
+  });
+  $("#distress_break").click(function(){
+    $.post(`/stations/${gon.station_id}/break`);
+  });
+
+  $(".link").on("keydown", function(e){
+    var index       =   null;
+    var selector    =   ".link";
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+  $("#distress_continue").keypress(function(e){
+    if(e.which == 13){
+      $("#distress_continue").click();
+    }
+  });
+  $("#distress_break").keypress(function(e){
+    if(e.which == 13){
+      $("#distress_break").click();
+    }
+  });
 <% else %>
 <% end %>
