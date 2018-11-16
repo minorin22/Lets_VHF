@@ -1,0 +1,43 @@
+<p>2.4.1) All ships</p>
+<%= form_tag("/dscs/proxy_distress_call_all_ships", remote: true, method: :post) do %>
+  <div class="selects">
+    <ul>
+      <li><a class="link">Type</a><p class="colon">:</p><p class="inputs">Proxy distress</p></li>
+      <li><a class="link" tabindex="0">Dist-ID</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_2_4_1_1" class="input" name="dist_id"><p class="inputs2">]</p></li>
+      <li><a class="link" tabindex="0"  id="nature_2_4_1">Nature</a><p class="colon">:</p><p  class="inputs">[</p><input type="text" id="input_2_4_1_2" class="input input_l" name="nature"   value="Undesignated"><p class="inputs2">]</p></li>
+      <li><a class="link" tabindex="0">Position</a><p class="colon">:</p><p class="inputs inputs_l">[
+        <% if @station.lat >= 0 %>
+          <%= "N" %>
+        <% else %>
+          <%= "S" %>
+        <% end %>
+        <% if @station.long >= 0 %>
+          <%= "E" %>
+        <% else %>
+          <%= "W" %>
+        <% end %>
+          ]</p></li>
+      <li><a class="link">&nbsp;</a><p class="colon">&nbsp;</p><p class="inputs">[
+        <%= "#{@lat_degree}°#{@lat_min}' " %>
+        <% if @station.lat >= 0 %>
+          <%= "N" %>
+        <% else %>
+          <%= "S" %>
+        <% end %>
+        ]</p></li>
+      <li><a class="link">&nbsp;</a><p class="colon">&nbsp;</p><p class="inputs inputs_last">[
+      <%= "#{@long_degree}°#{@long_min}' " %>
+        <% if @station.long >= 0 %>
+          <%= "E" %>
+        <% else %>
+          <%= "W" %>
+        <% end %>
+      ]</p></li>
+    </ul>
+    <div class="ok_cancel">
+      <a class="link link_ok" id="ok_2_4_1" tabindex="0">[OK]</a>
+      <input type="submit" value="[Call]" class="link link_call" id="call_2_4_1" tabindex="0">
+      <a class="link link_cancel" id="cancel_2_4_1" tabindex="0">[Cancel]</a>
+    </div>
+  </div>
+<% end %>
