@@ -1,0 +1,121 @@
+<% case @station.state %>
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".dsc_emergency_call").hide();
+  $(".proxy_distress_call_all_ships").html('<%= j render 'proxy_distress_call_all_ships' %>');
+  $(".proxy_distress_call_all_ships").show();
+  $("#ok_2_4_1").show();
+  $("#call_2_4_1").hide();
+  $(":input").prop("readonly", false);
+  $(".link:visible").eq(1).focus();
+
+  var natures = ["Fire", "Flooding", "Collision", "Grounding", "Listing", "Sinking", "Disabled", "Undesignated", "Abandoning", "Piracy attack", "Man overboard", "EPIRB emission"];
+  var nature = $("#input_2_4_1_2").val();
+  if (nature == natures[0]){
+    var i = 0;
+  } else if (nature == natures[1]){
+    i = 1;
+  } else if (nature == natures[2]){
+    i = 2;
+  } else if (nature == natures[3]){
+    i = 3;
+  } else if (nature == natures[4]){
+    i = 4;
+  } else if (nature == natures[5]){
+    i = 5;
+  } else if (nature == natures[6]){
+    i = 6;
+  } else if (nature == natures[7]){
+    i = 7;
+  } else if (nature == natures[8]){
+    i = 8;
+  } else if (nature == natures[9]){
+    i = 9;
+  } else if (nature == natures[10]){
+    i = 10;
+  } else if (nature == natures[11]){
+    i = 11;
+  }
+  $("#nature_2_4_1").click(function(){
+    if (i == 0 || i <= 10){
+      i += 1;
+    } else if (i == 11){
+      i = 0;
+    }
+    $("#input_2_4_1_2").val(natures[i]);
+  });
+
+  $("#ok_2_4_1").click(function(){
+    $("#ok_2_4_1").hide();
+    $("#call_2_4_1").show();
+    $(":input").prop("readonly", true);
+    $("#call_2_4_1").focus();
+  });
+
+  $("#cancel_2_4_1").click(function(){
+    $("#ok_2_4_1").show();
+    $("#call_2_4_1").hide();
+    $(":input").prop("readonly", false);
+    $("#ok_2_4_1").focus();
+
+  });
+
+
+
+  $("#cancel_2_4_1").click(function(){
+
+  });
+
+  $("form").submit(function(){
+    var self = this;
+    $(":submit", self).prop("disabled", true);
+    setTimeout(function(){
+      $(":submit", self).prop("disabled", false);
+    }, 10000);
+  });
+
+  $(".link, .input").on("keydown", function(e){
+
+    var index       =   null;
+    var selector    =   ".link, .input";
+
+    //  ↑キー
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    //  ↓キー
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+
+
+  $("#ok_2_4_1").keypress(function(e){
+    if(e.which == 13){
+      $("#ok_2_4_1").click();
+    }
+  });
+  $("#call_2_4_1").keypress(function(e){
+    if(e.which == 13){
+      $("#call_2_4_1").click();
+    }
+  });
+  $("#nature_2_4_1").keypress(function(e){
+    if(e.which == 13){
+      $("#nature_2_4_1").click();
+    }
+  });
+
+<% else %>
+<% end %>
