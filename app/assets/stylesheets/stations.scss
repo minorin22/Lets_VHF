@@ -518,7 +518,7 @@
                 float: left;
                 font-size: 16px;
                 line-height: 17px;
-                vertical-align: middle;
+                //vertical-align: middle;
                 text-decoration: none;
                 &.inputs_l {
                   width: 100px;
@@ -531,15 +531,15 @@
               .input {
                 float: left;
                 width: 98px;
-                vertical-align: middle;
+                //vertical-align: text-top;
                 position: relative;
                 top: -3px;
-                height: 17px;
+                height: 20px;
                 line-height: 16px;
                 background-color: $monitor;
                 border: none;
                 &.input_l {
-                  width: 112px;
+                  width: 123px;
                 }
                 &.input_s {
                   width: 22px;
@@ -552,8 +552,9 @@
                 float: left;
                 font-size: 16px;
                 line-height: 17px;
-                vertical-align: middle;
+                //vertical-align: middle;
                 text-decoration: none;
+                margin-left: 0;
               }
               .ok_cancel {
                 margin-top: 102px;
