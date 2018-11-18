@@ -197,8 +197,8 @@ class StationsController < ApplicationController
   def create
     @station = Station.new(
       user_id: @current_user.id,
-      name: params[:name],
-      call_sign: params[:call_sign],
+      name: params[:name].upcase,
+      call_sign: params[:call_sign].upcase,
       mmsi: 431000000 + @current_user.id.to_i,
       lat: rand(35.444...35.619),
       long: rand(139.792...140.222),
