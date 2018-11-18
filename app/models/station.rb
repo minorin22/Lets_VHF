@@ -1,6 +1,6 @@
 class Station < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: {maximum: 20}
-  validates :call_sign, presence: true, uniqueness: true, length: {is: 4}
+  validates :name, presence: true, uniqueness: true, length: {maximum: 20}, format: { with: /\A[a-z0-9]+\z/i }
+  validates :call_sign, presence: true, uniqueness: true, length: {is: 4}, format: { with: /\A[a-z0-9]+\z/i }
 
   def transmitted_calls
     return Dsc.where(from_id: self.id)
