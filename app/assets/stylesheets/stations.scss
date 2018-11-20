@@ -635,6 +635,9 @@
                 border-left: 1px solid $character-color;
               }
             }
+            .calls_info {
+              height: 105px;
+            }
             .calls {
               padding-left: 10px;
               padding-right: 10px;
@@ -643,6 +646,10 @@
               height: 84px;
               overflow: auto;
               border-bottom: 1px solid $character-color;
+            }
+            .from_or_to{
+              border: none;
+              text-align: center;
             }
             .call_info {
               line-height: 17px;

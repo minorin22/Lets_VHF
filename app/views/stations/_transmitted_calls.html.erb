@@ -1,12 +1,18 @@
-<% @station.transmitted_calls.reverse_each do |call| %>
-<li>
-  <%= link_to "/dscs/#{call.id}", remote: true, class:"link", method: :post do %>
-  <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="cat"><%= @category[:"#{call.category}"] %></span><span class="fmt"><%= @format["#{call.format}"] %></span>
+<ul class="calls">
+  <% @station.transmitted_calls.reverse_each do |call| %>
+  <li>
+    <%= link_to "/dscs/#{call.id}", remote: true, class:"link", method: :post, data: {mmsi: "#{call.to_mmsi}"} do %>
+    <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="cat"><%= @category[:"#{call.category}"] %></span><span class="fmt"><%= @format["#{call.format}"] %></span>
+    <% end %>
+  </li>
   <% end %>
-</li>
-<% end %>
+</ul>
+<p class="from_or_to">To: <span class="from_or_to_mmsi"></span></p>
+
 
 <script>
+to_mmsi = $(".link:visible").eq(0).data("mmsi");
+$(".from_or_to_mmsi").text(to_mmsi);
 $(".link, .input").on("keydown", function(e){
   var index       =   null;
   var selector    =   ".link, .input";
@@ -14,6 +20,8 @@ $(".link, .input").on("keydown", function(e){
       index   =   $(selector).index(this);
       if (index > 0){
           $(selector).eq(index-1).focus();
+          to_mmsi = $(selector).eq(index-1).data("mmsi");
+          $(".from_or_to_mmsi").text(to_mmsi);
       }
       return;
   }
@@ -21,6 +29,8 @@ $(".link, .input").on("keydown", function(e){
       index   =   $(selector).index(this);
       if (index < $(selector).length - 1 ){
           $(selector).eq(index+1).focus();
+          to_mmsi = $(selector).eq(index+1).data("mmsi");
+          $(".from_or_to_mmsi").text(to_mmsi);
       }
       return;
   }

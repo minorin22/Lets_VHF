@@ -31,12 +31,17 @@ class DscsController < ApplicationController
   end
 
   def safety_call_specific_station
+    if params[:message_type]
+      @message_type = params[:message_type]
+    else
+      @message_type = "Test"
+    end
     @dsc = Dsc.new(
       from_id: @current_station.id,
       to_id: Station.find_by(mmsi: params[:mmsi].to_i).id,
       category: "safety",
       format: "Individual call",
-      message_type: params[:message_type],
+      message_type: @message_type,
       work_ch: params[:work_ch].to_i,
       eos: "ACK RQ"
     )
