@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call]
   before_action :authenticate_user
   before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
@@ -71,11 +71,12 @@ class StationsController < ApplicationController
       if @station.tmp_ch
         @station.tmp_ch = nil
       end
+      @station.save
     else
       render "stations/show"
       return
     end
-    @station.save
+
   end
 
   def menu
@@ -170,6 +171,10 @@ class StationsController < ApplicationController
   end
 
   def proxy_distress_call_all_ships
+    dsc_rtn
+  end
+
+  def dsc_test_call
     dsc_rtn
   end
 

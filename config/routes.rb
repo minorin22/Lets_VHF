@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post "stations/:id/urgency_call_specific_station" => "stations#urgency_call_specific_station"
   post "stations/:id/distress_call" => "stations#distress_call"
   post "stations/:id/proxy_distress_call_all_ships" => "stations#proxy_distress_call_all_ships"
+  post "stations/:id/dsc_test_call" => "stations#dsc_test_call"
   delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"

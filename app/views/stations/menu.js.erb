@@ -244,11 +244,20 @@
     }
   });
 
+  $("#menu3").click(function(){
+    $.post(`/stations/${gon.station_id}/dsc_test_call`);
+  });
+  $("#menu3").keypress(function(e){
+    if(e.which == 13){
+      $("#menu3").click();
+    }
+  });
+
 
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();
     $(".recieved_others_list").show();
-    $(".calls").html('<%= j render 'recieved_others' %>')
+    $(".calls_info").html('<%= j render 'recieved_others' %>')
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_2").keypress(function(e){
@@ -260,7 +269,7 @@
   $("#menu4_3").click(function(){
     $(".dsc_logs").hide();
     $(".transmitted_calls_list").show();
-    $(".calls").html('<%= j render 'transmitted_calls' %>')
+    $(".calls_info").html('<%= j render 'transmitted_calls' %>')
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_3").keypress(function(e){
