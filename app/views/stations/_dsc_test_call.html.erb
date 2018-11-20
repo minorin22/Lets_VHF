@@ -1,0 +1,13 @@
+<p>3) DSC tst call</p>
+<%= form_tag("/dscs/safety_call_specific_station", remote: true, method: :post) do %>
+<div class="selects">
+  <ul>
+    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_3_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
+  </ul>
+  <div class="ok_cancel">
+    <a class="link link_ok" id="ok_3" tabindex="0">[OK]</a>
+    <input type="submit" value="[Call]" class="link link_call" id="call_3" tabindex="0">
+    <a class="link link_cancel" id="cancel_3" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>

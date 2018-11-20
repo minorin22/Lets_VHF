@@ -1,5 +1,5 @@
 class Station < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: {maximum: 20}, format: { with: /\A[a-z0-9]+\z/i }
+  validates :name, presence: true, uniqueness: true, length: {maximum: 20}, format: { with: /\A[\u0020-\u007e]+\z/ }
   validates :call_sign, presence: true, uniqueness: true, length: {is: 4}, format: { with: /\A[a-z0-9]+\z/i }
 
   def transmitted_calls
