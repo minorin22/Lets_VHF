@@ -52,5 +52,10 @@
   <% end %>
 <% when 2 %>
   $(".current_ch").text("<%= @station.tmp_ch %>");
+<% when 5 %>
+  number = <%= @num_btn %>;
+  if (number == 0) {
+    $.post(`/stations/${gon.station_id}/other_ships_list`);
+  }
 <% else %>
 <% end %>

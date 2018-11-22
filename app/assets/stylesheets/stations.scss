@@ -694,6 +694,79 @@
               }
             }
           }
+          .other_ships_list {
+            p {
+              height: 17px;
+              line-height: 17px;
+              text-decoration: none;
+              margin-left: 0;
+              padding-left: 10px;
+              margin-bottom: 0;
+              border-bottom: 1px solid $character-color;
+            }
+            span {
+              display: inline-block;
+              height: 17px;
+              line-height: 17px;
+              &.brg {
+                width: 40px;
+                text-align: right;
+              }
+              &.colon {
+                width: 2px;
+                text-align: left;
+                padding-left: 6px;
+              }
+              &.rng {
+                width: 60px;
+                text-align: left;
+                padding-left: 6px;
+                margin-right: 10px;
+              }
+              &.call_sign {
+                width: 118px;
+                text-align: left;
+                border-left: 1px solid $character-color;
+                padding-left: 6px;
+              }
+            }
+            .other_ships_info {
+              height: 105px;
+              p {
+                border: none;
+                text-decoration: none;
+                .name_mmsi {
+                  width: 50px;
+                }
+                .colon {
+                  padding-right: 6px;
+                }
+              }
+            }
+            .other_ships {
+              padding-left: 10px;
+              padding-right: 10px;
+              margin-bottom: 1px;
+              line-height: 17px;
+              height: 67px;
+              overflow: auto;
+              border-bottom: 1px solid $character-color;
+            }
+            .other_ship_info {
+              line-height: 17px;
+              padding-left: 18px;
+              padding-right: 18px;
+              border-bottom: 1px solid $character-color;
+              height: 67px;
+              overflow: auto;
+              span {
+                display: inline-block;
+                &.info_type {
+                  width: 96px;
+                }
+              }
+            }
+          }
         }
       }
       .dynamic_items {

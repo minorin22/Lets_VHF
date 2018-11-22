@@ -1,0 +1,18 @@
+<% case @station.state %>
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".ais_information").hide();
+  $(".other_ships_list").html('<%= j render 'other_ships_list' %>');
+  $(".other_ships_list").show();
+  $(".link:visible").eq(0).focus();
+
+  other_name = $(".link:visible").eq(0).data("name");
+  other_mmsi = $(".link:visible").eq(0).data("mmsi");
+  $(".other_name").text(other_name);
+  $(".other_mmsi").text(other_mmsi);
+
+<% else %>
+<% end %>
