@@ -1,0 +1,51 @@
+<p>5.1) Other ships list</p>
+<p><span class="brg">BRG</span><span class="colon">:</span><span class="rng">RNG</span><span class="call_sign">Call sign</span></p>
+<div class="other_ships_info">
+  <ul class="other_ships">
+    <% @other_stations.each do |other_station| %>
+    <li>
+      <%= link_to "#", remote: true, class:"link", method: :post , data: {name: "#{other_station.name}", mmsi: "#{other_station.mmsi}"} do %>
+      <span class="brg"><%= other_station.get_brg(@station) %>°</span><span class="colon">:</span><span class="rng"><%= other_station.get_rng(@station) %>NM</span><span class="call_sign"><%= other_station.call_sign %></span>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <p><span class="name_mmsi">Name</span><span class="colon">:</span><span class="other_name"></span></p>
+  <p><span class="name_mmsi">MMSI</span><span class="colon">:</span><span class="other_mmsi"></span></p>
+</div>
+
+
+
+
+<script>
+other_name = $(".link:visible").eq(0).data("name");
+other_mmsi = $(".link:visible").eq(0).data("mmsi");
+$(".other_name").text(other_name);
+$(".other_mmsi").text(other_mmsi);
+$(".link, .input").on("keydown", function(e){
+  var index       =   null;
+  var selector    =   ".link, .input";
+  if ( e.keyCode == 38 || e.keyCode == 37 ){
+      index   =   $(selector).index(this);
+      if (index > 0){
+          $(selector).eq(index-1).focus();
+          other_name = $(selector).eq(index-1).data("name");
+          other_mmsi = $(selector).eq(index-1).data("mmsi");
+          $(".other_name").text(other_name);
+          $(".other_mmsi").text(other_mmsi);
+      }
+      return;
+  }
+  if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+          $(selector).eq(index+1).focus();
+          other_name = $(selector).eq(index+1).data("name");
+          other_mmsi = $(selector).eq(index+1).data("mmsi");
+          $(".other_name").text(other_name);
+          $(".other_mmsi").text(other_mmsi);
+      }
+      return;
+  }
+});
+</script>

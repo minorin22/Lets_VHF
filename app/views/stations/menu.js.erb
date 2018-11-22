@@ -253,6 +253,15 @@
     }
   });
 
+  $("#menu5_1").click(function(){
+    $.post(`/stations/${gon.station_id}/other_ships_list`);
+  });
+  $("#menu5_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu5_1").click();
+    }
+  });
+
 
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();
@@ -277,6 +286,7 @@
       $("#menu4_3").click();
     }
   });
+
 
   $(".link, .input").on("keydown", function(e){
 

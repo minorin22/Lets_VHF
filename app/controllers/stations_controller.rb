@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list]
   before_action :authenticate_user
   before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
@@ -178,6 +178,18 @@ class StationsController < ApplicationController
     dsc_rtn
   end
 
+  def other_ships_list
+    @other_stations = Station.where.not(id: @station.id)
+    case @station.state
+    when 1, 5
+      @station.state = 4
+      @station.save
+    when 4
+    else
+      render "stations/show"
+    end
+  end
+
   def btns
     num = params[:num].to_i
     case @station.state
@@ -190,6 +202,7 @@ class StationsController < ApplicationController
       @station.state = 1
       @station.save
     when 5
+      @num_btn = num
     else
       render "stations/show"
       return
