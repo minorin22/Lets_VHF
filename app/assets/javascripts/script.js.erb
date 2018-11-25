@@ -18,11 +18,23 @@ $(document).on('turbolinks:load', function(){
     $("#cover_close").fadeIn();
   });
 
-  $("#ptt_btn").mousedown(function(){
-    $(".tx").show().css("display","inline-block");
-  });
-  $("#ptt_btn").mouseup(function(){
-    $(".tx").hide();
+  //$("#ptt_btn").mousedown(function(){
+  //  $(".tx").show().css("display","inline-block");
+  //});
+  //$("#ptt_btn").mouseup(function(){
+  //  $(".tx").hide();
+  //});
+
+  $("#ptt_btn").bind({
+    'touchstart mousedown': function(e) {
+      $(".tx").show().css("display","inline-block");
+      e.preventDefault();
+    },
+    'touchend mouseup mouseout': function(e) {
+      $(".tx").hide();
+      clearInterval(document.interval);
+      e.preventDefault();
+    }
   });
 
   var touched = false;
