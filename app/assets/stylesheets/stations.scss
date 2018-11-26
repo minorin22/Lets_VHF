@@ -353,7 +353,7 @@
           top: 58px;
           left: 30px;
           z-index: 4;
-          width: 200px;
+          width: 202px;
           height: 84px;
           border: 1px solid $character-color;
           box-shadow: 6px 6px 0 $character-color;
@@ -361,6 +361,10 @@
           .sub_screen_wrapper {
             width: 176px;
             margin: 0 auto;
+            &.wide_sub_screen {
+              width: 200px;
+              margin: 0 auto;
+            }
             .p1 {
               margin-top: 12px;
               text-align: left;
@@ -392,6 +396,11 @@
               line-height: 17px;
               margin: 4px auto;
             }
+            .p8 {
+              text-align: center;
+              line-height: 17px;
+              margin: 4px auto;
+            }
             .count_num {
               font-size: 22px;
               font-weight: 600;
@@ -404,6 +413,18 @@
               color: $monitor;
               float: right;
             }
+            .type_ul {
+              width: 170px;
+              margin: 0 auto;
+              .call_type_list {
+                color: $monitor;
+                float: left;
+                width: 50%;
+                margin: 0 auto;
+                line-height: 17px;
+              }
+            }
+
           }
         }
         .start_up_screen {

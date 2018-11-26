@@ -1,0 +1,85 @@
+$("#ais_call").show();
+$(".link:visible").eq(0).focus();
+
+current_station_id = <%= @current_station.id %>
+to_mmsi = <%= @station.mmsi %>
+
+$("#ais_routine").click(function(){
+  $.ajax({
+    url: `/stations/${current_station_id}/dsc_rtn`,
+    type: 'POST',
+    data: {'to_mmsi': to_mmsi},
+    cache: false
+  });
+  $("#ais_call").hide();
+});
+
+$("#ais_safety").click(function(){
+  $.ajax({
+    url: `/stations/${current_station_id}/safety_call_specific_station`,
+    type: 'POST',
+    data: {'to_mmsi': to_mmsi},
+    cache: false
+  });
+  $("#ais_call").hide();
+});
+
+$("#ais_urgency").click(function(){
+  $.ajax({
+    url: `/stations/${current_station_id}/urgency_call_specific_station`,
+    type: 'POST',
+    data: {'to_mmsi': to_mmsi},
+    cache: false
+  });
+  $("#ais_call").hide();
+});
+
+$("#ais_cancel").click(function(){
+  $.post(`/stations/${current_station_id}/other_ships_list`);
+  $("#ais_call").hide();
+});
+
+
+$(".link, .input").on("keydown", function(e){
+
+  var index       =   null;
+  var selector    =   ".link, .input";
+
+  //  ↑キー
+  if ( e.keyCode == 38 || e.keyCode == 37 ){
+      index   =   $(selector).index(this);
+      if (index > 0){
+          $(selector).eq(index-1).focus();
+      }
+      return;
+  }
+  //  ↓キー
+  if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+          $(selector).eq(index+1).focus();
+      }
+      return;
+  }
+});
+
+$("#ais_routine").keypress(function(e){
+  if(e.which == 13){
+    $("#ais_routine").click();
+  }
+});
+$("#ais_safety").keypress(function(e){
+  if(e.which == 13){
+    $("#ais_safety").click();
+  }
+});
+$("#ais_urgency").keypress(function(e){
+  if(e.which == 13){
+    $("#ais_urgency").click();
+  }
+});
+$("#ais_cancel").keypress(function(e){
+  if(e.which == 13){
+    $("#ais_cancel").click();
+  }
+});
