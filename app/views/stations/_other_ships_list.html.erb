@@ -4,7 +4,7 @@
   <ul class="other_ships">
     <% @other_stations.each do |other_station| %>
     <li>
-      <%= link_to "#", remote: true, class:"link", method: :post , data: {name: "#{other_station.name}", mmsi: "#{other_station.mmsi}"} do %>
+      <%= link_to "/stations/#{other_station.id}/ais_call", remote: true, class:"link", method: :post , data: {name: "#{other_station.name}", mmsi: "#{other_station.mmsi}"} do %>
       <span class="brg"><%= other_station.get_brg(@station) %>°</span><span class="colon">:</span><span class="rng"><%= other_station.get_rng(@station) %>NM</span><span class="call_sign"><%= other_station.call_sign %></span>
       <% end %>
     </li>

@@ -9,9 +9,15 @@
   $("#ok_1_2").show();
   $("#call_1_2").hide();
   $(":input").prop("readonly", false);
-  $(".input").val('');
+  $("#input_1_2_2").val('');
   $(".link:visible").eq(0).focus();
 
+  <% if @to_mmsi %>
+    $("#input_1_2_1").val('<%= @to_mmsi %>');
+  <% else %>
+    $("#input_1_2_1").val('');
+  <% end %>
+  
   $("#ok_1_2").click(function(){
     $("#ok_1_2").hide();
     $("#call_1_2").show();
