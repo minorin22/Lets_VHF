@@ -10,10 +10,13 @@
   $("#ok_2_2_2").show();
   $("#call_2_2_2").hide();
   $(":input").prop("readonly", false);
-  $("#input_2_2_2_1").val('');
   $(".link:visible").eq(0).focus();
 
-
+  <% if @to_mmsi %>
+    $("#input_2_2_2_1").val('<%= @to_mmsi %>');
+  <% else %>
+    $("#input_2_2_2_1").val('');
+  <% end %>
 
   $("#ok_2_2_2").click(function(){
     $("#ok_2_2_2").hide();

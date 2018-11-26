@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list, :ais_call]
   before_action :authenticate_user
   before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
@@ -140,6 +140,9 @@ class StationsController < ApplicationController
   end
 
   def dsc_rtn
+    if params[:to_mmsi]
+      @to_mmsi = params[:to_mmsi]
+    end
     case @station.state
     when 1
       @station.state = 4
@@ -188,6 +191,9 @@ class StationsController < ApplicationController
     else
       render "stations/show"
     end
+  end
+
+  def ais_call
   end
 
   def btns

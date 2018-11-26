@@ -11,8 +11,13 @@
   $("#ok_2_1_2").show();
   $("#call_2_1_2").hide();
   $(":input").prop("readonly", false);
-  $("#input_2_1_2_1").val('');
   $(".link:visible").eq(0).focus();
+
+  <% if @to_mmsi %>
+    $("#input_2_1_2_1").val('<%= @to_mmsi %>');
+  <% else %>
+    $("#input_2_1_2_1").val('');
+  <% end %>
 
   var message_types = ["All modes RT", "Position RQ", "Test"];
   var message_type = $("#input_2_1_2_2").val();
