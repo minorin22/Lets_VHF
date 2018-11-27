@@ -1,4 +1,53 @@
 <% case @current_station.state %>
+<% when 4 %>
+  $("#recieved_call").show();
+  $(".link:visible").eq(0).focus();
+  <% if @dsc.category == "distress" %>
+    $("#recieved_when_menu_mode").html('Recieved DISTRESS.<br>Accept it and abort this menu immediately?');
+  <% end %>
+  <% if @dsc.category != "distress" && @dsc.eos != "ACK BQ" %>
+    $("#recieved_when_menu_mode").html('Recieved DSC call.<br>Accept it and abort this menu immediately?');
+  <% end %>
+  <% if @dsc.category != "distress" && @dsc.eos == "ACK BQ" %>
+    $("#recieved_when_menu_mode").html('Acknowledged!<br>Accept it and abort this menu immediately?');
+  <% end %>
+  dsc_id = <%= @dsc.id %>
+  $("#dsc_accept").click(function(){
+    $.post(`/dscs/${dsc_id}/accept`);
+  });
+  $("#dsc_ignore").click(function(){
+    $("#recieved_call").hide();
+  });
+
+  $("#dsc_accept").keypress(function(e){
+    if(e.which == 13){
+      $("#dsc_accept").click();
+    }
+  });
+  $("#dsc_ignore").keypress(function(e){
+    if(e.which == 13){
+      $("#dsc_ignore").click();
+    }
+  });
+
+  $(".link, .input").on("keydown", function(e){
+    var index       =   null;
+    var selector    =   ".link, .input";
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
 <% when 6 %>
   $(".home_screen").hide();
   $(".sub_screen").hide();
@@ -8,5 +57,46 @@
   $(".message").html('<%= j render 'recieved_call' %>');
   $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
 
+<% when 7 %>
+  $("#recieved_other_call").show();
+  $(".link:visible").eq(0).focus();
+
+  dsc_id = <%= @dsc.id %>
+  $("#break_to_view").click(function(){
+    $.post(`/dscs/${dsc_id}/accept`);
+  });
+  $("#continue_distress").click(function(){
+    $("#recieved_other_call").hide();
+  });
+
+  $("#continue_distress").keypress(function(e){
+    if(e.which == 13){
+      $("#continue_distress").click();
+    }
+  });
+  $("#break_to_view").keypress(function(e){
+    if(e.which == 13){
+      $("#break_to_view").click();
+    }
+  });
+
+  $(".link, .input").on("keydown", function(e){
+    var index       =   null;
+    var selector    =   ".link, .input";
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
 <% else %>
 <% end %>

@@ -1,0 +1,38 @@
+<ul class="calls">
+  <% @station.recieved_distress_calls.reverse_each do |call| %>
+  <li>
+    <%= link_to "/dscs/#{call.id}", remote: true, class:"link", method: :post, data: {mmsi: "#{call.from_mmsi}"} do %>
+    <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="type"><%= @type["#{call.message_type}"] %></span>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<p class="from_or_to">From: <span class="from_or_to_mmsi"></span></p>
+
+
+<script>
+from_mmsi = $(".link:visible").eq(0).data("mmsi");
+$(".from_or_to_mmsi").text(from_mmsi);
+$(".link, .input").on("keydown", function(e){
+  var index       =   null;
+  var selector    =   ".link, .input";
+  if ( e.keyCode == 38 || e.keyCode == 37 ){
+      index   =   $(selector).index(this);
+      if (index > 0){
+          $(selector).eq(index-1).focus();
+          from_mmsi = $(selector).eq(index-1).data("mmsi");
+          $(".from_or_to_mmsi").text(from_mmsi);
+      }
+      return;
+  }
+  if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+          $(selector).eq(index+1).focus();
+          from_mmsi = $(selector).eq(index+1).data("mmsi");
+          $(".from_or_to_mmsi").text(from_mmsi);
+      }
+      return;
+  }
+});
+</script>
