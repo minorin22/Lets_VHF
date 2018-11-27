@@ -262,6 +262,17 @@
     }
   });
 
+  $("#menu4_1").click(function(){
+    $(".dsc_logs").hide();
+    $(".recieved_distress_list").show();
+    $(".calls_info").html('<%= j render 'recieved_distress' %>')
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu4_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu4_1").click();
+    }
+  });
 
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();

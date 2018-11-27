@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   post "dscs/:id/recieved_call" => "dscs#recieved_call"
   post "dscs/:id/ack" => "dscs#ack"
   post "dscs/:id/listen" => "dscs#listen"
+  post "dscs/:id/accept" => "dscs#accept"
 
   #resources :users
   get "/" => "home#top"

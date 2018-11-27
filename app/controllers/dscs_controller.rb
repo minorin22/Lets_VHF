@@ -1,6 +1,6 @@
 class DscsController < ApplicationController
-  before_action :set_dsc, only: [:show, :ack, :recieved_call, :listen, :set_lat_long]
-  before_action :set_lat_long, only: [:recieved_call, :show]
+  before_action :set_dsc, only: [:show, :ack, :recieved_call, :listen, :set_lat_long, :accept]
+  before_action :set_lat_long, only: [:recieved_call, :show, :accept]
   def ship_station_call
     @dsc = Dsc.new(
       from_id: @current_station.id,
@@ -144,7 +144,22 @@ class DscsController < ApplicationController
 
   def recieved_call
     case @current_station.state
-    when 1
+    when 1, 2, 5
+      @current_station.state = 6
+      @current_station.save
+    when 4
+    when 7
+      if @dsc.message_type == "Distress ACK"
+        @current_station.state = 6
+        @current_station.save
+      end
+    else
+    end
+  end
+
+  def accept
+    case @current_station.state
+    when 4, 7
       @current_station.state = 6
       @current_station.save
     else
