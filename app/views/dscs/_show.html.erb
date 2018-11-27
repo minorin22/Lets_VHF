@@ -33,44 +33,76 @@
     <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
   </ul>
 <% else %>
-  <p>Recieved <%= @dsc.category %> massage</p>
-  <ul class="call_info">
-    <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
-    <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
-    <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
-    <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
-      <li><span class="info_type">Work CH</span><span class="info_content">:
-        <% if @dsc.work_ch >= 10 %>
-          <%= @dsc.work_ch %>
-        <% else %>
-          <%= "0#{@dsc.work_ch}" %>
+  <% if @dsc.category == "distress" %>
+    <p>Recieved <%= @dsc.category %> massage</p>
+    <ul class="call_info">
+      <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type     %></span></li>
+      <% if @dsc.message_type == "Proxy distress" %>
+        <li><span class="info_type">To</span><span class="info_content">: All ships</span></li>
         <% end %>
-        </span></li>
-    <% end %>
-    <% if @dsc.message_type == "Ship position" %>
-      <li><span class="info_type">Position</span><span class="info_content">: <%= "#{@lat_degree}°#{@lat_min}' " %>
+        <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+        <% if @dsc.message_type == "Proxy distress" %>
+        <li><span class="info_type">Dist-ID</span><span class="info_content">: <%= @dsc.dist_id     %></span></li>
+      <% end %>
+      <li><span class="info_type">Nature</span><span class="info_content">: <%= @dsc.nature   %></span></li>
+      <li><span class="info_type">Position</span><span class="info_content">: <%=     "#{@lat_degree}°#{@lat_min}' " %>
         <% if @dsc.lat >= 0 %>
           <%= "N" %>
         <% else %>
           <%= "S" %>
         <% end %>
-      </span></li>
-      <li><span class="info_type">&nbsp;</span><span class="info_content">: <%= "#{@long_degree}°#{@long_min}' " %>
+        </span></li>
+      <li><span class="info_type">&nbsp;</span><span class="info_content">: <%=     "#{@long_degree}°#{@long_min}' " %>
         <% if @dsc.long >= 0 %>
           <%= "E" %>
         <% else %>
           <%= "W" %>
         <% end %>
-      </span></li>
-      <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
-    <% end %>
-    <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
-  </ul>
+        </span></li>
+      <li><span class="info_type">UTC</span><span class="info_content">: <%=    @dsc.created_at.strftime("%H:%M") %></span></li>
+      <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+      </ul>
+  <% end %>
+  <% if @dsc.category != "distress" %>
+    <p>Recieved <%= @dsc.category %> massage</p>
+    <ul class="call_info">
+      <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
+      <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
+      <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
+      <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
+        <li><span class="info_type">Work CH</span><span class="info_content">:
+          <% if @dsc.work_ch >= 10 %>
+            <%= @dsc.work_ch %>
+          <% else %>
+            <%= "0#{@dsc.work_ch}" %>
+          <% end %>
+        </span></li>
+      <% end %>
+      <% if @dsc.message_type == "Ship position" %>
+        <li><span class="info_type">Position</span><span class="info_content">: <%= "#{@lat_degree}°#{@lat_min}' " %>
+          <% if @dsc.lat >= 0 %>
+            <%= "N" %>
+          <% else %>
+            <%= "S" %>
+          <% end %>
+        </span></li>
+        <li><span class="info_type">&nbsp;</span><span class="info_content">: <%= "#{@long_degree}°#{@long_min}' " %>
+          <% if @dsc.long >= 0 %>
+            <%= "E" %>
+          <% else %>
+            <%= "W" %>
+          <% end %>
+        </span></li>
+        <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
+      <% end %>
+      <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+    </ul>
+  <% end %>
   <ul class="massage_menues">
     <li class="menu_r"><a class="link" tabindex="0">[Close]</a></li>
     <% if @dsc.eos == "ACK RQ" %>
-    <li class="menu_r"><%= link_to "[ACK]", "/dscs/#{@dsc.id}/ack",remote: true, method: :post, class:"link" %></li>
-    <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
+      <li class="menu_r"><%= link_to "[ACK]", "/dscs/#{@dsc.id}/ack",remote: true, method: :post, class:"link" %></li>
+      <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
     <% end %>
     <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
     <li class="menu_r"><a class="link" tabindex="0">[MMSI]</a></li>
