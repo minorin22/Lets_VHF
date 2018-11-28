@@ -7,7 +7,7 @@
       <%= form_tag("/users") do %>
         <div class="item">
           <p>ユーザーID <% if @error_message %><span>*</span><% end %></p>
-          <input name="name" value="<%= @name %>">
+          <input name="name" value="<%= @name %>" autofocus>
         </div>
         <div class="item">
           <p>Password <% if @error_message %><span>*</span><% end %></p>
