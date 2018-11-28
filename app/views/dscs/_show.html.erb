@@ -2,7 +2,9 @@
   <p>Transmitted <%= @dsc.category %> massage</p>
   <ul class="call_info">
     <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
-    <li><span class="info_type">To</span><span class="info_content">: <%= @to.mmsi %></span></li>
+    <% if @to %>
+      <li><span class="info_type">To</span><span class="info_content">: <%= @to.mmsi %></span></li>
+    <% end %>
     <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type %></span></li>
     <% if @dsc.message_type != "Test" && @dsc.message_type != "Position RQ" && @dsc.message_type != "Polling" && @dsc.message_type != "Data" && @dsc.message_type != "Ship position" && @dsc.message_type != "Unable to comply" %>
       <li><span class="info_type">Work CH</span><span class="info_content">:
@@ -31,6 +33,11 @@
       <li><span class="info_type">UTC</span><span class="info_content">: <%= @dsc.created_at.strftime("%H:%M") %></span></li>
     <% end %>
     <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+  </ul>
+  <ul class="massage_menues">
+    <li class="menu_r"><a class="link" tabindex="0" id="close_4_3">[Close]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Resend]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Edit&Send]</a></li>
   </ul>
 <% else %>
   <% if @dsc.category == "distress" %>
@@ -61,6 +68,15 @@
         </span></li>
       <li><span class="info_type">UTC</span><span class="info_content">: <%=    @dsc.created_at.strftime("%H:%M") %></span></li>
       <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
+      </ul>
+      <ul class="massage_menues">
+        <li class="menu_r"><a class="link" tabindex="0" id="close_4_1">[Close]</a></li>
+        <% if @dsc.message_type != "Distress ACK" && @dsc.message_type != "Dist-relay ACK" && @dsc.message_type != "Proxy dist-ACK" %>
+          <li class="menu_r"><a class="link" tabindex="0">[ACK]</a></li>
+        <% end %>
+        <% if @dsc.message_type != "Distress ACK" && @dsc.message_type != "Dist-relay ACK" && @dsc.message_type != "Proxy dist-ACK" && @dsc.message_type != "Distress relay" %>
+          <li class="menu_r"><a class="link" tabindex="0">[Relay]</a></li>
+        <% end %>
       </ul>
   <% end %>
   <% if @dsc.category != "distress" %>
@@ -97,14 +113,15 @@
       <% end %>
       <li><span class="info_type">EOS</span><span class="info_content">: <%= @dsc.eos %></span></li>
     </ul>
+    <ul class="massage_menues">
+      <li class="menu_r"><a class="link" tabindex="0" id="close_4_2">[Close]</a></li>
+      <% if @dsc.eos == "ACK RQ" %>
+        <li class="menu_r"><%= link_to "[ACK]", "/dscs/#{@dsc.id}/ack",remote: true, method: :post, class:"link" %></li>
+        <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
+      <% end %>
+      <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
+      <li class="menu_r"><a class="link" tabindex="0">[MMSI]</a></li>
+    </ul>
   <% end %>
-  <ul class="massage_menues">
-    <li class="menu_r"><a class="link" tabindex="0">[Close]</a></li>
-    <% if @dsc.eos == "ACK RQ" %>
-      <li class="menu_r"><%= link_to "[ACK]", "/dscs/#{@dsc.id}/ack",remote: true, method: :post, class:"link" %></li>
-      <li class="menu_r"><a class="link" tabindex="0">[NACK]</a></li>
-    <% end %>
-    <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
-    <li class="menu_r"><a class="link" tabindex="0">[MMSI]</a></li>
-  </ul>
+
 <% end %>

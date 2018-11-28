@@ -24,3 +24,42 @@ $(".link, .input").on("keydown", function(e){
       return;
   }
 });
+
+$("#close_4_1").click(function(){
+  $(".message").hide();
+  $(".recieved_distress_list").show();
+  $(".link:visible").eq(0).focus();
+  from_mmsi = $(".link:visible").eq(0).data("mmsi");
+  $(".from_or_to_mmsi").text(from_mmsi);
+});
+$("#close_4_1").keypress(function(e){
+  if(e.which == 13){
+    $("#close_4_1").click();
+  }
+});
+
+$("#close_4_2").click(function(){
+  $(".message").hide();
+  $(".recieved_others_list").show();
+  $(".link:visible").eq(0).focus();
+  from_mmsi = $(".link:visible").eq(0).data("mmsi");
+  $(".from_or_to_mmsi").text(from_mmsi);
+});
+$("#close_4_2").keypress(function(e){
+  if(e.which == 13){
+    $("#close_4_2").click();
+  }
+});
+
+$("#close_4_3").click(function(){
+  $(".message").hide();
+  $(".transmitted_calls_list").show();
+  $(".link:visible").eq(0).focus();
+  to_mmsi = $(".link:visible").eq(0).data("mmsi");
+  $(".from_or_to_mmsi").text(to_mmsi);
+});
+$("#close_4_3").keypress(function(e){
+  if(e.which == 13){
+    $("#close_4_3").click();
+  }
+});
