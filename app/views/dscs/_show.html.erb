@@ -72,10 +72,10 @@
       <ul class="massage_menues">
         <li class="menu_r"><a class="link" tabindex="0" id="close_4_1">[Close]</a></li>
         <% if @dsc.message_type != "Distress ACK" && @dsc.message_type != "Dist-relay ACK" && @dsc.message_type != "Proxy dist-ACK" %>
-          <li class="menu_r"><a class="link" tabindex="0">[ACK]</a></li>
+          <li class="menu_r"><a class="link" tabindex="0" id="ack_4_1">[ACK]</a></li>
         <% end %>
         <% if @dsc.message_type != "Distress ACK" && @dsc.message_type != "Dist-relay ACK" && @dsc.message_type != "Proxy dist-ACK" && @dsc.message_type != "Distress relay" %>
-          <li class="menu_r"><a class="link" tabindex="0">[Relay]</a></li>
+          <li class="menu_r"><a class="link" tabindex="0" id="relay_4_1">[Relay]</a></li>
         <% end %>
       </ul>
   <% end %>

@@ -1,12 +1,19 @@
 <% if @dsc.category == "distress" %>
-  <p>Recieved <%= @dsc.category %> massage</p>
+  <% if @dsc.message_type == "Distress ACK" %>
+    <p>Recieved Acknowledgement</p>
+  <% else %>
+    <p>Recieved <%= @dsc.category %> massage</p>
+  <% end %>
   <ul class="call_info">
     <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type   %></span></li>
-    <% if @dsc.message_type == "Proxy distress" %>
+    <% if @dsc.message_type == "Proxy distress" || @dsc.message_type == "Distress ACK" || @dsc.message_type == "Proxy dist-ACK" %>
       <li><span class="info_type">To</span><span class="info_content">: All ships</span></li>
     <% end %>
+    <% if @dsc.message_type == "Distress relay" || @dsc.message_type == "Dis-relay ACK" %>
+      <li><span class="info_type">To</span><span class="info_content">: Individual</span></li>
+    <% end %>
     <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
-    <% if @dsc.message_type == "Proxy distress" %>
+    <% if @dsc.message_type != "Distress" %>
       <li><span class="info_type">Dist-ID</span><span class="info_content">: <%= @dsc.dist_id   %></span></li>
     <% end %>
     <li><span class="info_type">Nature</span><span class="info_content">: <%= @dsc.nature %></span></li>
@@ -268,5 +275,19 @@
             return;
           }
         });
+  </script>
+<% end %>
+
+<% if @dsc.category == "distress" && (@dsc.message_type == "Distress ACK" || @dsc.message_type == "Dist-relay ACK" || @dsc.message_type == "Proxy dist-ACK") %>
+  <div class="silence_alarm" id="silence_alarm_bq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <script>
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        var dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/listen`);
+      });
   </script>
 <% end %>

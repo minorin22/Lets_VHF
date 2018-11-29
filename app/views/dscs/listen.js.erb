@@ -1,6 +1,10 @@
 $(".menu_screen").hide();
 $(".home_screen").show();
 
+$(".distress_info").text('　');
+$(".distress_info").removeClass("reverse_color");
+$(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
+
 <% if @current_station.channel >= 10 %>
   $(".current_ch").text("<%= @current_station.channel %>");
 <% else %>

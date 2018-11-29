@@ -205,6 +205,24 @@
             </ul>
           </div>
         </div>
+        <div class="sub_screen" id="distress_ack">
+          <div class="sub_screen_wrapper">
+            <p class="p9">- Attention ! -<br />Send this call only<br />when being directed<br />by administration.</p>
+            <ul>
+              <li class="li3"><a class="link" tabindex="0" id="dist_ack_continue">[Continue]</a></li>
+              <li class="li4"><a class="link" tabindex="0" id="dist_ack_cancel">[Cancel]</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sub_screen" id="distress_relay">
+          <div class="sub_screen_wrapper">
+            <p class="p9">- Attention ! -<br />Normally, this call<br />should be sent to<br />coast station.</p>
+            <ul>
+              <li class="li3"><a class="link" tabindex="0" id="dist_relay_continue">[Continue]</a></li>
+              <li class="li4"><a class="link" tabindex="0" id="dist_relay_cancel">[Cancel]</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="start_up_screen">
           <div class="start_up_screen_wrapper">
             <%= image_tag "jrc_logo_bk.svg", class:"jrc_logo_bk" %>
@@ -425,6 +443,8 @@
           <div class="menu menu_class proxy_distress_call_all_ships">
           </div>
           <div class="menu menu_class dsc_test_call">
+          </div>
+          <div class="menu menu_class distress_relay_call">
           </div>
           <div class="menu menu_class calls_list recieved_distress_list">
             <p>4.1) Recieved distress list</p>

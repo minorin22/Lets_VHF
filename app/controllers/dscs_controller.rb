@@ -1,5 +1,5 @@
 class DscsController < ApplicationController
-  before_action :set_dsc, only: [:show, :ack, :recieved_call, :listen, :set_lat_long, :accept]
+  before_action :set_dsc, only: [:show, :ack, :recieved_call, :listen, :set_lat_long, :accept, :relay]
   before_action :set_lat_long, only: [:recieved_call, :show, :accept]
   def ship_station_call
     @dsc = Dsc.new(
@@ -107,6 +107,7 @@ class DscsController < ApplicationController
       eos: "EOS"
     )
     @dsc.save
+    @current_station.channel = 16
     @current_station.state = 7
     @current_station.save
   end
@@ -198,6 +199,46 @@ class DscsController < ApplicationController
         long: @current_station.long,
         eos: "ACK BQ"
       )
+    elsif @dsc.message_type == "Distress"
+      @ack = Dsc.new(
+        from_id: @current_station.id,
+        category: "distress",
+        format: "Distress",
+        message_type: "Distress ACK",
+        dist_id: @from.mmsi,
+        nature: @dsc.nature,
+        lat: @dsc.lat,
+        long: @dsc.long,
+        work_ch: 16,
+        eos: "EOS"
+      )
+    elsif @dsc.message_type == "Proxy distress"
+      @ack = Dsc.new(
+        from_id: @current_station.id,
+        category: "distress",
+        format: "Distress",
+        message_type: "Proxy dist-ACK",
+        dist_id: @dsc.dist_id,
+        nature: @dsc.nature,
+        lat: @dsc.lat,
+        long: @dsc.long,
+        work_ch: 16,
+        eos: "EOS"
+      )
+    elsif @dsc.message_type == "Distress relay"
+      @ack = Dsc.new(
+        from_id: @current_station.id,
+        to_id: @from.id,
+        category: "distress",
+        format: "Distress",
+        message_type: "Dist-relay ACK",
+        dist_id: @dsc.dist_id,
+        nature: @dsc.nature,
+        lat: @dsc.lat,
+        long: @dsc.long,
+        work_ch: 16,
+        eos: "EOS"
+      )
     else
       @ack = Dsc.new(
         from_id: @current_station.id,
@@ -214,6 +255,41 @@ class DscsController < ApplicationController
     if @dsc.work_ch != 0 && @dsc.work_ch != nil
       @current_station.channel = @dsc.work_ch
     end
+    @current_station.save
+  end
+
+  def relay
+    if @dsc.message_type == "Distress"
+      @relay = Dsc.new(
+        from_id: @current_station.id,
+        to_id: Station.find_by(mmsi: params[:mmsi].to_i).id,
+        category: "distress",
+        format: "Distress",
+        message_type: "Distress relay",
+        dist_id: @from.mmsi,
+        nature: @dsc.nature,
+        lat: @dsc.lat,
+        long: @dsc.long,
+        work_ch: 16,
+        eos: "EOS"
+      )
+    elsif @dsc.message_type == "Proxy distress"
+      @relay = Dsc.new(
+        from_id: @current_station.id,
+        to_id: Station.find_by(mmsi: params[:mmsi].to_i).id,
+        category: "distress",
+        format: "Distress",
+        message_type: "Distress relay",
+        dist_id: @dsc.dist_id,
+        nature: @dsc.nature,
+        lat: @dsc.lat,
+        long: @dsc.long,
+        work_ch: 16,
+        eos: "EOS"
+      )
+    end
+    @relay.save
+    @current_station.state = 1
     @current_station.save
   end
 
