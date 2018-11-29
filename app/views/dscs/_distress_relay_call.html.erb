@@ -1,0 +1,53 @@
+<p>Distress relay call</p>
+<%= form_tag("/dscs/#{@dsc.id}/relay", remote: true, method: :post) do %>
+<div class="selects">
+  <ul>
+    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_relay_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
+  </ul>
+  <div class="ok_cancel">
+    <a class="link link_ok" id="ok_relay" tabindex="0">[OK]</a>
+    <input type="submit" value="[Call]" class="link link_call" id="call_relay" tabindex="0">
+    <a class="link link_cancel" id="cancel_relay" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>
+<script>
+$("#ok_relay").click(function(){
+  $("#ok_relay").hide();
+  $("#call_relay").show();
+  $(":input").prop("readonly", true);
+  $("#call_relay").focus();
+});
+
+$("#cancel_relay").click(function(){
+  $("#ok_relay").show();
+  $("#call_relay").hide();
+  $(":input").prop("readonly", false);
+  $("#ok_relay").focus();
+
+});
+
+$("form").submit(function(){
+  var self = this;
+  $(":submit", self).prop("disabled", true);
+  setTimeout(function(){
+    $(":submit", self).prop("disabled", false);
+  }, 10000);
+});
+
+$("#ok_relay").keypress(function(e){
+  if(e.which == 13){
+    $("#ok_relay").click();
+  }
+});
+$("#call_relay").keypress(function(e){
+  if(e.which == 13){
+    $("#call_relay").click();
+  }
+});
+$("#cancel_relay").keypress(function(e){
+  if(e.which == 13){
+    $("#cancel_relay").click();
+  }
+});
+</script>

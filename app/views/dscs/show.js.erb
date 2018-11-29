@@ -63,3 +63,76 @@ $("#close_4_3").keypress(function(e){
     $("#close_4_3").click();
   }
 });
+
+$("#ack_4_1").click(function(){
+  $("#distress_ack").show();
+  $(".link:visible").eq(0).focus();
+});
+$("#ack_4_1").keypress(function(e){
+  if(e.which == 13){
+    $("#ack_4_1").click();
+  }
+});
+
+$("#relay_4_1").click(function(){
+  $("#distress_relay").show();
+  $(".link:visible").eq(0).focus();
+});
+$("#relay_4_1").keypress(function(e){
+  if(e.which == 13){
+    $("#relay_4_1").click();
+  }
+});
+
+dsc_id = <%= @dsc.id %>
+$("#dist_ack_continue").click(function(){
+  $.post(`/dscs/${dsc_id}/ack`);
+});
+$("#dist_ack_continue").keypress(function(e){
+  if(e.which == 13){
+    $("#dist_ack_continue").click();
+  }
+});
+
+$("#dist_relay_continue").click(function(){
+  $(".home_screen").hide();
+  $(".sub_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".distress_relay_call").html('<%= j render 'distress_relay_call' %>');
+  $(".distress_relay_call").show();
+  $("#ok_relay").show();
+  $("#call_relay").hide();
+  $(":input").prop("readonly", false);
+  $("#input_relay_1").val('');
+  $(".link:visible").eq(0).focus();
+});
+
+
+
+$("#dist_relay_continue").keypress(function(e){
+  if(e.which == 13){
+    $("#dist_relay_continue").click();
+  }
+});
+
+$("#dist_ack_cancel").click(function(){
+  $("#distress_ack").hide();
+  $(".link:visible").eq(0).focus();
+});
+$("#dist_ack_cancel").keypress(function(e){
+  if(e.which == 13){
+    $("#dist_ack_cancel").click();
+  }
+});
+
+$("#dist_relay_cancel").click(function(){
+  $("#distress_relay").hide();
+  $(".link:visible").eq(0).focus();
+});
+$("#dist_relay_cancel").keypress(function(e){
+  if(e.which == 13){
+    $("#dist_relay_cancel").click();
+  }
+});
