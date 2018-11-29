@@ -401,6 +401,11 @@
               line-height: 17px;
               margin: 4px auto;
             }
+            .p9 {
+              text-align: center;
+              line-height: 16px;
+              margin: 1px auto;
+            }
             .count_num {
               font-size: 22px;
               font-weight: 600;
@@ -412,6 +417,20 @@
             .li2 {
               color: $monitor;
               float: right;
+            }
+            .li3 {
+              color: $monitor;
+              float: left;
+              margin: 1px auto;
+              padding: 0 auto;
+              line-height: 16px;
+            }
+            .li4 {
+              color: $monitor;
+              float: right;
+              margin: 1px auto;
+              padding: 0 auto;
+              line-height: 16px;
             }
             .type_ul {
               width: 170px;

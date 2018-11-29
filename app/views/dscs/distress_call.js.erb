@@ -6,4 +6,9 @@ setTimeout(function(){
   $(".distress_info").addClass("reverse_color");
   $(".dsc_info").css("display", "none");
   $(".dsc_infos").html('<p>Next DISTRESS call : 3.9 min later</p>');
+  <% if @current_station.channel >= 10 %>
+    $(".current_ch").text("<%= @current_station.channel %>");
+  <% else %>
+    $(".current_ch").text("<%= "0#{@current_station.channel}" %>");
+  <% end %>
 },2000);

@@ -13,9 +13,9 @@
 <script>
 to_mmsi = $(".link:visible").eq(0).data("mmsi");
 $(".from_or_to_mmsi").text(to_mmsi);
-$(".link, .input").on("keydown", function(e){
+$(".link").on("keydown", function(e){
   var index       =   null;
-  var selector    =   ".link, .input";
+  var selector    =   ".link:visible";
   if ( e.keyCode == 38 || e.keyCode == 37 ){
       index   =   $(selector).index(this);
       if (index > 0){
