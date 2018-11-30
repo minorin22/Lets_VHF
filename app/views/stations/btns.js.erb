@@ -57,5 +57,8 @@
   if (number == 0) {
     $.post(`/stations/${gon.station_id}/other_ships_list`);
   }
+  if (number == 8) {
+    $.post(`/stations/${gon.station_id}/self_diagnosis`);
+  }
 <% else %>
 <% end %>
