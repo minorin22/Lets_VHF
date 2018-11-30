@@ -139,9 +139,7 @@
   });
 
   $("#menu8_1").click(function(){
-    $(".maintenance").hide();
-    $(".self_diagnosis").show();
-    $(".link:visible").eq(0).focus();
+    $.post(`/stations/${gon.station_id}/self_diagnosis`);
   });
   $("#menu8_1").keypress(function(e){
     if(e.which == 13){

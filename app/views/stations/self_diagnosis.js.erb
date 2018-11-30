@@ -1,0 +1,38 @@
+<% case @station.state %>
+<% when 4 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".maintenance").hide();
+  $(".self_diagnosis").html('<%= j render 'self_diagnosis' %>');
+  $(".self_diagnosis").show();
+  $(".link:visible").eq(0).focus();
+
+  $(".link, .input").on("keydown", function(e){
+    var index       =   null;
+    var selector    =   ".link, .input";
+    if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+        if (index > 0){
+            $(selector).eq(index-1).focus();
+        }
+        return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+            $(selector).eq(index+1).focus();
+        }
+        return;
+    }
+  });
+
+  $(".back").keypress(function(e){
+    if(e.which == 13){
+      $(".back").click();
+    }
+  });
+
+<% else %>
+<% end %>
