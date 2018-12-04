@@ -9,6 +9,13 @@
   $(".self_diagnosis").show();
   $(".link:visible").eq(0).focus();
 
+  $("#menu8_1_1").click(function(){
+    $(".transceiver_test").html('<%= j render 'transceiver_test' %>');
+    $(".transceiver_test").show();
+    $(".self_diagnosis").hide();
+    $(".link:visible").eq(0).focus();
+  });
+
   $(".link, .input").on("keydown", function(e){
     var index       =   null;
     var selector    =   ".link, .input";
@@ -33,6 +40,13 @@
       $(".back").click();
     }
   });
+  $("#menu8_1_1").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_1_1").click();
+    }
+  });
+
+
 
 <% else %>
 <% end %>
