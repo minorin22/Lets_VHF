@@ -1,0 +1,128 @@
+<p>8.1.1) Transceiver</p>
+<div class="menues">
+  <p>Start checking of <a class="link" tabindex="0" id="test_mode">ALL</a></p>
+  <ul class="test_menues">
+    <li id="test_menu1_1"><span class="test_item">- ROM</span><span class="colon">:</span><span class="test_result" id="result1_1">--</span></li>
+    <li id="test_menu1_2"><span class="test_item">- RAM</span><span class="colon">:</span><span class="test_result" id="result1_2">--</span></li>
+    <li id="test_menu1_3"><span class="test_item">- SIO</span><span class="colon">:</span><span class="test_result" id="result1_3">--</span></li>
+    <li id="test_menu1_4"><span class="test_item">- MODEM</span><span class="colon">:</span><span class="test_result" id="result1_4">--</span></li>
+    <li id="test_menu1_5"><span class="test_item">- Loop</span><span class="colon">:</span><span class="test_result" id="result1_5">--</span></li>
+    <li id="test_menu1_6"><span class="test_item">- PS(DC/DC)</span><span class="colon">:</span><span class="test_result" id="result1_6">--</span></li>
+  </ul>
+</div>
+<script>
+$("#test_mode").on("keydown", function(e){
+  var test_mode = ['ALL', 'DGT CKT', 'MODEM', 'Loop', 'PS']
+  var index = null;
+  if ($("#test_mode").text() == test_mode[0]){
+    index = 0;
+  }
+  if ($("#test_mode").text() == test_mode[1]){
+    index = 1;
+  }
+  if ($("#test_mode").text() == test_mode[2]){
+    index = 2;
+  }
+  if ($("#test_mode").text() == test_mode[3]){
+    index = 3;
+  }
+  if ($("#test_mode").text() == test_mode[4]){
+    index = 4;
+  }
+
+  if ( e.keyCode == 38 || e.keyCode == 37 ){
+    if (index >= 0){
+      index -= 1;
+      $("#test_mode").text(test_mode[index]);
+      if (index == 0) {
+        $("#test_menu1_1").show();
+        $("#test_menu1_2").show();
+        $("#test_menu1_3").show();
+        $("#test_menu1_4").show();
+        $("#test_menu1_5").show();
+        $("#test_menu1_6").show();
+      }
+      if (index == 1) {
+        $("#test_menu1_1").show();
+        $("#test_menu1_2").show();
+        $("#test_menu1_3").show();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 2) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").show();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 3) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").show();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 4) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").show();
+      }
+    }
+    return;
+  }
+  if ( e.keyCode == 40  || e.keyCode == 39){
+    if (index < test_mode.length){
+      index += 1;
+      $("#test_mode").text(test_mode[index]);
+      if (index == 0) {
+        $("#test_menu1_1").show();
+        $("#test_menu1_2").show();
+        $("#test_menu1_3").show();
+        $("#test_menu1_4").show();
+        $("#test_menu1_5").show();
+        $("#test_menu1_6").show();
+      }
+      if (index == 1) {
+        $("#test_menu1_1").show();
+        $("#test_menu1_2").show();
+        $("#test_menu1_3").show();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 2) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").show();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 3) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").show();
+        $("#test_menu1_6").hide();
+      }
+      if (index == 4) {
+        $("#test_menu1_1").hide();
+        $("#test_menu1_2").hide();
+        $("#test_menu1_3").hide();
+        $("#test_menu1_4").hide();
+        $("#test_menu1_5").hide();
+        $("#test_menu1_6").show();
+      }
+    }
+    return;
+  }
+});
+</script>
