@@ -50,4 +50,22 @@ $("#cancel_relay").keypress(function(e){
     $("#cancel_relay").click();
   }
 });
+$(".link, .input").on("keydown", function(e){
+var index       =   null;
+var selector    =   ".link, .input";
+if ( e.keyCode == 38 || e.keyCode == 37 ){
+    index   =   $(selector).index(this);
+    if (index > 0){
+        $(selector).eq(index-1).focus();
+      }
+      return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+        $(selector).eq(index+1).focus();
+      }
+      return;
+    }
+  });
 </script>

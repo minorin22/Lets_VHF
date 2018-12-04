@@ -650,6 +650,26 @@
                 display: inline-block;
                 text-align: left;
               }
+              p {
+                text-decoration: none;
+              }
+              .test_menues {
+                width: 210px;
+                margin-left: 20px;
+                .test_item {
+                  display: inline-block;
+                  width: 106px;
+                  text-align: left;
+                }
+                .colon {
+                  display: inline-block;
+                  margin: 0 6px;
+                }
+                .test_result {
+                  display: inline-block;
+                  text-align: left;
+                }
+              }
             }
           }
 
