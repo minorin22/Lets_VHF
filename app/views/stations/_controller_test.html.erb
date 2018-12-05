@@ -1,0 +1,131 @@
+<p>8.1.2) Controller</p>
+<div class="menues">
+  <p>Start checking of <a class="link" tabindex="0" id="test_mode_2">ALL</a></p>
+  <ul class="test_menues">
+    <li id="test_menu2_1"><span class="test_item">- ROM</span><span class="colon">:</span><span class="test_result" id="result2_1">--</span></li>
+    <li id="test_menu2_2"><span class="test_item">- RAM</span><span class="colon">:</span><span class="test_result" id="result2_2">--</span></li>
+    <li id="test_menu2_3"><span class="test_item">- SIO</span><span class="colon">:</span><span class="test_result" id="result2_3">--</span></li>
+    <li id="test_menu2_4"><span class="test_item">- LCD&LED</span><span class="colon">:</span><span class="test_result" id="result2_4">--</span></li>
+    <li id="test_menu2_5"><span class="test_item">- Speaker</span><span class="colon">:</span><span class="test_result" id="result2_5">--</span></li>
+  </ul>
+</div>
+<script>
+$("#test_mode_2").on("keydown", function(e){
+  var test_mode_2 = ['ALL', 'DGT CKT', 'LCD&LED', 'Speaker']
+  var index = null;
+  if ($("#test_mode_2").text() == test_mode_2[0]){
+    index = 0;
+  }
+  if ($("#test_mode_2").text() == test_mode_2[1]){
+    index = 1;
+  }
+  if ($("#test_mode_2").text() == test_mode_2[2]){
+    index = 2;
+  }
+  if ($("#test_mode_2").text() == test_mode_2[3]){
+    index = 3;
+  }
+
+  if ( e.keyCode == 38 || e.keyCode == 37 ){
+    if (index >= 0){
+      index -= 1;
+      $("#test_mode_2").text(test_mode_2[index]);
+      if (index == 0) {
+        $("#test_menu2_1").show();
+        $("#test_menu2_2").show();
+        $("#test_menu2_3").show();
+        $("#test_menu2_4").show();
+        $("#test_menu2_5").show();
+      }
+      if (index == 1) {
+        $("#test_menu2_1").show();
+        $("#test_menu2_2").show();
+        $("#test_menu2_3").show();
+        $("#test_menu2_4").hide();
+        $("#test_menu2_5").hide();
+      }
+      if (index == 2) {
+        $("#test_menu2_1").hide();
+        $("#test_menu2_2").hide();
+        $("#test_menu2_3").hide();
+        $("#test_menu2_4").show();
+        $("#test_menu2_5").hide();
+      }
+      if (index == 3) {
+        $("#test_menu2_1").hide();
+        $("#test_menu2_2").hide();
+        $("#test_menu2_3").hide();
+        $("#test_menu2_4").hide();
+        $("#test_menu2_5").show();
+      }
+    }
+    return;
+  }
+  if ( e.keyCode == 40  || e.keyCode == 39){
+    if (index < test_mode_2.length){
+      index += 1;
+      $("#test_mode_2").text(test_mode_2[index]);
+      if (index == 0) {
+        $("#test_menu2_1").show();
+        $("#test_menu2_2").show();
+        $("#test_menu2_3").show();
+        $("#test_menu2_4").show();
+        $("#test_menu2_5").show();
+      }
+      if (index == 1) {
+        $("#test_menu2_1").show();
+        $("#test_menu2_2").show();
+        $("#test_menu2_3").show();
+        $("#test_menu2_4").hide();
+        $("#test_menu2_5").hide();
+      }
+      if (index == 2) {
+        $("#test_menu2_1").hide();
+        $("#test_menu2_2").hide();
+        $("#test_menu2_3").hide();
+        $("#test_menu2_4").show();
+        $("#test_menu2_5").hide();
+      }
+      if (index == 3) {
+        $("#test_menu2_1").hide();
+        $("#test_menu2_2").hide();
+        $("#test_menu2_3").hide();
+        $("#test_menu2_4").hide();
+        $("#test_menu2_5").show();
+      }
+    }
+    return;
+  }
+});
+
+$("#test_mode_2").on('click', function(){
+  $("#test_mode_2").blur();
+  setTimeout(function(){
+    if ($(".test_item:visible").eq(0).text() == '- ROM'){
+      $(".test_result:visible").eq(0).text('OK');
+    } else {
+      $(".test_result:visible").eq(0).text('DONE');
+    }
+
+  },1000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(1).text('OK');
+  },2000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(2).text('OK');
+  },3000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(3).text('DONE');
+  },4000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(4).text('DONE');
+  },5000);
+  return false;
+});
+
+$("#test_mode_2").keypress(function(e){
+  if(e.which == 13){
+    $("#test_mode_2").click();
+  }
+});
+</script>
