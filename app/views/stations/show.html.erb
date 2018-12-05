@@ -463,6 +463,8 @@
           </div>
           <div class="menu menu_class transceiver_test">
           </div>
+          <div class="menu menu_class controller_test">
+          </div>
         </div>
       </div>
       <div class="dynamic_items">
@@ -595,5 +597,19 @@
     });
   });
 <% end %>
+var getDevice = (function(){
+var ua = navigator.userAgent;
 
+//if(ua.indexOf('iPhone') >= 0 || ua.indexOf('iPod') >= 0 || (ua.indexOf('Android') >= 0 && //ua.indexOf('Mobile') > 0)){
+//  return 'sp';
+//}else if(ua.indexOf('iPad') >= 0 || (ua.indexOf('Android') >= 0 && screen.width >= 768)){
+//  return 'tab';
+//}else{
+//  return 'other';
+//}
+//})();
+//if (getDevice == "sp") {
+//  $(".station_info").hide();
+//  $(".handset_box").css("margin-top","0")
+//}
 </script>
