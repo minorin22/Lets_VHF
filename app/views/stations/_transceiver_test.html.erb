@@ -125,4 +125,33 @@ $("#test_mode").on("keydown", function(e){
     return;
   }
 });
+
+$("#test_mode").on('click', function(){
+  $("#test_mode").blur();
+  setTimeout(function(){
+    $(".test_result:visible").eq(0).text('OK');
+  },1000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(1).text('OK');
+  },2000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(2).text('OK');
+  },3000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(3).text('OK');
+  },4000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(4).text('OK');
+  },5000);
+  setTimeout(function(){
+    $(".test_result:visible").eq(5).text('OK');
+  },6000);
+  return false;
+});
+
+$("#test_mode").keypress(function(e){
+  if(e.which == 13){
+    $("#test_mode").click();
+  }
+});
 </script>

@@ -5,6 +5,7 @@
 
 .station_container {
   width: 976px;
+  //width: 1024px;
   margin: 60px auto 0 auto;
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer */
@@ -12,6 +13,7 @@
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
   .handset_box {
+    //margin-left:24px;
     width: 129px;
     margin-top: 48px;
     float: left;
@@ -59,6 +61,7 @@
     }
   }
   .station_left {
+    //margin-right: 24px;
     float: right;
     width: 800px;
     .station_info {
