@@ -641,6 +641,26 @@
                 }
               }
             }
+            .system_infos {
+              width: 240px;
+              margin-left: 20px;
+              margin-right: 10px;
+              margin-bottom: 1px;
+              line-height: 17px;
+              height: 119px;
+              overflow: auto;
+              .sys_info {
+                display: inline-block;
+                width: 126px;
+              }
+              .colon {
+                display: inline-block;
+                padding: 0 6px 0 4px;
+              }
+              .sys_val {
+                display: inline-block;
+              }
+            }
 
 
           }
@@ -669,6 +689,41 @@
                   margin: 0 6px;
                 }
                 .test_result {
+                  display: inline-block;
+                  text-align: left;
+                }
+              }
+            }
+            .no_data {
+              margin: 0 auto 1px auto;
+              text-align: center;
+              line-height: 105px;
+              height: 105px;
+              border-bottom: 1px solid $character-color;
+            }
+            .press_ent {
+              text-decoration: none;
+              font-size: 14px;
+              text-align: center;
+            }
+            .soft_ver {
+              height: 34px;
+              width: 240px;
+              margin-left: 30px;
+              margin-top: 17px;
+              margin-bottom: 17px;
+              li {
+                line-height: 17px;
+                .version_item {
+                  display: inline-block;
+                  width: 110px;
+                  text-align: left;
+                }
+                .colon {
+                  display: inline-block;
+                  margin: 0 6px;
+                }
+                .varsion_val {
                   display: inline-block;
                   text-align: left;
                 }

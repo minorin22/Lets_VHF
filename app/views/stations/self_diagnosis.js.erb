@@ -22,6 +22,20 @@
     $(".link:visible").eq(0).focus();
   });
 
+  $("#menu8_1_5").click(function(){
+    $(".transceiver_test").html('<%= j render 'transceiver_test' %>');
+    $(".transceiver_test").show();
+    $(".self_diagnosis").hide();
+    $(".link:visible").eq(0).focus();
+    $("#test_mode").text('Loop');
+    $("#test_menu1_1").hide();
+    $("#test_menu1_2").hide();
+    $("#test_menu1_3").hide();
+    $("#test_menu1_4").hide();
+    $("#test_menu1_5").show();
+    $("#test_menu1_6").hide();
+  });
+
   $(".link, .input").on("keydown", function(e){
     var index       =   null;
     var selector    =   ".link, .input";
@@ -54,6 +68,11 @@
   $("#menu8_1_2").keypress(function(e){
     if(e.which == 13){
       $("#menu8_1_2").click();
+    }
+  });
+  $("#menu8_1_5").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_1_5").click();
     }
   });
 
