@@ -84,6 +84,15 @@
     <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
   </ul>
   <script>
+      $("#off_hook_click").off();
+      $("#off_hook_click").click(function(){
+        $(".silence_alarm").hide();
+        $("#off_hook").hide();
+        $("#on_hook").fadeIn();
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/ack`);
+      });
       $(".massage_menues").hide();
       $("#cancel").off();
       $("#cancel").click(function(){
@@ -118,6 +127,15 @@
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <script>
+      $("#off_hook_click").off();
+      $("#off_hook_click").click(function(){
+        $(".silence_alarm").hide();
+        $("#off_hook").hide();
+        $("#on_hook").fadeIn();
+        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/listen`);
+      });
       $("#cancel").off();
       $("#cancel").click(function(){
         $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
@@ -170,7 +188,7 @@
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <ul class="massage_menues">
-    <li class="menu_rc"><%= link_to "Press ENTER to return home.", "/dscs/#{@dsc.id}/listen",remote: true, method: :post,class:"link" %></li>
+    <li class="menu_rc"><%= link_to "Press ENT to return home.", "/dscs/#{@dsc.id}/listen",remote: true, method: :post,class:"link" %></li>
   </ul>
   <script>
       $(".massage_menues").hide();

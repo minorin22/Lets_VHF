@@ -263,7 +263,7 @@
   $("#menu4_1").click(function(){
     $(".dsc_logs").hide();
     $(".recieved_distress_list").show();
-    $(".calls_info").html('<%= j render 'recieved_distress' %>')
+    $(".calls_info").html('<%= j render 'recieved_distress' %>');
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_1").keypress(function(e){
@@ -275,7 +275,7 @@
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();
     $(".recieved_others_list").show();
-    $(".calls_info").html('<%= j render 'recieved_others' %>')
+    $(".calls_info").html('<%= j render 'recieved_others' %>');
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_2").keypress(function(e){
@@ -287,12 +287,44 @@
   $("#menu4_3").click(function(){
     $(".dsc_logs").hide();
     $(".transmitted_calls_list").show();
-    $(".calls_info").html('<%= j render 'transmitted_calls' %>')
+    $(".calls_info").html('<%= j render 'transmitted_calls' %>');
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_3").keypress(function(e){
     if(e.which == 13){
       $("#menu4_3").click();
+    }
+  });
+
+  $("#menu8_2").click(function(){
+    $(".maintenance").hide();
+    $(".alarm_infomation").show();
+  });
+  $("#menu8_2").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_2").click();
+    }
+  });
+
+  $("#menu8_3").click(function(){
+    $(".maintenance").hide();
+    $(".system_infomation").show();
+    $(".system_infomation").html('<%= j render 'system_infomation' %>');
+  });
+  $("#menu8_3").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_3").click();
+    }
+  });
+
+  $("#menu8_4").click(function(){
+    $(".maintenance").hide();
+    $(".softwere_version").show();
+    $(".link:visible").eq(0).focus();
+  });
+  $("#menu8_4").keypress(function(e){
+    if(e.which == 13){
+      $("#menu8_4").click();
     }
   });
 

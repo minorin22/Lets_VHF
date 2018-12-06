@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function(){
 
+  $("#off_hook_click").off();
   $("#off_hook_click").click(function(){
     $("#off_hook").hide();
     $("#on_hook").fadeIn();
