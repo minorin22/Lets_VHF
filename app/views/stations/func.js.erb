@@ -1,0 +1,19 @@
+<% case @station.state %>
+<% when 1 %>
+  $(".menu_class").hide();
+  $(".sub_screen").hide();
+  $(".menu_screen").hide();
+  $(".home_screen").show();
+  <% if @station.channel >= 10 %>
+    $(".current_ch").text("<%= @station.channel %>");
+  <% else %>
+    $(".current_ch").text("<%= "0#{@station.channel}" %>");
+  <% end %>
+<% when 5 %>
+  $(".home_screen").hide();
+  $(".menu_screen").show();
+  $(".main_menu").hide();
+  $(".menu_class").hide();
+  $(".function").show();
+<% else %>
+<% end %>
