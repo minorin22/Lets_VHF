@@ -730,6 +730,38 @@
               }
             }
           }
+          .function {
+            .func_list {
+              margin-left: 10px;
+              text-decoration: none;
+              font-size: 14px;
+              line-height: 16px;
+              font-weight: 500;
+              margin-bottom: 0;
+            }
+            .table_info {
+              margin-left: 20px;
+              text-decoration: none;
+              font-size: 14px;
+              line-height: 16px;
+              font-weight: 500;
+              margin-bottom: 0;
+            }
+            table,td {
+              border-collapse: collapse;
+              border: 1px solid $character-color;
+              font-size: 12px;
+              line-height: 12px;
+              font-weight: 500;
+              margin: 0 auto;
+            }
+            .ten_key_matrix {
+              width: 262px;
+            }
+            .concerned_other_keys {
+              width: 230px;
+            }
+          }
 
           .calls_list {
             p {
