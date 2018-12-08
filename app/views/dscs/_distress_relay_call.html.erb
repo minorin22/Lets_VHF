@@ -2,7 +2,7 @@
 <%= form_tag("/dscs/#{@dsc.id}/relay", remote: true, method: :post) do %>
 <div class="selects">
   <ul>
-    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_relay_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
+    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="number" id="input_relay_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
   </ul>
   <div class="ok_cancel">
     <a class="link link_ok" id="ok_relay" tabindex="0">[OK]</a>
