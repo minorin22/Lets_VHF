@@ -540,6 +540,11 @@
               line-height: 17px;
               height: 119px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
             }
             .selects {
               width: 233px;
@@ -549,6 +554,11 @@
               line-height: 17px;
               height: 124px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               .link {
                 display: inline-block;
                 width: 74px;
@@ -649,6 +659,11 @@
               line-height: 17px;
               height: 119px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               .sys_info {
                 display: inline-block;
                 width: 126px;
@@ -809,6 +824,11 @@
               line-height: 17px;
               height: 84px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               border-bottom: 1px solid $character-color;
             }
             .from_or_to{
@@ -822,6 +842,11 @@
               border-bottom: 1px solid $character-color;
               height: 84px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               span {
                 display: inline-block;
                 &.info_type {
@@ -914,6 +939,11 @@
               line-height: 17px;
               height: 67px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               border-bottom: 1px solid $character-color;
             }
             .other_ship_info {
@@ -923,6 +953,11 @@
               border-bottom: 1px solid $character-color;
               height: 67px;
               overflow: auto;
+              -ms-overflow-style:none;
+              overflow: -moz-scrollbars-none;
+              &::-webkit-scrollbar{
+                display:none;
+              }
               span {
                 display: inline-block;
                 &.info_type {
