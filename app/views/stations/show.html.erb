@@ -574,7 +574,7 @@
   $(document).on('turbolinks:load', function(){
     $("html,body").css("overflow","hidden");
     var scrollTop = $(window).scrollTop();
-    $('.station_container').css({'position':'fixed','top':-scrollTop,'left':'24px'});
+    $('.station_container').css({'position':'fixed','top':-scrollTop,'left': '50%','margin-left': -this.outerWidth() / 2 + 'px'});
     $.ajax({
       url: "/dscs/new_call",
       type: 'POST',
@@ -656,7 +656,7 @@
 <% end %>
 //var getDevice = (function(){
 //var ua = navigator.userAgent;
-
+//
 //if(ua.indexOf('iPhone') >= 0 || ua.indexOf('iPod') >= 0 || (ua.indexOf('Android') >= 0 && //ua.indexOf('Mobile') > 0)){
 //  return 'sp';
 //}else if(ua.indexOf('iPad') >= 0 || (ua.indexOf('Android') >= 0 && screen.width >= 768)){
@@ -666,7 +666,9 @@
 //}
 //})();
 //if (getDevice == "sp") {
-//  $(".station_info").hide();
-//  $(".handset_box").css("margin-top","0")
+//  //$(".station_info").hide();
+//  //$(".handset_box").css("margin-top","0");
+//  var scrollTop = $(window).scrollTop();
+//  $('.station_container').css({'position':'fixed','top':-scrollTop,'left':'24px'});
 //}
 </script>
