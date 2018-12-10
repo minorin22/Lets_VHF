@@ -574,7 +574,8 @@
   $(document).on('turbolinks:load', function(){
     $("html,body").css("overflow","hidden");
     var scrollTop = $(window).scrollTop();
-    $('.station_container').css({'position':'fixed','top':-scrollTop,'left': '50%','margin-left': -this.outerWidth() / 2 + 'px'});
+    //$('.station_container').css({'position':'fixed','top':-scrollTop,'left': '50%','margin-left': -this.outerWidth() / 2 + 'px'});
+    $('.station_container').css({'position':'fixed','top':-scrollTop,'left':'calc(50% - 976px/2)'});
     $.ajax({
       url: "/dscs/new_call",
       type: 'POST',
