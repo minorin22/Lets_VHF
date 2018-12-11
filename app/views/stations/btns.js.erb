@@ -33,7 +33,15 @@
     $(".current_ch").text("<%= @station.channel %>");
     $(".ch_info").removeClass("reverse_color");
     $(".dup_info").show();
-  <% when 67..77 %>
+  <% when 67..69 %>
+    $(".current_ch").text("<%= @station.channel %>");
+    $(".ch_info").removeClass("reverse_color");
+    $(".dup_info").hide();
+  <% when 70 %>
+    $(".current_ch").text("<%= @station.channel %>");
+    $(".ch_info").addClass("reverse_color");
+    $(".dup_info").hide();
+  <% when 71..77 %>
     $(".current_ch").text("<%= @station.channel %>");
     $(".ch_info").removeClass("reverse_color");
     $(".dup_info").hide();

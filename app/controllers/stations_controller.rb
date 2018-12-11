@@ -211,13 +211,23 @@ class StationsController < ApplicationController
     num = params[:num].to_i
     case @station.state
     when 1
-      @station.tmp_ch = num
-      @station.state = 2
-      @station.save
+      case num
+      when 0,1,2,6,7,8
+        @station.tmp_ch = num
+        @station.state = 2
+        @station.save
+      else
+        @station.tmp_ch = nil
+        @station.save
+      end
     when 2
       @station.channel = @station.tmp_ch * 10 + num
-      @station.state = 1
-      @station.save
+      case @station.channel
+      when 0,29,89
+      else
+        @station.state = 1
+        @station.save
+      end
     when 5
       @num_btn = num
     else
