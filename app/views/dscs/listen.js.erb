@@ -21,7 +21,13 @@ $("#distress").bind({
     document.interval = setInterval(function(){
       touch_time += 100;
       if (touch_time == 200) {
+        $(".home_screen").hide();
+        $(".menu_screen").show();
+        $(".main_menu").hide();
+        $(".menu_class").hide();
+        $(".distress_call").show();
         $("#distress_count_down").show();
+        $(".current_ch").text('70');
         $(".count_num").text("4");
       }
       if (touch_time == 1200) {
@@ -36,6 +42,7 @@ $("#distress").bind({
       if (touch_time == 4200) {
         $("#distress_count_down").hide();
         $("#sending_distress").show();
+        $(".tx").show().css("display","inline-block");
         $.ajax({
           url: '/dscs/distress_call',
           type: 'POST',
@@ -48,6 +55,7 @@ $("#distress").bind({
   },
   'touchend mouseup mouseout': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
     $("#distress_count_down").hide();
+    $.post(`/stations/${gon.station_id}/distress_call`);
     if (touched) {
       if (touch_time < 200 ) {
         // 短いタップでの処理

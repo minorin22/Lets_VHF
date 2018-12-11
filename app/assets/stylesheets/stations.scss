@@ -1278,6 +1278,9 @@
           border-radius: 12px;
           background: radial-gradient(#D4DBDB,#AFBCBC);
           border: 2px solid #A9ABAB;
+          &.red_lamp {
+            background: radial-gradient(#FFDDDD,#FD6363);
+          }
         }
         .off-txt {
           pointer-events: auto;
