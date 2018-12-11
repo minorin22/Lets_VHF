@@ -1,19 +1,29 @@
-$(".menu_screen").hide();
-$(".sub_screen").hide();
-$(".home_screen").show();
+setTimeout(function(){
+  $("#sending_message").css("display","block").show();
+  $(".tx").show().css("display","inline-block");
+  $(".current_ch").text('70');
+},200);
 
-$("#off_hook_click").off();
-$("#off_hook_click").click(function(){
-  $("#off_hook").hide();
-  $("#on_hook").fadeIn();
-});
+setTimeout(function(){
+  //$("#sending_message").hide();
+  $(".tx").hide();
+  $(".menu_screen").hide();
+  $(".sub_screen").hide();
+  $(".home_screen").show();
 
-$(".distress_info").text('　');
-$(".distress_info").removeClass("reverse_color");
-$(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
+  $("#off_hook_click").off();
+  $("#off_hook_click").click(function(){
+    $("#off_hook").hide();
+    $("#on_hook").fadeIn();
+  });
 
-<% if @current_station.channel >= 10 %>
-  $(".current_ch").text("<%= @current_station.channel %>");
-<% else %>
-  $(".current_ch").text("<%= "0#{@current_station.channel}" %>");
-<% end %>
+  $(".distress_info").text('　');
+  $(".distress_info").removeClass("reverse_color");
+  $(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
+
+  <% if @current_station.channel >= 10 %>
+    $(".current_ch").text("<%= @current_station.channel %>");
+  <% else %>
+    $(".current_ch").text("<%= "0#{@current_station.channel}" %>");
+  <% end %>
+},1000);

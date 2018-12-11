@@ -55,7 +55,15 @@
   $(".menu").hide();
   $(".message").show();
   $(".message").html('<%= j render 'recieved_call' %>');
-  $("#alm-lamp").css("background","radial-gradient(#FFDDDD,#FD6363)");
+  <% if @dsc.category == "routine" || @dsc.category == "safety" %>
+    $("#alm-lamp").addClass("red_lamp");
+  <% end %>
+  <% if @dsc.category == "urgency" || @dsc.category == "distress" %>
+    var alm_flash = setInterval(function(){
+      $("#alm-lamp").toggleClass("red_lamp");
+    },300);
+
+  <% end %>
 
 <% when 7 %>
   $("#recieved_other_call").show();

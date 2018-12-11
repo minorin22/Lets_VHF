@@ -167,6 +167,11 @@
             <p class="p3">Sending<br />DISTRESS call ...</p>
           </div>
         </div>
+        <div class="sub_screen" id="sending_message">
+          <div class="sub_screen_wrapper">
+            <p class="p3">Sending<br />message ...</p>
+          </div>
+        </div>
         <div class="sub_screen" id="distress_mode_break">
           <div class="sub_screen_wrapper">
             <p class="p7">Now continuing<br />DISTRESS call mode.<br />Break this mode?</p>
@@ -430,6 +435,46 @@
           <div class="menu menu_class urgency_call_specific_station">
           </div>
           <div class="menu menu_class distress_call">
+            <p>2.3) Distress call</p>
+            <form action="/dscs/distress_call" method="POST" id="distress_form">
+              <div class="selects">
+                <ul>
+                  <li><a class="link" tabindex="0"  id="nature_2_3">Nature</a><p class="colon">:</p><p  class="inputs">[</p><input type="text" id="input_2_3_1" class="input input_l" name="nature"   value="Undesignated"><p class="inputs2">]</p></li>
+                  <li><a class="link" tabindex="0">Position</a><p class="colon">:</p><p class="inputs inputs_l">[
+                    <% if @station.lat >= 0 %>
+                      <%= "N" %>
+                    <% else %>
+                      <%= "S" %>
+                    <% end %>
+                    <% if @station.long >= 0 %>
+                      <%= "E" %>
+                    <% else %>
+                      <%= "W" %>
+                    <% end %>
+                      ]</p></li>
+                  <li><a class="link">&nbsp;</a><p class="colon">&nbsp;</p><p class="inputs">[
+                    <%= "#{@lat_degree}°#{@lat_min}' " %>
+                    <% if @station.lat >= 0 %>
+                      <%= "N" %>
+                    <% else %>
+                      <%= "S" %>
+                    <% end %>
+                    ]</p></li>
+                  <li><a class="link">&nbsp;</a><p class="colon">&nbsp;</p><p class="inputs">[
+                  <%= "#{@long_degree}°#{@long_min}' " %>
+                    <% if @station.long >= 0 %>
+                      <%= "E" %>
+                    <% else %>
+                      <%= "W" %>
+                    <% end %>
+                  ]</p></li>
+                </ul>
+                <div class="ok_cancel">
+                  <p>Press DISTRESS to send.</p>
+                  <a class="link link_cancel" id="cancel_2_3" tabindex="0">[Cancel]</a>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="menu menu_class proxy_distress_call_all_ships">
           </div>
@@ -572,7 +617,7 @@
 
 <script>
   $(document).on('turbolinks:load', function(){
-    $("html,body").css("overflow","hidden");
+    //$("html,body").css("overflow","hidden");
     var scrollTop = $(window).scrollTop();
     //$('.station_container').css({'position':'fixed','top':-scrollTop,'left': '50%','margin-left': -this.outerWidth() / 2 + 'px'});
     $('.station_container').css({'position':'fixed','top':-scrollTop,'left':'calc(50% - 976px/2)'});
@@ -616,7 +661,13 @@
         document.interval = setInterval(function(){
           touch_time += 100;
           if (touch_time == 200) {
+            $(".home_screen").hide();
+            $(".menu_screen").show();
+            $(".main_menu").hide();
+            $(".menu_class").hide();
+            $(".distress_call").show();
             $("#distress_count_down").show();
+            $(".current_ch").text('70');
             $(".count_num").text("4");
           }
           if (touch_time == 1200) {
@@ -631,6 +682,7 @@
           if (touch_time == 4200) {
             $("#distress_count_down").hide();
             $("#sending_distress").show();
+            $(".tx").show().css("display","inline-block");
             $.ajax({
               url: '/dscs/distress_call',
               type: 'POST',
@@ -643,6 +695,7 @@
       },
       'touchend mouseup mouseout': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
         $("#distress_count_down").hide();
+        $.post(`/stations/${gon.station_id}/distress_call`);
         if (touched) {
           if (touch_time < 200 ) {
             // 短いタップでの処理

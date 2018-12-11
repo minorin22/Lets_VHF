@@ -71,7 +71,7 @@
   </ul>
 <% end %>
 
-<% if @dsc.eos == "ACK RQ" && @dsc.category != "distress" && @dsc.message_type == "All modes RT" %>
+<% if @dsc.eos == "ACK RQ" && @dsc.category != "distress" && @dsc.category != "urgency" && @dsc.message_type == "All modes RT" %>
   <div class="silence_alarm" id="silence_alarm_rq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
@@ -89,7 +89,8 @@
         $(".silence_alarm").hide();
         $("#off_hook").hide();
         $("#on_hook").fadeIn();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/ack`);
       });
@@ -98,7 +99,8 @@
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -122,7 +124,60 @@
   </script>
 <% end %>
 
-<% if @dsc.eos == "ACK BQ" && @dsc.category != "distress" && @dsc.message_type == "All modes RT" %>
+<% if @dsc.eos == "ACK RQ" && @dsc.category =="urgency" && @dsc.message_type == "All modes RT" %>
+  <div class="silence_alarm" id="silence_alarm_rq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/Lift handset]", "/dscs/#{@dsc.id}/ack",remote: true, method:   :post,class:"link" %></li>
+    <% if @dsc.category != "urgency" %>
+      <li class="menu_r"><a class="link" tabindex="0">[New CH]</a></li>
+    <% end %>
+    <li class="menu_rl"><a class="link" tabindex="0">[Unable/NACK]</a></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
+  <script>
+      $("#off_hook_click").off();
+      $("#off_hook_click").click(function(){
+        $(".silence_alarm").hide();
+        $("#off_hook").hide();
+        $("#on_hook").fadeIn();
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
+        dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/ack`);
+      });
+      $(".massage_menues").hide();
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $(".silence_alarm").hide();
+        $(".massage_menues").show();
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
+        $(".link:visible").eq(0).focus();
+      });
+      $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+          index   =   $(selector).index(this);
+          if (index > 0){
+              $(selector).eq(index-1).focus();
+            }
+            return;
+          }
+          if ( e.keyCode == 40  || e.keyCode == 39){
+            index   =   $(selector).index(this);
+            if (index < $(selector).length - 1 ){
+              $(selector).eq(index+1).focus();
+            }
+            return;
+          }
+        });
+  </script>
+<% end %>
+
+<% if @dsc.eos == "ACK BQ" && @dsc.category != "distress" &&@dsc.category != "urgency" && @dsc.message_type == "All modes RT" %>
   <div class="silence_alarm" id="silence_alarm_bq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
@@ -132,13 +187,40 @@
         $(".silence_alarm").hide();
         $("#off_hook").hide();
         $("#on_hook").fadeIn();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
       });
       $("#cancel").off();
       $("#cancel").click(function(){
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
+        var dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/listen`);
+      });
+  </script>
+<% end %>
+
+<% if @dsc.eos == "ACK BQ" && @dsc.category == "urgency" && @dsc.message_type == "All modes RT" %>
+  <div class="silence_alarm" id="silence_alarm_bq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <script>
+      $("#off_hook_click").off();
+      $("#off_hook_click").click(function(){
+        $(".silence_alarm").hide();
+        $("#off_hook").hide();
+        $("#on_hook").fadeIn();
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
+        dsc_id = <%= @dsc.id %>
+        $.post(`/dscs/${dsc_id}/listen`);
+      });
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
         var dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
       });
@@ -159,7 +241,8 @@
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -188,7 +271,7 @@
     <p>Press CANCEL to silence alarm.</p>
   </div>
   <ul class="massage_menues">
-    <li class="menu_rc"><%= link_to "Press ENT to return home.", "/dscs/#{@dsc.id}/listen",remote: true, method: :post,class:"link" %></li>
+    <li class="menu_rc"><%= link_to "[ OK ]", "/dscs/#{@dsc.id}/listen",remote: true, method: :post,class:"link" %></li>
   </ul>
   <script>
       $(".massage_menues").hide();
@@ -196,7 +279,8 @@
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -220,7 +304,7 @@
   </script>
 <% end %>
 
-<% if @dsc.format == "All ships call" && @dsc.category != "distress" %>
+<% if @dsc.format == "All ships call" && @dsc.category != "distress" && @dsc.category != "urgency" %>
   <div class="silence_alarm" id="silence_alarm_rq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
@@ -234,7 +318,47 @@
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        //clearInterval(alm_flash);
+        $(".link:visible").eq(0).focus();
+      });
+      $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+          index   =   $(selector).index(this);
+          if (index > 0){
+              $(selector).eq(index-1).focus();
+            }
+            return;
+          }
+          if ( e.keyCode == 40  || e.keyCode == 39){
+            index   =   $(selector).index(this);
+            if (index < $(selector).length - 1 ){
+              $(selector).eq(index+1).focus();
+            }
+            return;
+          }
+        });
+  </script>
+<% end %>
+
+<% if @dsc.format == "All ships call" && @dsc.category == "urgency" %>
+  <div class="silence_alarm" id="silence_alarm_rq">
+    <p>Press CANCEL to silence alarm.</p>
+  </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/Listen]", "/dscs/#{@dsc.id}/listen",remote: true, method:   :post,class:"link" %></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
+  <script>
+      $(".massage_menues").hide();
+      $("#cancel").off();
+      $("#cancel").click(function(){
+        $(".silence_alarm").hide();
+        $(".massage_menues").show();
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -272,7 +396,8 @@
       $("#cancel").click(function(){
         $(".silence_alarm").hide();
         $(".massage_menues").show();
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
+        $("#alm-lamp").removeClass("red_lamp");
+        clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -300,12 +425,37 @@
   <div class="silence_alarm" id="silence_alarm_bq">
     <p>Press CANCEL to silence alarm.</p>
   </div>
+  <ul class="massage_menues">
+    <li class="menu_rl"><%= link_to "[OK/Lift handset]", "/dscs/#{@dsc.id}/listen",remote: true, method:   :post,class:"link" %></li>
+    <li class="menu_r"><a class="link" tabindex="0">[Cancel]</a></li>
+  </ul>
   <script>
-      $("#cancel").off();
-      $("#cancel").click(function(){
-        $("#alm-lamp").css("background","radial-gradient(#D4DBDB,#AFBCBC)");
-        var dsc_id = <%= @dsc.id %>
-        $.post(`/dscs/${dsc_id}/listen`);
-      });
+    $(".massage_menues").hide();
+    $("#cancel").off();
+    $("#cancel").click(function(){
+      $(".silence_alarm").hide();
+      $(".massage_menues").show();
+      $("#alm-lamp").removeClass("red_lamp");
+      clearInterval(alm_flash);
+      $(".link:visible").eq(0).focus();
+    });
+    $(".link, .input").on("keydown", function(e){
+      var index       =   null;
+      var selector    =   ".link, .input";
+      if ( e.keyCode == 38 || e.keyCode == 37 ){
+        index   =   $(selector).index(this);
+      if (index > 0){
+          $(selector).eq(index-1).focus();
+        }
+        return;
+      }
+      if ( e.keyCode == 40  || e.keyCode == 39){
+        index   =   $(selector).index(this);
+        if (index < $(selector).length - 1 ){
+          $(selector).eq(index+1).focus();
+        }
+        return;
+      }
+    });
   </script>
 <% end %>
