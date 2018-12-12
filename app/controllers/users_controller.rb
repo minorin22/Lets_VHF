@@ -33,6 +33,9 @@ class UsersController < ApplicationController
     )
     if @user.save
       session[:user_id] = @user.id
+      @user.remember
+      cookies.permanent.signed[:user_id] = @user.id
+      cookies.permanent[:remember_token] = @user.remember_token
       redirect_to("/users/#{@user.id}")
       flash[:notice] = "ユーザーを登録しました！"
     else
@@ -73,6 +76,9 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      @user.remember
+      cookies.permanent.signed[:user_id] = @user.id
+      cookies.permanent[:remember_token] = @user.remember_token
       redirect_to("/users/#{@user.id}")
       flash[:notice] = "ログインしました"
     else
@@ -84,6 +90,12 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    if @current_user
+      @current_user.forget
+    end
+    cookies.permanent[:remember_token] = nil
+    cookies.permanent.signed[:user_id] = nil
+    #@current_user = nil
     redirect_to("/")
     flash[:notice] = "ログアウトしました"
   end

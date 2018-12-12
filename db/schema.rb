@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_084742) do
+ActiveRecord::Schema.define(version: 2018_12_12_023509) do
 
   create_table "dscs", force: :cascade do |t|
     t.integer "from_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_084742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "remember_digest"
   end
 
 end
