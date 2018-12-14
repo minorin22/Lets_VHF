@@ -1,4 +1,7 @@
 setTimeout(function(){
+  $("#alm-lamp").removeClass("red_lamp");
+},500);
+setTimeout(function(){
   $(".tx").hide();
 },800);
 setTimeout(function(){
@@ -9,6 +12,7 @@ setTimeout(function(){
   $(".distress_info").addClass("reverse_color");
   $(".dsc_info").css("display", "none");
   $(".dsc_infos").html('<p>Next DISTRESS call : 3.9 min later</p>');
+  $("#alm-lamp").addClass("red_lamp");
   <% if @current_station.channel >= 10 %>
     $(".current_ch").text("<%= @current_station.channel %>");
   <% else %>

@@ -110,6 +110,7 @@ class StationsController < ApplicationController
     when 7
       @station.state = 1
       @station.save
+    else
       render "stations/show"
       return
     end
@@ -226,6 +227,7 @@ class StationsController < ApplicationController
       when 0,29,89
       else
         @station.state = 1
+        @station.tmp_ch = nil
         @station.save
       end
     when 5

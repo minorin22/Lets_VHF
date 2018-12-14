@@ -33,20 +33,37 @@
           $("#distress_count_down").show();
           $(".current_ch").text('70');
           $(".count_num").text("4");
+          $("#alm-lamp").addClass("red_lamp");
+        }
+        if (touch_time == 700) {
+          $("#alm-lamp").removeClass("red_lamp");
         }
         if (touch_time == 1200) {
           $(".count_num").text("3");
+          $("#alm-lamp").addClass("red_lamp");
+        }
+        if (touch_time == 1700) {
+          $("#alm-lamp").removeClass("red_lamp");
         }
         if (touch_time == 2200) {
           $(".count_num").text("2");
+          $("#alm-lamp").addClass("red_lamp");
+        }
+        if (touch_time == 2700) {
+          $("#alm-lamp").removeClass("red_lamp");
         }
         if (touch_time == 3200) {
           $(".count_num").text("1");
+          $("#alm-lamp").addClass("red_lamp");
+        }
+        if (touch_time == 3700) {
+          $("#alm-lamp").removeClass("red_lamp");
         }
         if (touch_time == 4200) {
           $("#distress_count_down").hide();
           $("#sending_distress").show();
           $(".tx").show().css("display","inline-block");
+          $("#alm-lamp").addClass("red_lamp");
           $.ajax({
             url: '/dscs/distress_call',
             type: 'POST',
@@ -60,6 +77,9 @@
     'touchend mouseup mouseout': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
       $("#distress_count_down").hide();
       $.post(`/stations/${gon.station_id}/distress_call`);
+      if (touch_time < 4200) {
+        $("#alm-lamp").removeClass("red_lamp");
+      }
       if (touched) {
         if (touch_time < 200 ) {
           // 短いタップでの処理
