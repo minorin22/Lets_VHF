@@ -301,7 +301,7 @@ class StationsController < ApplicationController
 
   def ensure_correct_station
     if @current_station.id != params[:id].to_i
-      flash[:notice] = "権限がありません"
+      #flash[:notice] = "権限がありません"
       redirect_to("/stations/#{@current_station.id}")
     end
   end
