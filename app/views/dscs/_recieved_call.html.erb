@@ -90,6 +90,7 @@
         $("#off_hook").hide();
         $("#on_hook").fadeIn();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/ack`);
@@ -100,6 +101,7 @@
         $(".silence_alarm").hide();
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
@@ -144,6 +146,7 @@
         $("#on_hook").fadeIn();
         $("#alm-lamp").removeClass("red_lamp");
         clearInterval(alm_flash);
+        $("#received_distress_sound").get(0).pause();
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/ack`);
       });
@@ -154,6 +157,7 @@
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
         clearInterval(alm_flash);
+        $("#received_distress_sound").get(0).pause();
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -188,6 +192,7 @@
         $("#off_hook").hide();
         $("#on_hook").fadeIn();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
@@ -195,6 +200,7 @@
       $("#cancel").off();
       $("#cancel").click(function(){
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         var dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
@@ -214,12 +220,14 @@
         $("#on_hook").fadeIn();
         $("#alm-lamp").removeClass("red_lamp");
         clearInterval(alm_flash);
+        $("#received_distress_sound").get(0).pause();
         dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
       });
       $("#cancel").off();
       $("#cancel").click(function(){
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_distress_sound").get(0).pause();
         clearInterval(alm_flash);
         var dsc_id = <%= @dsc.id %>
         $.post(`/dscs/${dsc_id}/listen`);
@@ -242,6 +250,7 @@
         $(".silence_alarm").hide();
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
@@ -280,6 +289,7 @@
         $(".silence_alarm").hide();
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
@@ -319,6 +329,7 @@
         $(".silence_alarm").hide();
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
+        $("#received_routine_sound").get(0).pause();
         //clearInterval(alm_flash);
         $(".link:visible").eq(0).focus();
       });
@@ -359,6 +370,7 @@
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
         clearInterval(alm_flash);
+        $("#received_distress_sound").get(0).pause();
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -398,6 +410,7 @@
         $(".massage_menues").show();
         $("#alm-lamp").removeClass("red_lamp");
         clearInterval(alm_flash);
+        $("#received_distress_sound").get(0).pause();
         $(".link:visible").eq(0).focus();
       });
       $(".link, .input").on("keydown", function(e){
@@ -437,6 +450,7 @@
       $(".massage_menues").show();
       $("#alm-lamp").removeClass("red_lamp");
       clearInterval(alm_flash);
+      $("#received_distress_sound").get(0).pause();
       $(".link:visible").eq(0).focus();
     });
     $(".link, .input").on("keydown", function(e){

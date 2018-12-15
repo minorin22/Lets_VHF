@@ -13,11 +13,18 @@ $(document).on('turbolinks:load', function(){
   $("#cover_close").click(function(){
     $("#cover_close").fadeOut();
     $("#cover_open").fadeIn();
+    //$("#send_distress_sound").load();
   });
   $("#cover_open").click(function(){
     $("#cover_open").fadeOut();
     $("#cover_close").fadeIn();
   });
+
+  $("#ent-nob").click(function(){
+    $("#send_distress_sound").load();
+    $("#received_distress_sound").load();
+    $("#received_routine_sound").load();
+  })
 
   //$("#ptt_btn").mousedown(function(){
   //  $(".tx").show().css("display","inline-block");
