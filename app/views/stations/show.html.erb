@@ -616,6 +616,8 @@
 </div>
 
 <%= audio_tag("/received_distress.wav",id:"received_distress_sound", loop: true) %>
+<%= audio_tag("/received_routine.wav",id:"received_routine_sound", loop: true) %>
+<%= audio_tag("/send_distress.wav",id:"send_distress_sound") %>
 
 <script>
   //$(document).on('turbolinks:load', function(){
@@ -672,6 +674,8 @@
             $(".current_ch").text('70');
             $(".count_num").text("4");
             $("#alm-lamp").addClass("red_lamp");
+            document.getElementById("send_distress_sound").currentTime = 0;
+            $("#send_distress_sound").get(0).play();
           }
           if (touch_time == 700) {
             $("#alm-lamp").removeClass("red_lamp");
@@ -712,11 +716,12 @@
         }, 100)
         e.preventDefault();
       },
-      'touchend mouseup mouseout': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
+      'touchend mouseup': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
         $("#distress_count_down").hide();
         $.post(`/stations/${gon.station_id}/distress_call`);
         if (touch_time < 4200) {
           $("#alm-lamp").removeClass("red_lamp");
+          $("#send_distress_sound").get(0).pause();
         }
         if (touched) {
           if (touch_time < 200 ) {

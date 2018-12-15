@@ -57,6 +57,7 @@
   $(".message").html('<%= j render 'recieved_call' %>');
   <% if @dsc.category == "routine" || @dsc.category == "safety" %>
     $("#alm-lamp").addClass("red_lamp");
+    $("#received_routine_sound").get(0).play();
   <% end %>
   <% if @dsc.category == "urgency" || @dsc.category == "distress" %>
     var alm_flash = setInterval(function(){
