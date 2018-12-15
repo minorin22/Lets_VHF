@@ -11,7 +11,7 @@
     </div>
     <div class="mode_icon">
       <% if @current_station %>
-        <%= link_to(image_tag("with_handset.svg", class:"img"), "/stations/#{@current_station.id}") %>
+        <%= link_to(image_tag("with_handset.svg", class:"img"), "/stations/#{@current_station.id}",data: {"turbolinks" => false}) %>
       <% else %>
         <%= link_to(image_tag("with_handset.svg", class:"img"), "/stations/new") %>
       <% end %>
