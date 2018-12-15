@@ -32,7 +32,7 @@
           <li><%= link_to "シナリオモード", "/users/#{@current_user.id}" %></li>
           <li>
             <% if @current_station %>
-              <%= link_to "シミュレーターモード", "/stations/#{@current_station.id}" %>
+              <%= link_to "シミュレーターモード", "/stations/#{@current_station.id}",data: {"turbolinks" => false} %>
             <% else %>
               <%= link_to "シミュレーターモード", "/stations/new" %>
             <% end %>
