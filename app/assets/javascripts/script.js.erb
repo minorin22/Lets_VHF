@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function(){
       }, 100)
       e.preventDefault();
     },
-    'touchend mouseup mouseout': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
+    'touchend mouseup': function(e) { // マウスが領域外に出たかどうかも拾うと、より自然
       if (touched) {
         if (touch_time < 1000 ) {
           // 短いタップでの処理
