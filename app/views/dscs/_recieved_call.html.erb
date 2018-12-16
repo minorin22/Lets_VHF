@@ -1,8 +1,8 @@
 <% if @dsc.category == "distress" %>
   <% if @dsc.message_type == "Distress ACK" %>
-    <p>Recieved Acknowledgement</p>
+    <p>Received Acknowledgement</p>
   <% else %>
-    <p>Recieved <%= @dsc.category %> massage</p>
+    <p>Received <%= @dsc.category %> massage</p>
   <% end %>
   <ul class="call_info">
     <li><span class="info_type">Type</span><span class="info_content">: <%= @dsc.message_type   %></span></li>
@@ -36,7 +36,7 @@
   </ul>
 <% end %>
 <% if @dsc.category != "distress" %>
-  <p>Recieved <%= @dsc.category %> massage</p>
+  <p>Received <%= @dsc.category %> massage</p>
   <ul class="call_info">
     <li><span class="info_type">Format</span><span class="info_content">: <%= @dsc.format %></span></li>
     <li><span class="info_type">From</span><span class="info_content">: <%= @from.mmsi %></span></li>
