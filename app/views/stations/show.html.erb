@@ -192,18 +192,18 @@
             </ul>
           </div>
         </div>
-        <div class="sub_screen" id="recieved_call">
+        <div class="sub_screen" id="received_call">
           <div class="sub_screen_wrapper wide_sub_screen">
-            <p class="p7" id="recieved_when_menu_mode"></p>
+            <p class="p7" id="received_when_menu_mode"></p>
             <ul class="sub_screen_wrapper">
               <li class="li1"><a class="link" tabindex="0" id="dsc_accept">[Accept]</a></li>
               <li class="li2"><a class="link" tabindex="0" id="dsc_ignore">[Ignore]</a></li>
             </ul>
           </div>
         </div>
-        <div class="sub_screen" id="recieved_other_call">
+        <div class="sub_screen" id="received_other_call">
           <div class="sub_screen_wrapper wide_sub_screen">
-            <p class="p7">Recieved other call.<br />Break DISTRESS mode<br />to view message?</p>
+            <p class="p7">Received other call.<br />Break DISTRESS mode<br />to view message?</p>
             <ul class="sub_screen_wrapper">
               <li class="li1"><a class="link" tabindex="0" id="continue_distress">[Continue]</a></li>
               <li class="li2"><a class="link" tabindex="0" id="break_to_view">[Break]</a></li>
@@ -304,8 +304,8 @@
           <div class="menu menu_class dsc_logs">
             <p>4. DSC logs</p>
             <ul class="menues">
-              <li><a class="link" tabindex="0" id="menu4_1">1. Recieved distress</a></li>
-              <li><a class="link" tabindex="0" id="menu4_2">2. Recieved others</a></li>
+              <li><a class="link" tabindex="0" id="menu4_1">1. Received distress</a></li>
+              <li><a class="link" tabindex="0" id="menu4_2">2. Received others</a></li>
               <li><a class="link" tabindex="0" id="menu4_3">3. Transmitted calls</a></li>
               <li><a class="link back" tabindex="0" id="back4">0. Back</a></li>
             </ul>
@@ -482,14 +482,20 @@
           </div>
           <div class="menu menu_class distress_relay_call">
           </div>
-          <div class="menu menu_class calls_list recieved_distress_list">
-            <p>4.1) Recieved distress list</p>
+          <div class="menu menu_class new_ch">
+          </div>
+          <div class="menu menu_class unable_reason_selection">
+          </div>
+          <div class="menu menu_class unable_to_comply_form">
+          </div>
+          <div class="menu menu_class calls_list received_distress_list">
+            <p>4.1) Received distress list</p>
             <p><span class="date_time">Date/Time</span><span class="type">Type</span></p>
             <div class="calls_info">
             </div>
           </div>
-          <div class="menu menu_class calls_list recieved_others_list">
-            <p>4.2) Recieved others list</p>
+          <div class="menu menu_class calls_list received_others_list">
+            <p>4.2) Received others list</p>
             <p><span class="date_time">Date/Time</span><span class="cat">CAT</span><span class="fmt">FMT</span></p>
             <div class="calls_info">
             </div>
@@ -648,7 +654,7 @@
     function(data){
       if (data != undefined && data.id > native_call_id) {
         console.log(data.id);
-        $.post(`/dscs/${data.id}/recieved_call`);
+        $.post(`/dscs/${data.id}/received_call`);
       }
 
     });

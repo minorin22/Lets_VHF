@@ -4,12 +4,6 @@
   $(".sub_screen").hide();
   $(".menu_screen").hide();
   $(".home_screen").show();
-  //$("#btn_0").click(function(){
-  //  $(".home_screen").show();
-  //  $(".menu_class").hide();
-  //  $(".menu_screen").hide();
-  //  $(".main_menu").hide();
-  //});
   $("#btn_0").off();
   <% if @station.channel >= 10 %>
     $(".current_ch").text("<%= @station.channel %>");

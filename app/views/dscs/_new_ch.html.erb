@@ -1,0 +1,74 @@
+<p>New channel proposal form</p>
+<%= form_tag("/dscs/#{@dsc.id}/new_ch", remote: true, method: :post) do %>
+<div class="selects">
+  <ul>
+    <li><a class="link" tabindex="0">Format</a><p class="colon">:</p><p class="inputs">Individual ACK</p></li>
+    <li><a class="link" tabindex="0">To</a><p class="colon">:</p><p class="inputs"><%= @from.mmsi %></p></li>
+    <li><a class="link" tabindex="0">Type</a><p class="colon">:</p><p class="inputs">All modes RT</p></li>
+    <li><a class="link" tabindex="0">Work CH</a><p class="colon">:</p><p class="inputs">[</p><input type="number" id="input_new_1" class="input input_s" name="work_ch"><p class="inputs2">]</p></li>
+  </ul>
+  <div class="ok_cancel">
+    <a class="link link_ok" id="ok_new" tabindex="0">[OK]</a>
+    <input type="submit" value="[Call]" class="link link_call" id="call_new" tabindex="0">
+    <a class="link link_cancel" id="cancel_new" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>
+<script>
+$("#ok_new").click(function(){
+  $("#ok_new").hide();
+  $("#call_new").show();
+  $(":input").prop("readonly", true);
+  $("#call_new").focus();
+});
+
+$("#cancel_new").click(function(){
+  $("#ok_new").show();
+  $("#call_new").hide();
+  $(":input").prop("readonly", false);
+  $("#ok_new").focus();
+
+});
+
+$("form").submit(function(){
+  var self = this;
+  $(":submit", self).prop("disabled", true);
+  setTimeout(function(){
+    $(":submit", self).prop("disabled", false);
+  }, 10000);
+});
+
+$("#ok_new").keypress(function(e){
+  if(e.which == 13){
+    $("#ok_new").click();
+  }
+});
+$("#call_new").keypress(function(e){
+  if(e.which == 13){
+    $("#call_new").click();
+  }
+});
+$("#cancel_new").keypress(function(e){
+  if(e.which == 13){
+    $("#cancel_new").click();
+  }
+});
+$(".link, .input").on("keydown", function(e){
+var index       =   null;
+var selector    =   ".link, .input";
+if ( e.keyCode == 38 || e.keyCode == 37 ){
+    index   =   $(selector).index(this);
+    if (index > 0){
+        $(selector).eq(index-1).focus();
+      }
+      return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+        $(selector).eq(index+1).focus();
+      }
+      return;
+    }
+  });
+</script>
