@@ -1,0 +1,53 @@
+<p>Unable reason selection</p>
+<div class="menues">
+  <ul>
+    <li><a class="link" tabindex="0" id="reason_1">1. No reason</a></li>
+    <li><a class="link" tabindex="0" id="reason_2">2. Busy</a></li>
+    <li><a class="link" tabindex="0" id="reason_3">3. Barred</a></li>
+    <li><a class="link" tabindex="0" id="reason_4">4. No operator</a></li>
+    <li><a class="link" tabindex="0" id="reason_5">5. Temp no oper</a></li>
+    <li><a class="link" tabindex="0" id="reason_6">6. EQP disabled</a></li>
+    <li><a class="link" tabindex="0" id="reason_7">7. Unable channel</a></li>
+    <li><a class="link" tabindex="0" id="reason_8">8. Unable mode</a></li>
+  </ul>
+</div>
+<script>
+<% numbers = 1..8 %>
+<% numbers.each do |number| %>
+$("#reason_<%= number %>").click(function(){
+  $(".unable_reason_selection").hide();
+  $(".unable_to_comply_form").html('<%= j render 'unable_to_comply_form' %>');
+  $(".unable_to_comply_form").show();
+  var reason_num = <%= number %>
+  var reasons = ["No reason", "Busy", "Barred", "No operator", "Temp no oper", "EQP disabled", "Unable channel", "Unable mode"];
+  $("#input_unable_1").val(reasons[reason_num - 1]);
+  $("#call_unable").show();
+  $("#call_unable").focus();
+});
+
+$("#reason_<%= number %>").keypress(function(e){
+  if(e.which == 13){
+    $("#reason_<%= number %>").click();
+  }
+});
+<% end %>
+
+$(".link, .input").on("keydown", function(e){
+var index       =   null;
+var selector    =   ".link, .input";
+if ( e.keyCode == 38 || e.keyCode == 37 ){
+    index   =   $(selector).index(this);
+    if (index > 0){
+        $(selector).eq(index-1).focus();
+      }
+      return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+        $(selector).eq(index+1).focus();
+      }
+      return;
+    }
+  });
+</script>

@@ -1,0 +1,60 @@
+<p>Unable to comply form</p>
+<%= form_tag("/dscs/#{@dsc.id}/nack", remote: true, method: :post) do %>
+<div class="selects selects_l">
+  <ul>
+    <li><a class="link" tabindex="0">Format</a><p class="colon">:</p><p class="inputs">Individual NACK</p></li>
+    <li><a class="link" tabindex="0">To</a><p class="colon">:</p><p class="inputs"><%= @from.mmsi %></p></li>
+    <li><a class="link" tabindex="0">Type</a><p class="colon">:</p><p class="inputs">Unable to comply</p></li>
+    <li><a class="link" tabindex="0">Reason</a><p class="colon">:</p></p><input type="text" id="input_unable_1" class="input3" name="reason"></li>
+  </ul>
+</div>
+<div class="selects selects_s">
+  <div class="ok_cancel ok_cancel_s">
+    <input type="submit" value="[Call]" class="link link_call" id="call_unable" tabindex="0">
+    <a class="link link_cancel" id="cancel_unable" tabindex="0">[Cancel]</a>
+  </div>
+</div>
+<% end %>
+<script>
+
+
+
+
+$("form").submit(function(){
+  var self = this;
+  $(":submit", self).prop("disabled", true);
+  setTimeout(function(){
+    $(":submit", self).prop("disabled", false);
+  }, 10000);
+});
+
+
+$("#call_unable").keypress(function(e){
+  if(e.which == 13){
+    $("#call_unable").click();
+  }
+});
+$("#cancel_unable").keypress(function(e){
+  if(e.which == 13){
+    $("#cancel_unable").click();
+  }
+});
+$(".link, .input").on("keydown", function(e){
+var index       =   null;
+var selector    =   ".link, .input";
+if ( e.keyCode == 38 || e.keyCode == 37 ){
+    index   =   $(selector).index(this);
+    if (index > 0){
+        $(selector).eq(index-1).focus();
+      }
+      return;
+    }
+    if ( e.keyCode == 40  || e.keyCode == 39){
+      index   =   $(selector).index(this);
+      if (index < $(selector).length - 1 ){
+        $(selector).eq(index+1).focus();
+      }
+      return;
+    }
+  });
+</script>
