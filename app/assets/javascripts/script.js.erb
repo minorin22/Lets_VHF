@@ -26,13 +26,6 @@ $(document).on('turbolinks:load', function(){
     $("#received_routine_sound").load();
   })
 
-  //$("#ptt_btn").mousedown(function(){
-  //  $(".tx").show().css("display","inline-block");
-  //});
-  //$("#ptt_btn").mouseup(function(){
-  //  $(".tx").hide();
-  //});
-
   $("#ptt_btn").bind({
     'touchstart mousedown': function(e) {
       $(".tx").show().css("display","inline-block");

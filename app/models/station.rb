@@ -6,11 +6,11 @@ class Station < ApplicationRecord
     return Dsc.where(from_id: self.id)
   end
 
-  def recieved_distress_calls
+  def received_distress_calls
     return Dsc.where(category: "distress").where(to_id: [self.id, nil]).where.not(from_id: self.id)
   end
 
-  def recieved_others
+  def received_others
     return Dsc.where.not(category: "distress").where(to_id: [self.id, nil]).where.not(from_id: self.id)
   end
 

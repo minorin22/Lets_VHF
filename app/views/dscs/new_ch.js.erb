@@ -1,0 +1,22 @@
+setTimeout(function(){
+  $("#sending_message").css("display","block").show();
+  $(".tx").show().css("display","inline-block");
+  $(".current_ch").text('70');
+},200);
+
+setTimeout(function(){
+  $("#sending_message").hide();
+  $(".tx").hide();
+  <% if @current_station.channel >= 10 %>
+    channel = <%= @current_station.channel %>
+  <% else %>
+    channel = `0${<%= @current_station.channel %>}`
+  <% end %>
+  $(".current_ch").text(channel);
+  //$("#waiting").css("display","block").show();
+  //$("#cancel_link").focus();
+  $(".menu_class").hide();
+  $(".sub_screen").hide();
+  $(".menu_screen").hide();
+  $(".home_screen").show();
+},1000);

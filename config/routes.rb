@@ -37,11 +37,14 @@ Rails.application.routes.draw do
   post "dscs/proxy_distress_call_all_ships" => "dscs#proxy_distress_call_all_ships"
   post "dscs/new_call" => "dscs#new_call"
   post "dscs/:id/" => "dscs#show"
-  post "dscs/:id/recieved_call" => "dscs#recieved_call"
+  post "dscs/:id/received_call" => "dscs#received_call"
+  post "dscs/:id/new_ch" => "dscs#new_ch"
+  post "dscs/:id/nack" => "dscs#nack"
   post "dscs/:id/ack" => "dscs#ack"
   post "dscs/:id/relay" => "dscs#relay"
   post "dscs/:id/listen" => "dscs#listen"
   post "dscs/:id/accept" => "dscs#accept"
+  post "dscs/:id/cancel" => "dscs#cancel"
 
   #resources :users
   get "/" => "home#top"

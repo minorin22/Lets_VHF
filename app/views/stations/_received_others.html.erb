@@ -1,8 +1,8 @@
 <ul class="calls">
-  <% @station.recieved_distress_calls.reverse_each do |call| %>
+  <% @station.received_others.reverse_each do |call| %>
   <li>
     <%= link_to "/dscs/#{call.id}", remote: true, class:"link", method: :post, data: {mmsi: "#{call.from_mmsi}"} do %>
-    <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="type"><%= @type["#{call.message_type}"] %></span>
+    <span class="date_time">'<%= call.created_at.strftime("%y-%m-%d %H:%M")%></span><span class="cat"><%= @category[:"#{call.category}"] %></span><span class="fmt"><%= @format["#{call.format}"] %></span>
     <% end %>
   </li>
   <% end %>

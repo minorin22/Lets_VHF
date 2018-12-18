@@ -262,8 +262,8 @@
 
   $("#menu4_1").click(function(){
     $(".dsc_logs").hide();
-    $(".recieved_distress_list").show();
-    $(".calls_info").html('<%= j render 'recieved_distress' %>');
+    $(".received_distress_list").show();
+    $(".calls_info").html('<%= j render 'received_distress' %>');
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_1").keypress(function(e){
@@ -274,8 +274,8 @@
 
   $("#menu4_2").click(function(){
     $(".dsc_logs").hide();
-    $(".recieved_others_list").show();
-    $(".calls_info").html('<%= j render 'recieved_others' %>');
+    $(".received_others_list").show();
+    $(".calls_info").html('<%= j render 'received_others' %>');
     $(".link:visible").eq(0).focus();
   });
   $("#menu4_2").keypress(function(e){

@@ -559,6 +559,14 @@
               &::-webkit-scrollbar{
                 display:none;
               }
+              &.selects_l {
+                width: 250px;
+                margin-left: 20px;
+                height: 102px;
+              }
+              &.selects_s {
+                height: 22px;
+              }
               .link {
                 display: inline-block;
                 width: 74px;
@@ -612,6 +620,18 @@
                 text-decoration: none;
                 margin-left: 0;
               }
+              .input3 {
+                float: left;
+                width: 145px;
+                //vertical-align: text-top;
+                //position: relative;
+                //top: -3px;
+                height: 20px;
+                line-height: 17px;
+                background-color: $monitor;
+                border: none;
+                margin-left: 10px;
+              }
               .ok_cancel {
                 margin-top: 102px;
                 font-size: 16px;
@@ -619,6 +639,9 @@
                 height: 17px;
                 border: 0;
                 padding: 0;
+                &.ok_cancel_s {
+                  margin-top: 0;
+                }
                 .link {
                   display: inline;
                 }
@@ -838,7 +861,7 @@
             .call_info {
               line-height: 17px;
               padding-left: 18px;
-              padding-right: 18px;
+              //padding-right: 18px;
               border-bottom: 1px solid $character-color;
               height: 84px;
               overflow: auto;

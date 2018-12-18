@@ -1,22 +1,22 @@
 <% case @current_station.state %>
 <% when 4 %>
-  $("#recieved_call").show();
+  $("#received_call").show();
   $(".link:visible").eq(0).focus();
   <% if @dsc.category == "distress" %>
-    $("#recieved_when_menu_mode").html('Recieved DISTRESS.<br>Accept it and abort this menu immediately?');
+    $("#received_when_menu_mode").html('Received DISTRESS.<br>Accept it and abort this menu immediately?');
   <% end %>
   <% if @dsc.category != "distress" && @dsc.eos != "ACK BQ" %>
-    $("#recieved_when_menu_mode").html('Recieved DSC call.<br>Accept it and abort this menu immediately?');
+    $("#received_when_menu_mode").html('Received DSC call.<br>Accept it and abort this menu immediately?');
   <% end %>
   <% if @dsc.category != "distress" && @dsc.eos == "ACK BQ" %>
-    $("#recieved_when_menu_mode").html('Acknowledged!<br>Accept it and abort this menu immediately?');
+    $("#received_when_menu_mode").html('Acknowledged!<br>Accept it and abort this menu immediately?');
   <% end %>
   dsc_id = <%= @dsc.id %>
   $("#dsc_accept").click(function(){
     $.post(`/dscs/${dsc_id}/accept`);
   });
   $("#dsc_ignore").click(function(){
-    $("#recieved_call").hide();
+    $("#received_call").hide();
   });
 
   $("#dsc_accept").keypress(function(e){
@@ -54,7 +54,7 @@
   $(".menu_screen").show();
   $(".menu").hide();
   $(".message").show();
-  $(".message").html('<%= j render 'recieved_call' %>');
+  $(".message").html('<%= j render 'received_call' %>');
   <% if @dsc.category == "routine" || @dsc.category == "safety" %>
     $("#alm-lamp").addClass("red_lamp");
     $("#received_routine_sound").get(0).play();
@@ -67,8 +67,46 @@
 
   <% end %>
 
+  $(".new_ch_call").click(function(){
+    $(".home_screen").hide();
+    $(".sub_screen").hide();
+    $(".menu_screen").show();
+    $(".main_menu").hide();
+    $(".menu_class").hide();
+    $(".new_ch").html('<%= j render 'new_ch' %>');
+    $(".new_ch").show();
+    $("#ok_new").show();
+    $("#call_new").hide();
+    $(":input").prop("readonly", false);
+    $("#input_new_1").val('');
+    $(".link:visible").eq(3).focus();
+  });
+
+  $(".new_ch_call").keypress(function(e){
+    if(e.which == 13){
+      $(".new_ch_call").click();
+    }
+  });
+
+  $(".nack_call").click(function(){
+    $(".home_screen").hide();
+    $(".sub_screen").hide();
+    $(".menu_screen").show();
+    $(".main_menu").hide();
+    $(".menu_class").hide();
+    $(".unable_reason_selection").html('<%= j render 'unable_reason_selection' %>');
+    $(".unable_reason_selection").show();
+    $(".link:visible").eq(0).focus();
+  });
+
+  $(".nack_call").keypress(function(e){
+    if(e.which == 13){
+      $(".nack_call").click();
+    }
+  });
+
 <% when 7 %>
-  $("#recieved_other_call").show();
+  $("#received_other_call").show();
   $(".link:visible").eq(0).focus();
 
   dsc_id = <%= @dsc.id %>
@@ -76,7 +114,7 @@
     $.post(`/dscs/${dsc_id}/accept`);
   });
   $("#continue_distress").click(function(){
-    $("#recieved_other_call").hide();
+    $("#received_other_call").hide();
   });
 
   $("#continue_distress").keypress(function(e){
