@@ -4,7 +4,11 @@
   $(".sub_screen").hide();
   $(".menu_screen").hide();
   $(".home_screen").show();
-  $("#btn_0").off();
+  //$("#btn_0").off();
+  <% numbers = 0..9 %>
+  <% numbers.each do |number| %>
+    $("#btn_<%= number %>").off();
+  <% end %>
   <% if @station.channel >= 10 %>
     $(".current_ch").text("<%= @station.channel %>");
   <% else %>
