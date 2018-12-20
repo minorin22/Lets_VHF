@@ -12,12 +12,29 @@
   $("#input_1_2_2").val('');
   $(".link:visible").eq(0).focus();
 
+  var $focus_input = $("#input_1_2_1");
+  <% numbers = 0..9 %>
+  <% numbers.each do |number| %>
+    $("#btn_<%= number %>").off();
+    $("#btn_<%= number %>").click(function(){
+      var addText = "<%= number %>";
+      var getData = String($focus_input.val());
+      $focus_input.val(getData + addText);
+      if ($focus_input.val().length < 9) {
+        $focus_input.focus();
+      } else if ($focus_input.val().length == 9) {
+        $focus_input = $("#input_1_2_2");
+        $focus_input.focus();
+      }
+    });
+  <% end %>
+
   <% if @to_mmsi %>
     $("#input_1_2_1").val('<%= @to_mmsi %>');
   <% else %>
     $("#input_1_2_1").val('');
   <% end %>
-  
+
   $("#ok_1_2").click(function(){
     $("#ok_1_2").hide();
     $("#call_1_2").show();
