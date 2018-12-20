@@ -382,8 +382,13 @@
     }
   });
 
-
-
+  <% numbers = 1..9 %>
+  <% numbers.each do |number| %>
+  $("#btn_<%= number %>").off();
+  $("#btn_<%= number %>").click(function(){
+    $(".link:visible").eq(<%= number - 1 %>).click();
+  });
+  <% end %>
 
 <% else %>
 <% end %>
