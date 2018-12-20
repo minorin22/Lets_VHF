@@ -13,21 +13,46 @@
   $(".link:visible").eq(0).focus();
 
   var $focus_input = $("#input_1_2_1");
+  var $focus_link = $("#link_1_2_1");
   <% numbers = 0..9 %>
   <% numbers.each do |number| %>
     $("#btn_<%= number %>").off();
-    $("#btn_<%= number %>").click(function(){
-      var addText = "<%= number %>";
-      var getData = String($focus_input.val());
-      $focus_input.val(getData + addText);
-      if ($focus_input.val().length < 9) {
-        $focus_input.focus();
-      } else if ($focus_input.val().length == 9) {
-        $focus_input = $("#input_1_2_2");
-        $focus_input.focus();
+    var touched = false;
+    $("#btn_<%= number %>").bind({
+    'touchstart mousedown': function(e) {
+      touched = true;
+      e.preventDefault();
+    },
+    'touchend mouseup': function(e) {
+      if (touched) {
+        var addText = "<%= number %>";
+        var getData = String($focus_input.val());
+        if ($focus_input.val().length < $focus_input.attr("maxlength")){
+          $focus_input.val(getData + addText);
+        }
+
+        if ($focus_input.val().length < 9) {
+          $focus_link.focus();
+        } else if ($focus_input.val().length == 9) {
+          $focus_input = $("#input_1_2_2");
+          $focus_link = $("#link_1_2_2");
+          $focus_link.focus();
+        }
       }
-    });
+      touched = false;
+      e.preventDefault();
+    }
+  });
   <% end %>
+
+  $("#input_1_2_1").click(function(){
+    $("#input_1_2_1").blur();
+    $("#link_1_2_1").focus();
+  });
+  $("#input_1_2_2").click(function(){
+    $("#input_1_2_2").blur();
+    $("#link_1_2_2").focus();
+  });
 
   <% if @to_mmsi %>
     $("#input_1_2_1").val('<%= @to_mmsi %>');
