@@ -2,7 +2,7 @@
 <form action="/dscs/distress_call" method="POST" id="distress_form">
   <div class="selects">
     <ul>
-      <li><a class="link" tabindex="0"  id="nature_2_3">Nature</a><p class="colon">:</p><p  class="inputs">[</p><input type="text" id="input_2_3_1" class="input input_l" name="nature"   value="Undesignated"><p class="inputs2">]</p></li>
+      <li><a class="link" tabindex="0"  id="nature_2_3">Nature</a><p class="colon">:</p><p  class="inputs">[</p><input type="text" id="input_2_3_1" class="input_l" name="nature"   value="Undesignated" readonly><p class="inputs2">]</p></li>
       <li><a class="link" tabindex="0">Position</a><p class="colon">:</p><p class="inputs inputs_l">[
         <% if @station.lat >= 0 %>
           <%= "N" %>
