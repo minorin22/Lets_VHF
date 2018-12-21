@@ -562,10 +562,10 @@
               &.selects_l {
                 width: 250px;
                 margin-left: 20px;
-                height: 102px;
+                height: 94px;
               }
               &.selects_s {
-                height: 22px;
+                height: 30px;
               }
               .link {
                 display: inline-block;
@@ -612,6 +612,17 @@
                   outline: none;
                 }
               }
+              .input_l {
+                float: left;
+                width: 123px;
+                //vertical-align: text-top;
+                position: relative;
+                top: -3px;
+                height: 20px;
+                line-height: 16px;
+                background-color: $monitor;
+                border: none;
+              }
               .inputs2 {
                 float: left;
                 font-size: 16px;
@@ -640,7 +651,7 @@
                 border: 0;
                 padding: 0;
                 &.ok_cancel_s {
-                  margin-top: 0;
+                  margin-top: 8px;
                 }
                 .link {
                   display: inline;

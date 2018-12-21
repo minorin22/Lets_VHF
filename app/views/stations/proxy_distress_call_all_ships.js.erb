@@ -12,6 +12,46 @@
   $(":input").prop("readonly", false);
   $(".link:visible").eq(1).focus();
 
+  var $focus_input = $("#input_2_4_1_1");
+  var $focus_link = $("#link_2_4_1_1");
+  <% numbers = 0..9 %>
+  <% numbers.each do |number| %>
+    $("#btn_<%= number %>").off();
+    var touched = false;
+    $("#btn_<%= number %>").bind({
+    'touchstart mousedown': function(e) {
+      touched = true;
+      e.preventDefault();
+    },
+    'touchend mouseup': function(e) {
+      if (touched) {
+        var addText = "<%= number %>";
+        var getData = String($focus_input.val());
+        if ($focus_input.val().length < $focus_input.attr("maxlength")){
+          $focus_input.val(getData + addText);
+        }
+        if ($focus_input.val().length < 9) {
+          $focus_link.focus();
+        } else if ($focus_input.val().length == 9) {
+          $focus_link = $("#nature_2_4_1");
+          $focus_link.focus();
+        }
+      }
+      touched = false;
+      e.preventDefault();
+    }
+  });
+  <% end %>
+
+  $("#input_2_4_1_1").click(function(){
+    $("#input_2_4_1_1").blur();
+    $("#link_2_4_1_1").focus();
+  });
+  $("#input_2_4_1_2").click(function(){
+    $("#input_2_4_1_2").blur();
+    $("#nature_2_4_1").focus();
+  });
+
   var natures = ["Fire", "Flooding", "Collision", "Grounding", "Listing", "Sinking", "Disabled", "Undesignated", "Abandoning", "Piracy attack", "Man overboard", "EPIRB emission"];
   var nature = $("#input_2_4_1_2").val();
   if (nature == natures[0]){
@@ -59,15 +99,13 @@
     $("#ok_2_4_1").show();
     $("#call_2_4_1").hide();
     $(":input").prop("readonly", false);
-    $("#ok_2_4_1").focus();
-
+    $("#input_2_4_1_1").val('');
+    $focus_input = $("#input_2_4_1_1");
+    $focus_link = $("#link_2_4_1_1");
+    $focus_link.focus();
   });
 
 
-
-  $("#cancel_2_4_1").click(function(){
-
-  });
 
   $("form").submit(function(){
     var self = this;
@@ -80,7 +118,7 @@
   $(".link, .input").on("keydown", function(e){
 
     var index       =   null;
-    var selector    =   ".link, .input";
+    var selector    =   ".link_selects, .input, .link_ok, .link_cancel, .link_call:visible";
 
     //  ↑キー
     if ( e.keyCode == 38 || e.keyCode == 37 ){
@@ -114,6 +152,11 @@
   $("#nature_2_4_1").keypress(function(e){
     if(e.which == 13){
       $("#nature_2_4_1").click();
+    }
+  });
+  $("#cancel_2_4_1").keypress(function(e){
+    if(e.which == 13){
+      $("#cancel_2_4_1").click();
     }
   });
 

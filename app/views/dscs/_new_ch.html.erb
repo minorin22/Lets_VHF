@@ -2,10 +2,10 @@
 <%= form_tag("/dscs/#{@dsc.id}/new_ch", remote: true, method: :post) do %>
 <div class="selects">
   <ul>
-    <li><a class="link" tabindex="0">Format</a><p class="colon">:</p><p class="inputs">Individual ACK</p></li>
-    <li><a class="link" tabindex="0">To</a><p class="colon">:</p><p class="inputs"><%= @from.mmsi %></p></li>
-    <li><a class="link" tabindex="0">Type</a><p class="colon">:</p><p class="inputs">All modes RT</p></li>
-    <li><a class="link" tabindex="0">Work CH</a><p class="colon">:</p><p class="inputs">[</p><input type="number" id="input_new_1" class="input input_s" name="work_ch"><p class="inputs2">]</p></li>
+    <li><a class="link link_selects" tabindex="0">Format</a><p class="colon">:</p><p class="inputs">Individual ACK</p></li>
+    <li><a class="link link_selects" tabindex="0">To</a><p class="colon">:</p><p class="inputs"><%= @from.mmsi %></p></li>
+    <li><a class="link link_selects" tabindex="0">Type</a><p class="colon">:</p><p class="inputs">All modes RT</p></li>
+    <li><a class="link link_selects" tabindex="0" id="link_new_1">Work CH</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_new_1" class="input input_s" name="work_ch" maxlength="2"><p class="inputs2">]</p></li>
   </ul>
   <div class="ok_cancel">
     <a class="link link_ok" id="ok_new" tabindex="0">[OK]</a>
@@ -26,8 +26,46 @@ $("#cancel_new").click(function(){
   $("#ok_new").show();
   $("#call_new").hide();
   $(":input").prop("readonly", false);
-  $("#ok_new").focus();
+  $("#input_new_1").val('');
+  $focus_input = $("#input_new_1");
+  $focus_link = $("#link_new_1");
+  $focus_link.focus();
+});
 
+var $focus_input = $("#input_new_1");
+var $focus_link = $("#link_new_1");
+<% numbers = 0..9 %>
+<% numbers.each do |number| %>
+  $("#btn_<%= number %>").off();
+  var touched = false;
+  $("#btn_<%= number %>").bind({
+  'touchstart mousedown': function(e) {
+    touched = true;
+    e.preventDefault();
+  },
+  'touchend mouseup': function(e) {
+    if (touched) {
+      var addText = "<%= number %>";
+      var getData = String($focus_input.val());
+      if ($focus_input.val().length < $focus_input.attr("maxlength")){
+        $focus_input.val(getData + addText);
+      }
+      if ($focus_input.val().length < 2) {
+        $focus_link.focus();
+      } else if ($focus_input.val().length == 2) {
+        $focus_link = $("#ok_new");
+        $focus_link.focus();
+      }
+    }
+    touched = false;
+    e.preventDefault();
+  }
+});
+<% end %>
+
+$("#input_new_1").click(function(){
+  $("#input_new_1").blur();
+  $("#link_new_1").focus();
 });
 
 $("form").submit(function(){
@@ -55,7 +93,7 @@ $("#cancel_new").keypress(function(e){
 });
 $(".link, .input").on("keydown", function(e){
 var index       =   null;
-var selector    =   ".link, .input";
+var selector    =   ".link_selects, .input, .link_ok, .link_cancel, .link_call:visible";
 if ( e.keyCode == 38 || e.keyCode == 37 ){
     index   =   $(selector).index(this);
     if (index > 0){
