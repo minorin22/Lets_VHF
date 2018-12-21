@@ -10,10 +10,20 @@
   $("#call_1_2").hide();
   $(":input").prop("readonly", false);
   $("#input_1_2_2").val('');
-  $(".link:visible").eq(0).focus();
 
-  var $focus_input = $("#input_1_2_1");
-  var $focus_link = $("#link_1_2_1");
+  <% if @to_mmsi %>
+    $("#input_1_2_1").val('<%= @to_mmsi %>');
+    var $focus_input = $("#input_1_2_2");
+    var $focus_link = $("#link_1_2_2");
+  <% else %>
+    $("#input_1_2_1").val('');
+    var $focus_input = $("#input_1_2_1");
+    var $focus_link = $("#link_1_2_1");
+  <% end %>
+
+  var mmsi_length = $("#input_1_2_1").val().length;
+  var ch_length = $("#input_1_2_2").val().length;
+  $focus_link.focus();
   <% numbers = 0..9 %>
   <% numbers.each do |number| %>
     $("#btn_<%= number %>").off();
@@ -38,6 +48,12 @@
           $focus_link = $("#link_1_2_2");
           $focus_link.focus();
         }
+        mmsi_length = $("#input_1_2_1").val().length;
+        ch_length = $("#input_1_2_2").val().length;
+        if (ch_length == 2) {
+          $focus_link = $("#ok_1_2");
+          $focus_link.focus();
+        }
       }
       touched = false;
       e.preventDefault();
@@ -54,11 +70,6 @@
     $("#link_1_2_2").focus();
   });
 
-  <% if @to_mmsi %>
-    $("#input_1_2_1").val('<%= @to_mmsi %>');
-  <% else %>
-    $("#input_1_2_1").val('');
-  <% end %>
 
   $("#ok_1_2").click(function(){
     $("#ok_1_2").hide();
@@ -71,7 +82,11 @@
     $("#ok_1_2").show();
     $("#call_1_2").hide();
     $(":input").prop("readonly", false);
-    $(".link:visible").eq(2).focus();
+    $("#input_1_2_1").val('');
+    $("#input_1_2_2").val('');
+    $focus_input = $("#input_1_2_1");
+    $focus_link = $("#link_1_2_1");
+    $focus_link.focus();
   });
 
   $("form").submit(function(){
@@ -82,10 +97,11 @@
     }, 10000);
   });
 
+
   $(".link, .input").on("keydown", function(e){
 
     var index       =   null;
-    var selector    =   ".link, .input";
+    var selector    =   ".link_selects, .input, .link_ok, .link_cancel, .link_call:visible";
 
     //  ↑キー
     if ( e.keyCode == 38 || e.keyCode == 37 ){

@@ -11,8 +11,43 @@
   $("#ok_2_1_1").show();
   $("#call_2_1_1").hide();
   $(":input").prop("readonly", false);
-  //$(".input").val('');
   $(".link:visible").eq(0).focus();
+
+  var $focus_input = $("#input_2_1_1_1");
+  var $focus_link = $("#link_2_1_1_1");
+  <% numbers = 0..9 %>
+  <% numbers.each do |number| %>
+    $("#btn_<%= number %>").off();
+    var touched = false;
+    $("#btn_<%= number %>").bind({
+    'touchstart mousedown': function(e) {
+      touched = true;
+      e.preventDefault();
+    },
+    'touchend mouseup': function(e) {
+      if (touched) {
+        var addText = "<%= number %>";
+        var getData = String($focus_input.val());
+        if ($focus_input.val().length < $focus_input.attr("maxlength")){
+          $focus_input.val(getData + addText);
+        }
+        if ($focus_input.val().length < 2) {
+          $focus_link.focus();
+        } else if ($focus_input.val().length == 2) {
+          $focus_link = $("#ok_2_1_1");
+          $focus_link.focus();
+        }
+      }
+      touched = false;
+      e.preventDefault();
+    }
+  });
+  <% end %>
+
+  $("#input_2_1_1_1").click(function(){
+    $("#input_2_1_1_1").blur();
+    $("#link_2_1_1_1").focus();
+  });
 
   $("#ok_2_1_1").click(function(){
     $("#ok_2_1_1").hide();
@@ -26,7 +61,10 @@
     $("#ok_2_1_1").show();
     $("#call_2_1_1").hide();
     $(":input").prop("readonly", false);
-    $(".link:visible").eq(3).focus();
+    $("#input_2_1_1_1").val('');
+    $focus_input = $("#input_2_1_1_1");
+    $focus_link = $("#link_2_1_1_1");
+    $focus_link.focus();
   });
 
   $("form").submit(function(){
@@ -40,7 +78,7 @@
   $(".link, .input").on("keydown", function(e){
 
     var index       =   null;
-    var selector    =   ".link, .input";
+    var selector    =   ".link_selects, .input, .link_ok, .link_cancel, .link_call:visible";
 
     //  ↑キー
     if ( e.keyCode == 38 || e.keyCode == 37 ){

@@ -40,6 +40,12 @@
    border: none;
    outline: none;
    background: transparent;
+   border-radius: 0;
+ }
+ input {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
  }
  input[type="text"] {
   -webkit-appearance: none;

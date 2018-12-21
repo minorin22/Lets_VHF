@@ -2,7 +2,7 @@
 <%= form_tag("/dscs/#{@dsc.id}/relay", remote: true, method: :post) do %>
 <div class="selects">
   <ul>
-    <li><a class="link" tabindex="0">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="number" id="input_relay_1" class="input" name="mmsi"><p class="inputs2">]</p></li>
+    <li><a class="link link_selects" tabindex="0" id="link_relay_1">Adress</a><p class="colon">:</p><p class="inputs">[</p><input type="text" id="input_relay_1" class="input" name="mmsi" maxlength="9"><p class="inputs2">]</p></li>
   </ul>
   <div class="ok_cancel">
     <a class="link link_ok" id="ok_relay" tabindex="0">[OK]</a>
@@ -23,8 +23,46 @@ $("#cancel_relay").click(function(){
   $("#ok_relay").show();
   $("#call_relay").hide();
   $(":input").prop("readonly", false);
-  $("#ok_relay").focus();
+  $("#input_relay_1").val('');
+  $focus_input = $("#input_relay_1");
+  $focus_link = $("#link_relay_1");
+  $focus_link.focus();
+});
 
+var $focus_input = $("#input_relay_1");
+var $focus_link = $("#link_relay_1");
+<% numbers = 0..9 %>
+<% numbers.each do |number| %>
+  $("#btn_<%= number %>").off();
+  var touched = false;
+  $("#btn_<%= number %>").bind({
+  'touchstart mousedown': function(e) {
+    touched = true;
+    e.preventDefault();
+  },
+  'touchend mouseup': function(e) {
+    if (touched) {
+      var addText = "<%= number %>";
+      var getData = String($focus_input.val());
+      if ($focus_input.val().length < $focus_input.attr("maxlength")){
+        $focus_input.val(getData + addText);
+      }
+      if ($focus_input.val().length < 9) {
+        $focus_link.focus();
+      } else if ($focus_input.val().length == 9) {
+        $focus_link = $("#ok_relay");
+        $focus_link.focus();
+      }
+    }
+    touched = false;
+    e.preventDefault();
+  }
+});
+<% end %>
+
+$("#input_relay_1").click(function(){
+  $("#input_relay_1").blur();
+  $("#link_relay_1").focus();
 });
 
 $("form").submit(function(){
@@ -52,7 +90,7 @@ $("#cancel_relay").keypress(function(e){
 });
 $(".link, .input").on("keydown", function(e){
 var index       =   null;
-var selector    =   ".link, .input";
+var selector    =   ".link_selects, .input, .link_ok, .link_cancel, .link_call:visible";
 if ( e.keyCode == 38 || e.keyCode == 37 ){
     index   =   $(selector).index(this);
     if (index > 0){
