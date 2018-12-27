@@ -57,12 +57,14 @@
   $(".message").html('<%= j render 'received_call' %>');
   <% if @dsc.category == "routine" || @dsc.category == "safety" %>
     $("#alm-lamp").addClass("red_lamp");
+    document.getElementById("received_routine_sound").currentTime = 0;
     $("#received_routine_sound").get(0).play();
   <% end %>
   <% if @dsc.category == "urgency" || @dsc.category == "distress" %>
     var alm_flash = setInterval(function(){
       $("#alm-lamp").toggleClass("red_lamp");
     },250);
+    document.getElementById("received_distress_sound").currentTime = 0;
     $("#received_distress_sound").get(0).play();
 
   <% end %>
