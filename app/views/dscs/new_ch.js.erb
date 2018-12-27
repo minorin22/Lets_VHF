@@ -7,6 +7,13 @@ setTimeout(function(){
 setTimeout(function(){
   $("#sending_message").hide();
   $(".tx").hide();
+
+  $("#off_hook_click").off();
+  $("#off_hook_click").click(function(){
+    $("#off_hook").hide();
+    $("#on_hook").fadeIn();
+  });
+  
   <% if @current_station.channel >= 10 %>
     channel = <%= @current_station.channel %>
   <% else %>
