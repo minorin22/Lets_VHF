@@ -17,6 +17,11 @@ setTimeout(function(){
     $("#on_hook").fadeIn();
   });
 
+  <% numbers = 0..9 %>
+  <% numbers.each do |number| %>
+    $("#btn_<%= number %>").off();
+  <% end %>
+
   $(".distress_info").text('　');
   $(".distress_info").removeClass("reverse_color");
   $(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
