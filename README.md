@@ -68,12 +68,12 @@
 
 ### dscs
 - ship_station_call             DSC呼出ロジック
-- safety_call_all_ships         〃
-- safety_call_specific_station  〃
-- urgency_call_all_ships        〃
-- urgency_call_specific_station 〃
-- distress_call                 〃
-- proxy_distress_call_all_ships 〃
+- safety_call_all_ships         "
+- safety_call_specific_station  "
+- urgency_call_all_ships        "
+- urgency_call_specific_station "
+- distress_call                 "
+- proxy_distress_call_all_ships "
 - show                          DSCメッセージ表示（MENU 4）
 - received_call                 DSC受信画面
 - accept                        MENU操作時、遭難モード時のDSC受入
@@ -108,13 +108,13 @@
 - off_btn                       電源OFF確認
 - func                          FUNCモード
 - dsc_rtn                       DSC呼出画面
-- safety_call_all_ships         〃
-- safety_call_specific_station  〃
-- urgency_call_all_ships        〃
-- urgency_call_specific_station 〃
-- distress_call                 〃
-- proxy_distress_call_all_ships 〃
-- dsc_test_call                 〃
+- safety_call_all_ships         "
+- safety_call_specific_station  "
+- urgency_call_all_ships        "
+- urgency_call_specific_station "
+- distress_call                 "
+- proxy_distress_call_all_ships "
+- dsc_test_call                 "
 - other_ships_list              MENU 5.1 Other ships list
 - self_diagnosis                MENU 8.1 自己診断テスト
 - ais_call                      AIS情報から呼出
