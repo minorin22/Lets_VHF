@@ -11,20 +11,20 @@
 - remember_digest string
 
 ### Station
-- id
-- user_id   integer ログイン中のユーザーに紐付け
-- name      string ユーザー入力 or 自動生成
-- call_sign string ユーザー入力 or 自動生成
-- mmsi      integer 自動生成
-- lat       float 自動生成
-- long      float E,Nが＋でS,Wが-
-- region    string
-- channel   integer
-- created_at
-- updated_at
-- state     integer 0:OFF 1:定常 2:CH変更 3:補助画面 4:MENU 5:FUNC 6:DSC 7:DIST
-- tmp_ch    integer
-- power     integer 1 or 25
+|id||
+|user_id   |integer ログイン中のユーザーに紐付け|
+|name      |string ユーザー入力 or 自動生成|
+|call_sign |string ユーザー入力 or 自動生成|
+|mmsi      |integer 自動生成|
+|lat       |float 自動生成|
+|long      |float E,Nが＋でS,Wが-|
+|region    |string|
+|channel   |integer|
+|created_at||
+|updated_at||
+|state     |integer 0:OFF 1:定常 2:CH変更 3:補助画面 4:MENU 5:FUNC 6:DSC 7:DIST|
+|tmp_ch    |integer|
+|power     |integer 1 or 25|
 
 #### state
 - 0 電源OFF　            全ての入力を受け付けない
