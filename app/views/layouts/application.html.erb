@@ -29,7 +29,7 @@
       </div>
       <ul class="header-menus">
         <% if session[:user_id] %>
-          <li><%= link_to "シナリオモード", "/users/#{@current_user.id}" %></li>
+
           <li>
             <% if @current_station %>
               <%= link_to "シミュレーターモード", "/stations/#{@current_station.id}",data: {"turbolinks" => false} %>
@@ -37,6 +37,7 @@
               <%= link_to "シミュレーターモード", "/stations/new" %>
             <% end %>
           </li>
+          <li><%= link_to "設定", "/users/#{@current_user.id}" %></li>
           <li><%= link_to "ログアウト", "/logout" ,method: :post %></li>
         <% else %>
           <li><%= link_to "LET'S VHF ! とは", "/about" %></li>
