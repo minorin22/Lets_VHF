@@ -183,7 +183,7 @@ class StationsController < ApplicationController
   end
 
   def other_ships_list
-    @other_stations = Station.where.not(id: @station.id)
+    @other_stations = Station.where(region: @station.region).where.not(id: @station.id)
     case @station.state
     when 1, 5
       @station.state = 4
@@ -242,14 +242,22 @@ class StationsController < ApplicationController
   end
 
   def create
+    @region = params[:region]
+    if @region == "tokyo"
+      @lat = rand(35.444...35.619)
+      @long = rand(139.792...140.222)
+    elsif @region == "osaka"
+      @lat = rand(34.392...34.635)
+      @long = rand(135.035...135.314)
+    end
     @station = Station.new(
       user_id: @current_user.id,
       name: params[:name].upcase,
       call_sign: params[:call_sign].upcase,
       mmsi: 431000000 + @current_user.id.to_i,
-      lat: rand(35.444...35.619),
-      long: rand(139.792...140.222),
-      region: params[:region],
+      lat: @lat,
+      long: @long,
+      region: @region,
       channel: 16,
       state: 1,
       power: 25
