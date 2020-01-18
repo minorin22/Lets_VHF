@@ -37,7 +37,7 @@
               <%= link_to "シミュレーターモード", "/stations/new" %>
             <% end %>
           </li>
-          <li><%= link_to "設定", "/users/#{@current_user.id}" %></li>
+          <li><%= link_to "各種設定", "/users/#{@current_user.id}" %></li>
           <li><%= link_to "ログアウト", "/logout" ,method: :post %></li>
         <% else %>
           <li><%= link_to "LET'S VHF ! とは", "/about" %></li>
