@@ -181,8 +181,13 @@ class DscsController < ApplicationController
   end
 
   def new_call
-    @received_calls_length = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).length
-    @new_call = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).last
+    @calls = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id)
+    #@received_calls_length = @calls.length
+    if @current_station.region == Station.find_by(id: @calls.last.from_id).region
+      @new_call = @calls.last
+    end
+    #@received_calls_length = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).length
+    #@new_call = Dsc.where(to_id: [@current_station.id, nil]).where.not(from_id: @current_station.id).last
     #gon.received_calls_length = @received_calls_length
     #gon.new_call_id = @new_call.id
     respond_to do |format|
