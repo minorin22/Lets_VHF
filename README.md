@@ -15,12 +15,12 @@
 ### Station
 - id
 - user_id   integer ログイン中のユーザーに紐付け
-- name      string ユーザー入力 or 自動生成
-- call_sign string ユーザー入力 or 自動生成
+- name      string ユーザー入力
+- call_sign string ユーザー入力
 - mmsi      integer 自動生成
 - lat       float 自動生成
 - long      float E,Nが＋でS,Wが-
-- region    string
+- region    string 東京湾 or 大阪湾
 - channel   integer
 - created_at
 - updated_at
@@ -97,7 +97,6 @@
 
 
 ### stations
-- index                         *
 - show                          定常画面
 - new                           局情報登録画面
 - pwr_cont                      電源ON（state0→1)
@@ -121,7 +120,6 @@
 - self_diagnosis                MENU 8.1 自己診断テスト
 - ais_call                      AIS情報から呼出
 - btns                          テンキー操作
-- edit                          *
 - create                        局情報登録
 - update                        *
 - destroy                       *
@@ -131,12 +129,11 @@
 
 
 ### users
-- index               *
 - show                ホーム画面（ようこそ、○○さん）
 - new                 新規登録画面
-- edit                *
+- edit                各種設定画面
 - create              新規登録
-- update              *
+- update              設定アップデート
 - destroy             *
 - login_form          ログイン画面
 - login               ログイン

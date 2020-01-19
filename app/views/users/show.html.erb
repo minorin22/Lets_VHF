@@ -3,7 +3,7 @@
 
   <div class="mode_icons">
     <div class="mode_icon">
-      <%= image_tag "on_board.svg" , class:"img" %>
+      <%= link_to(image_tag("on_board.svg", class:"img"), "/users/#{@current_user.id}/edit") %>
       <h3>各種設定<br />モード</h3>
       <p>
         各種設定モードでは、船名やコールサイン等を自由に設定することができます。
