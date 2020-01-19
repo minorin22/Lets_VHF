@@ -1,12 +1,10 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list, :ais_call, :self_diagnosis]
+  before_action :set_station, only: [:show, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list, :ais_call, :self_diagnosis]
   before_action :authenticate_user
-  before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_station, only: [:show, :update, :destroy]
+  before_action :ensure_correct_station, only: [:show, :update, :destroy]
   before_action :forbid_login_station, only: [:new, :create]
   before_action :set_lat_long, only: [:show, :distress_call, :proxy_distress_call_all_ships]
-  def index
-  end
 
   def show
     if @station.channel != 16
@@ -238,8 +236,6 @@ class StationsController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def create
     @region = params[:region]
