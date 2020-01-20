@@ -121,7 +121,8 @@
 - ais_call                      AIS情報から呼出
 - btns                          テンキー操作
 - create                        局情報登録
-- update                        *
+- edit                          各種設定
+- update                        設定アップデート
 - destroy                       *
 - set_station                   @station定義
 - set_lat_long                  度、分換算
@@ -131,9 +132,9 @@
 ### users
 - show                ホーム画面（ようこそ、○○さん）
 - new                 新規登録画面
-- edit                各種設定画面
+- edit                ユーザー設定
 - create              新規登録
-- update              設定アップデート
+- update              ユーザー設定アップデート
 - destroy             *
 - login_form          ログイン画面
 - login               ログイン
