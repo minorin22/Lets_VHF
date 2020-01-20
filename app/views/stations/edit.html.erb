@@ -1,2 +1,45 @@
-<h1>Stations#edit</h1>
-<p>Find me in app/views/stations/edit.html.erb</p>
+<div class="grayout">
+  <%= link_to "", "/users/#{@current_user.id}",class:"to_top" %>
+  <div class="mordal">
+    <%= link_to(image_tag("x_btn.svg"), "/users/#{@current_user.id}", class:"x-btn") %>
+    <div class="items">
+      <%= form_tag("/stations/#{@station.id}/update", {multipart: true}) do %>
+        <div class="item">
+          <p>呼出名称 <% if @error_message %><span>*</span><% end %></p>
+          <input name="name" value="<%= @station.name %>">
+        </div>
+        <div class="item">
+          <p>コールサイン <% if @error_message %><span>*</span><% end %></p>
+          <input name="call_sign" value="<%= @station.call_sign %>">
+        </div>
+        <div class="item">
+          <p>海域 <% if @error_message %><span>*</span><% end %></p>
+          <select name="region">
+            <% if @station.region == "tokyo"%>
+                <option value="tokyo" selected>東京湾</option>
+                <option value="osaka">大阪湾</option>
+            <% else %>
+                <option value="tokyo">東京湾</option>
+                <option value="osaka" selected>大阪湾</option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="item">
+
+          <p class="errors">
+            <% @station.errors.full_messages.each do |message| %>
+              <span><%= message %></span><br>
+            <% end %>
+          </p>
+
+        </div>
+
+        <input type="submit" value="更新" class="btn sign-up">
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
+

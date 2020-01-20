@@ -626,6 +626,10 @@
 <%= audio_tag("/send_distress.wav",id:"send_distress_sound") %>
 
 <script>
+  $(document).click(function(event) {
+    $(".flash").hide();
+  });
+  
   var scrollTop = $(window).scrollTop();
   $('.station_container').css({'position':'fixed','top':-scrollTop,'left':'calc(50% - 976px/2)'});
   $.ajax({

@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       cookies.permanent.signed[:user_id] = @user.id
       cookies.permanent[:remember_token] = @user.remember_token
       redirect_to("/users/#{@user.id}")
-      flash[:notice] = "ユーザー情報を編集しました"
+      flash[:notice] = "ユーザー情報を更新しました"
     else
       @error_message = "*"
       @name = params[:name]
