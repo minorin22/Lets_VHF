@@ -1,8 +1,8 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list, :ais_call, :self_diagnosis]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :back_16, :btns, :change_power, :cancel, :off_btn, :pwr_off, :pwr_cont, :menu, :func, :dsc_rtn, :safety_call_all_ships ,:safety_call_specific_station, :urgency_call_all_ships, :urgency_call_specific_station, :distress_call, :break, :proxy_distress_call_all_ships, :dsc_test_call, :other_ships_list, :ais_call, :self_diagnosis]
   before_action :authenticate_user
-  before_action :authenticate_station, only: [:show, :update, :destroy]
-  before_action :ensure_correct_station, only: [:show, :update, :destroy]
+  before_action :authenticate_station, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_station, only: [:show, :edit, :update, :destroy]
   before_action :forbid_login_station, only: [:new, :create]
   before_action :set_lat_long, only: [:show, :distress_call, :proxy_distress_call_all_ships]
 
@@ -269,7 +269,29 @@ class StationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    @station = Station.find_by(id: params[:id])
+    @station.name = params[:name].upcase
+    @station.call_sign = params[:call_sign].upcase
+    @station.region = params[:region]
+    if @station.region == "tokyo"
+      @station.lat = rand(35.444...35.619)
+      @station.long = rand(139.792...140.222)
+    elsif @station.region == "osaka"
+      @station.lat = rand(34.392...34.635)
+      @station.long = rand(135.035...135.314)
+    end
+    if @station.save
+      redirect_to("/stations/#{@station.id}")
+      flash[:notice] = "局情報を更新しました"
+    else
+      @error_message = "*"
+      @name = params[:name]
+      render("stations/edit")
+    end
   end
 
   def destroy
