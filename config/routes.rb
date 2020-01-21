@@ -59,4 +59,13 @@ Rails.application.routes.draw do
   get "login" => "users#login_form"
   post "login" => "users#login"
   post "logout" => "users#logout"
+
+  namespace :admin do
+    #resources :users
+    get "/" => "users#index"
+    get "users/new" => "users#new"
+    post "users" => "users#create"
+    get "users/:id/edit" => "users#edit"
+    post "users/:id/update" => "users#update"
+  end
 end

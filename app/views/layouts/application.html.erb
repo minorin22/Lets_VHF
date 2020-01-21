@@ -44,6 +44,11 @@
               <%= link_to "各種設定", "/stations/new" %>
             <% end %>
           </li>
+          <li>
+            <% if @current_user.admin %>
+              <%= link_to "管理画面", "/admin" %>
+            <% end %>
+          </li>
           <li><%= link_to "ログアウト", "/logout" ,method: :post %></li>
         <% else %>
           <li><%= link_to "LET'S VHF ! とは", "/about" %></li>

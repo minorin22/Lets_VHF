@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_035858) do
+ActiveRecord::Schema.define(version: 2020_01_21_035407) do
 
   create_table "dscs", force: :cascade do |t|
     t.integer "from_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_035858) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.boolean "admin", default: false
   end
 
 end
