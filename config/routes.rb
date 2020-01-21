@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   post "stations/:id/other_ships_list" => "stations#other_ships_list"
   post "stations/:id/ais_call" => "stations#ais_call"
   post "stations/:id/self_diagnosis" => "stations#self_diagnosis"
-  delete "stations/:id" => "stations#destroy"
 
   post "dscs/ship_station_call" => "dscs#ship_station_call"
   post "dscs/safety_call_all_ships" => "dscs#safety_call_all_ships"
@@ -54,18 +53,20 @@ Rails.application.routes.draw do
   post "users" => "users#create"
   get "users/:id/edit" => "users#edit"
   post "users/:id/update" => "users#update"
-  delete "users/:id" => "users#destroy"
 
   get "login" => "users#login_form"
   post "login" => "users#login"
   post "logout" => "users#logout"
 
   namespace :admin do
-    #resources :users
     get "/" => "users#index"
     get "users/new" => "users#new"
     post "users" => "users#create"
     get "users/:id/edit" => "users#edit"
     post "users/:id/update" => "users#update"
+    delete "users/:id" => "users#destroy"
+    get "users/:id/station" => "users#station"
+    get "stations/:id/edit" => "stations#edit"
+    post "stations/:id/update" => "stations#update"
   end
 end

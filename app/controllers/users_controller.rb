@@ -4,22 +4,16 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
   before_action :forbid_login_user, only: [:new, :create, :login, :login_form]
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(
       name: params[:name],
@@ -40,8 +34,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
@@ -58,16 +50,6 @@ class UsersController < ApplicationController
       @error_message = "*"
       @name = params[:name]
       render("users/edit")
-    end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -97,7 +79,6 @@ class UsersController < ApplicationController
     end
     cookies.permanent[:remember_token] = nil
     cookies.permanent.signed[:user_id] = nil
-    #@current_user = nil
     redirect_to("/")
     flash[:notice] = "ログアウトしました"
   end

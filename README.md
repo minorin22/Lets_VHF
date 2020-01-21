@@ -11,6 +11,7 @@
 - updated_at
 - password_digest string
 - remember_digest string
+- admin           boolean
 
 ### Station
 - id
@@ -123,7 +124,6 @@
 - create                        局情報登録
 - edit                          各種設定
 - update                        設定アップデート
-- destroy                       *
 - set_station                   @station定義
 - set_lat_long                  度、分換算
 - ensure_correct_station        アクセス制限（他局）
@@ -135,10 +135,26 @@
 - edit                ユーザー設定
 - create              新規登録
 - update              ユーザー設定アップデート
-- destroy             *
 - login_form          ログイン画面
 - login               ログイン
 - logout              ログアウト
 - ensure_correct_user アクセス制限（他ユーザ）
 - set_user            @user定義
-- user_params         *
+- user_params
+
+## Admin Controller
+
+### stations
+- edit              局情報設定画面
+- update            設定アップデート
+- admin_station     admin権限確認
+
+### users
+- index             ユーザー一覧
+- new               新規登録画面
+- edit              ユーザー設定
+- create            新規登録
+- update            ユーザー設定アップデート
+- station           局情報登録
+- destroy           ユーザー＆局削除
+- admin_user        admin権限確認

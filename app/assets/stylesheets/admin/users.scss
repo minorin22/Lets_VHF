@@ -10,16 +10,16 @@ ul {
       font-size: 16px;
       float: left;
       &.id1 {
-        width: 35px;
+        width: 46px;
       }
       &.id2 {
         width: 46px;
       }
       &.user_name {
-        width: 117px;
+        width: 123px;
       }
       &.ship_name {
-        width: 183px;
+        width: 188px;
       }
       &.call_sign {
         width: 103px;
@@ -34,7 +34,7 @@ ul {
       line-height: 50px;
       text-decoration: underline;
       &.new_user {
-        width: 262px;
+        width: 241px;
       }  
       &.edit1 {
         width: 119px;
@@ -45,7 +45,7 @@ ul {
         font-weight: 300;
       }
       &.delete {
-        width: 71px;
+        width: 50px;
         font-weight: 300;
       }
     }
