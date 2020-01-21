@@ -14,14 +14,18 @@
     <% station = Station.find_by(user_id: user.id) %>
     <li>
       <p class="id1"><%= user.id %></p>
-      <p class="id2"><% if station %><%= station.id %><% else %>nil<% end %></p>
-      <p class="user_name"><%= user.name %></p>
-      <p class="ship_name"><% if station %><%= station.name %><% else %>nil<% end %></p>
-      <p class="call_sign"><% if station %><%= station.call_sign %><% else %>nil<% end %></p>
-      <p class="region"><% if station %><% if station.region == "tokyo" %>東京湾<% elsif station.region == "osaka" %>大阪湾<% end %><% else %>nil<% end %></p>
+      <p class="id2"><% if station.id %><%= station.id %><% else %>nil<% end %></p>
+      <p class="user_name"><%if user.admin %>*&nbsp;<% end %><%= user.name %></p>
+      <p class="ship_name"><% if station.name %><%= station.name %><% else %>nil<% end %></p>
+      <p class="call_sign"><% if station.call_sign %><%= station.call_sign %><% else %>nil<% end %></p>
+      <p class="region"><% if station.region %><% if station.region == "tokyo" %>東京湾<% elsif station.region == "osaka" %>大阪湾<% end %><% else %>nil<% end %></p>
       <%= link_to("ユーザー編集", "/admin/users/#{user.id}/edit/", {class: "admin_link edit1"}) %>
-      <%= link_to("局編集", "/admin/users/#{user.id}/edit/", {class: "admin_link edit2"}) %>
-      <%= link_to("削除", "/admin/users/#{user.id}/edit/", {class: "admin_link delete"}) %>
+      <% if station %>
+        <%= link_to("局編集", "/admin/stations/#{station.id}/edit/", class: "admin_link edit2") %>
+      <% else %>
+        <%= link_to("局編集", "/admin/users/#{user.id}/station", class: "admin_link edit2") %>
+      <% end %>
+      <%= link_to("削除", "/admin/users/#{user.id}", class: "admin_link delete", method: :delete, data: { confirm: '本当に削除しますか？' } ) %>
     </li>
   <% end %>
   </ul>

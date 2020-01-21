@@ -43,6 +43,31 @@ class Admin::UsersController < ApplicationController
       render("admin/users/edit")
     end
   end
+
+  def station
+    @station = Station.new(
+      user_id: params[:id],
+      mmsi: 431000000 + params[:id].to_i,
+      channel: 16,
+      state: 1,
+      power: 25
+    )
+    if @station.save(validate: false)
+      redirect_to("/admin/stations/#{@station.id}/edit")
+    else
+      redirect_to("/admin")
+    end
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @station = Station.find_by(user_id: @user.id)
+    @user.destroy
+    @station.destroy
+    redirect_to("/admin")
+    flash[:notice] = "ユーザー情報を削除しました"
+  end
+
   private
   def admin_user
     redirect_to("/") unless @current_user.admin?
