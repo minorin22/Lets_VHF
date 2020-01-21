@@ -1,0 +1,54 @@
+// Place all the styles related to the admin/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+ul {
+  margin: 0 auto;
+  li {
+    p {
+      margin: 0;
+      font-size: 16px;
+      float: left;
+      &.id1 {
+        width: 35px;
+      }
+      &.id2 {
+        width: 46px;
+      }
+      &.user_name {
+        width: 117px;
+      }
+      &.ship_name {
+        width: 183px;
+      }
+      &.call_sign {
+        width: 103px;
+      }
+      &.region {
+        width: 88px;
+      }
+    }
+    a.admin_link{
+      color: $dark-green;
+      float: left;
+      line-height: 50px;
+      text-decoration: underline;
+      &.new_user {
+        width: 262px;
+      }  
+      &.edit1 {
+        width: 119px;
+        font-weight: 300;
+      }
+      &.edit2 {
+        width: 72px;
+        font-weight: 300;
+      }
+      &.delete {
+        width: 71px;
+        font-weight: 300;
+      }
+    }
+
+  }
+}

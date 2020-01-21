@@ -1,0 +1,38 @@
+
+<div class="grayout">
+  <%= link_to "", "/admin",class:"to_top" %>
+  <div class="mordal">
+    <%= link_to(image_tag("x_btn.svg"), "/admin", class:"x-btn") %>
+    <div class="items">
+      <%= form_tag("/admin/users") do %>
+        <div class="item">
+          <p>ユーザーID <% if @error_message %><span>*</span><% end %></p>
+          <input name="name" value="<%= @name %>" autofocus>
+        </div>
+        <div class="item">
+          <p>Password <% if @error_message %><span>*</span><% end %></p>
+          <input name="password" type="password">
+        </div>
+        <div class="item">
+          <p>Password (確認) <% if @error_message %><span>*</span><% end %></p>
+          <input name="password_confirmation" type="password">
+        </div>
+
+
+        <div class="item">
+
+          <p class="errors">
+            <% @user.errors.full_messages.reverse_each do |message| %>
+              <span><%= message %></span><br>
+            <% end %>
+          </p>
+
+        </div>
+
+        <input type="submit" value="新規登録" class="btn sign-up">
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
