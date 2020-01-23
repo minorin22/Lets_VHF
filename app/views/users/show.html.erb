@@ -3,7 +3,7 @@
 
   <div class="mode_icons">
     <div class="mode_icon">
-      <% if @current_user %>
+      <% if @current_station %>
         <%= link_to(image_tag("on_board.svg", class:"img"), "/stations/#{@current_station.id}/edit") %>
       <% else %>
         <%= link_to(image_tag("on_board.svg", class:"img"), "/stations/new") %>
