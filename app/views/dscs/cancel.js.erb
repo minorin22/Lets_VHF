@@ -9,7 +9,7 @@ $("#off_hook_click").click(function(){
 
 $(".distress_info").text('　');
 $(".distress_info").removeClass("reverse_color");
-$(".dsc_infos").html('<img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">');
+$(".dsc_infos").html('<%= image_tag "ch70-symbol.svg", class:"dsc_info ch70_info", id:"ch70_symbol" %><%= image_tag "atm-ans.svg", class:"dsc_info", id:"atm_ans" %><%= image_tag "ch_sw.svg", class:"dsc_info", id:"ch_sw" %>');
 
 var touched = false;
 var touch_time = 0;
