@@ -14,11 +14,11 @@
     <% station = Station.find_by(user_id: user.id) %>
     <li>
       <p class="id1"><%= user.id %></p>
-      <p class="id2"><% if station.id %><%= station.id %><% else %>nil<% end %></p>
+      <p class="id2"><% if station && station.id %><%= station.id %><% else %>nil<% end %></p>
       <p class="user_name"><%if user.admin %>*&nbsp;<% end %><%= user.name %></p>
-      <p class="ship_name"><% if station.name %><%= station.name %><% else %>nil<% end %></p>
-      <p class="call_sign"><% if station.call_sign %><%= station.call_sign %><% else %>nil<% end %></p>
-      <p class="region"><% if station.region %><% if station.region == "tokyo" %>東京湾<% elsif station.region == "osaka" %>大阪湾<% end %><% else %>nil<% end %></p>
+      <p class="ship_name"><% if station && station.name %><%= station.name %><% else %>nil<% end %></p>
+      <p class="call_sign"><% if station && station.call_sign %><%= station.call_sign %><% else %>nil<% end %></p>
+      <p class="region"><% if station && station.region %><% if station.region == "tokyo" %>東京湾<% elsif station.region == "osaka" %>大阪湾<% end %><% else %>nil<% end %></p>
       <%= link_to("ユーザー編集", "/admin/users/#{user.id}/edit/", {class: "admin_link edit1"}) %>
       <% if station %>
         <%= link_to("局編集", "/admin/stations/#{station.id}/edit/", class: "admin_link edit2") %>

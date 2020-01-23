@@ -63,7 +63,9 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @station = Station.find_by(user_id: @user.id)
     @user.destroy
-    @station.destroy
+    if @station
+      @station.destroy
+    end
     redirect_to("/admin")
     flash[:notice] = "ユーザー情報を削除しました"
   end
