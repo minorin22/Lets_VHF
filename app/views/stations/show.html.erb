@@ -1,6 +1,3 @@
-
-
-</div>
 <div class="station_container">
   <div class="handset_box">
     <div class="handset_img" id="off_hook">
@@ -89,9 +86,9 @@
           </div>
           <div class="main">
             <ul class="main_info left">
-              <li><p class="reverse_color ch_info">CH</p></li>
-              <li><p class="distress_info">&nbsp;</p></li>
-              <li ><p>[ITU]</p></li>
+              <li class="reverse_color ch_info">CH</li>
+              <li class="distress_info">&nbsp;</li>
+              <li >[ITU]</li>
             </ul>
 
             <div class="current_ch">
@@ -102,7 +99,7 @@
               <% end %>
             </div>
             <ul class="main_info right">
-              <li><p>&nbsp;</p></li>
+              <li>&nbsp;</li>
               <li><%= image_tag "dup.svg", class:"dup_info" %>&nbsp;</li>
               <li><%= image_tag "1w.svg", class:"pwr_info" %>&nbsp;</li>
             </ul>
@@ -127,7 +124,8 @@
               <%= image_tag "spk-on.svg" , class:"spk-on" %>
             </div>
             <div class="dsc_infos">
-              <img class="dsc_info ch70_info" id="ch70_symbol" src="/assets/ch70-symbol.svg"><img class="dsc_info" id="atm_ans" src="/assets/atm-ans.svg"><img class="dsc_info" id="ch_sw" src="/assets/ch_sw.svg">
+              <%= image_tag "ch70-symbol.svg", class:"dsc_info ch70_info", id:"ch70_symbol" %><%= image_tag "atm-ans.svg", class:"dsc_info", id:"atm_ans" %><%= image_tag "ch_sw.svg", class:"dsc_info", id:"ch_sw" %>
+
             </div>
           </div>
         </div>
